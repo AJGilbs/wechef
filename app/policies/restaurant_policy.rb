@@ -3,6 +3,14 @@ class RestaurantPolicy < ApplicationPolicy
     def resolve
       scope
     end
+
+    def create?
+      true
+    end
+
+    def update?
+      true if current_restaurent
+    end
   end
 
   def index
