@@ -10,19 +10,19 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    authorize(@restaurant)
   end
 
   def create
     @restaurant = Restaurant.create
+    authorize(@restaurant)
   end
 
   def edit
   end
 
   def update
-  end
-
-  def destroy
+  authorize(@restaurant)
   end
 
   private
@@ -34,6 +34,6 @@ class RestaurantsController < ApplicationController
   end
 
   def find_restaurant
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(restaurant_params)
   end
 end
