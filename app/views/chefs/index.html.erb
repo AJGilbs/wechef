@@ -1,6 +1,9 @@
-<h1>All chefs</h1>
-<ul>
-  <% @chefs.each do |chef| %>
-  <li><%= chef.name %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <h1>All chefs</h1>
+  <ul>
+    <% @chefs.each do |chef| %>
+    <li><%= chef.name %></li>
+    <% end %>
+  </ul>
+  <%= link_to "be a chef", new_chef_registration_path %>
+</div>

@@ -5,11 +5,11 @@ class ChefPolicy < ApplicationPolicy
     end
   end
 
-   def index
+  def show?
     true
   end
 
-  def show
+  def update?
     true
   end
 end
