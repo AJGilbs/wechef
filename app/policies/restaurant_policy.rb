@@ -4,4 +4,13 @@ class RestaurantPolicy < ApplicationPolicy
       scope
     end
   end
+
+  def index
+    true
+  end
+
+  def show
+    true
+  end
+
 end
