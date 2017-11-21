@@ -3,12 +3,10 @@ class BookingPolicy < ApplicationPolicy
     def resolve
       scope
     end
+  end
 
     def create?
-      true if current_restaurant
+      true
+      # true if current_restaurant
     end
-
-    def new?
-    end
-  end
 end
