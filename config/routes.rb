@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'chefs#index'
   devise_for :chefs
+  resources :chefs do
+    resources :bookings, only: [ :new, :create ]
+  end
   devise_for :restaurants
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
