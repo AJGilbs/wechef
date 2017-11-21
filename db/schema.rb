@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121112521) do
+ActiveRecord::Schema.define(version: 20171121121736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.bigint "chef_id"
+    t.date "date"
+    t.string "shift"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cost_pennies", default: 0, null: false
+    t.index ["chef_id"], name: "index_bookings_on_chef_id"
+    t.index ["restaurant_id"], name: "index_bookings_on_restaurant_id"
+  end
+
+  create_table "chefs", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "address"
+    t.string "phone_number"
+    t.string "photo"
+    t.string "experience"
+    t.string "description"
+    t.float "avg_rating"
+    t.integer "price_pennies", default: 0, null: false
+    t.index ["email"], name: "index_chefs_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_chefs_on_reset_password_token", unique: true
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,8 +65,14 @@ ActiveRecord::Schema.define(version: 20171121112521) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "address"
+    t.string "phone_number"
+    t.string "photo"
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "chefs"
+  add_foreign_key "bookings", "restaurants"
 end
