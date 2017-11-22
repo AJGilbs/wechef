@@ -1,6 +1,7 @@
 <% if restaurant_signed_in? %>
   <li>
-  <%= link_to('Logout of restaurant', destroy_restaurant_session_path, method: :delete) %> - <%= link_to "Complete Restaurant profile", edit_restaurant_registration_path %>
+  <%= link_to('Logout of restaurant', destroy_restaurant_session_path, method: :delete) %>
+  <%= link_to "Complete Restaurant profile", edit_restaurant_path(current_restaurant) %>
   </li>
 <% else %>
   <li>
