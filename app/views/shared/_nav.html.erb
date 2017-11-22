@@ -1,0 +1,21 @@
+<% if restaurant_signed_in? %>
+  <li>
+  <%= link_to('Logout of restaurant', destroy_restaurant_session_path, method: :delete) %>
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login to restaurant', new_restaurant_session_path) %>
+  <%= link_to "Sign up as resturant", new_restaurant_registration_path %>
+  </li>
+<% end %>
+
+<% if chef_signed_in? %>
+  <li>
+  <%= link_to('Logout of chef', destroy_chef_session_path, method: :delete) %>
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login to chef', new_chef_session_path) %>
+  <%= link_to "Sign up as chef", new_chef_registration_path %>
+  </li>
+<% end %>
