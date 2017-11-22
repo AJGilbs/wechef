@@ -11,6 +11,12 @@ class PagesController < ApplicationController
   end
 
   def dashboard_chef
+    @requests = []
+    Request.all.each do |request|
+      @requests << request if request.chef_ids.include?(current_chef.id)
+    end
+
+    @bookings = current_chef.bookings
   end
 
 end

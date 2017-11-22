@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122112451) do
+ActiveRecord::Schema.define(version: 20171122173251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20171122112451) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cost_pennies", default: 0, null: false
-    t.string "status", default: "pending"
     t.index ["chef_id"], name: "index_bookings_on_chef_id"
     t.index ["restaurant_id"], name: "index_bookings_on_restaurant_id"
   end
@@ -53,6 +52,19 @@ ActiveRecord::Schema.define(version: 20171122112451) do
     t.index ["reset_password_token"], name: "index_chefs_on_reset_password_token", unique: true
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.integer "chef_ids", default: [], array: true
+    t.date "date"
+    t.string "shift"
+    t.integer "cost_pennies", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "accepted_chef_ids", default: [], array: true
+    t.integer "number_of_chefs"
+    t.index ["restaurant_id"], name: "index_requests_on_restaurant_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,4 +89,5 @@ ActiveRecord::Schema.define(version: 20171122112451) do
 
   add_foreign_key "bookings", "chefs"
   add_foreign_key "bookings", "restaurants"
+  add_foreign_key "requests", "restaurants"
 end
