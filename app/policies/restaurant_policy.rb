@@ -3,14 +3,14 @@ class RestaurantPolicy < ApplicationPolicy
     def resolve
       scope
     end
+  end
 
-    def create?
-      true
-    end
+  def create?
+    true
+  end
 
-    def update?
-      true if current_restaurent
-    end
+  def update?
+    user.id == record.id
   end
 
   def index
