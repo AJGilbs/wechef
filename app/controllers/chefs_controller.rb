@@ -1,7 +1,9 @@
 class ChefsController < ApplicationController
-before_action :authenticate_chef!
-skip_before_action :authenticate_chef!, only: [:index, :show]
-before_action :find_chef, only: [:edit, :update, :show]
+
+
+before_action :authenticate_chef!, except: [:index, :show]
+before_action :find_chef, only: [:create, :edit, :update, :show]
+
 
 def index #should show only 6 randon chefs
   @chefs = policy_scope(Chef)
