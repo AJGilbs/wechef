@@ -6,7 +6,8 @@ class BookingPolicy < ApplicationPolicy
   end
 
     def create?
-      true
-      # true if current_restaurant
+
+    true
+    # if current_restaurant
     end
 end
