@@ -8,6 +8,11 @@ class ChefPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def search?
+    true
+  end
+
   def update?
     user.id == record.id
   end
