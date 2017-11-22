@@ -23,7 +23,9 @@ def create
 end
 
 def show
+  @booking = Booking.new
   authorize(@chef)
+  authorize(@booking)
 end
 
 def edit

@@ -10,4 +10,8 @@ class BookingPolicy < ApplicationPolicy
     true
     # if current_restaurant
     end
+
+    def show?
+      true
+    end
 end
