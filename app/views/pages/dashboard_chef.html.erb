@@ -1,5 +1,21 @@
-<h1>pending bookings</h1>
-<% current_chef.bookings.each do |booking| %>
-  <%= booking.status %>
+<h1>Pending Requests</h1>
 
+<ul>
+  <% @requests.each do |request| %>
+  <li>
+    <p><%= request.id %> - <%= request.restaurant.name %> wants you for <%= request.shift %> and will pay <%= request.cost_pennies %></p>
+    <%= link_to 'Accept', request_path(request), method: :delete %>
+    <%= link_to 'Decline', request_path(request), method: :patch %>
+  </li>
   <% end %>
+</ul>
+
+<h1>Accepted Bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+  <li>
+    <p><%= booking.id %> - <%= booking.restaurant.name %> wants you for <%= booking.shift %> and will pay <%= booking.cost_pennies %></p>
+  </li>
+  <% end %>
+</ul>

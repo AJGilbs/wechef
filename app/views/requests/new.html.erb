@@ -1,0 +1,13 @@
+<h1>Booking Form</h1>
+<%= simple_form_for @request do |f| %>
+  <%= f.input :date %>
+  <%= f.input :shift %>
+  <%= f.input :cost_pennies %>
+  <select multiple name="request[chef_ids][]">
+    <%= @chefs.each do |chef_id| %>
+      <option value=<%= chef_id.to_i %>><%= chef_id %></option>
+    <% end %>
+  </select>
+  <%= f.input :number_of_chefs  %>
+  <%= f.submit 'Create Booking' %>
+<% end %>
