@@ -29,7 +29,6 @@ def search
   authorize(@chefs)
 end
 
-
 def edit
   authorize(@chef)
 end

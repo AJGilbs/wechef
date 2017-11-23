@@ -1,8 +1,9 @@
 <h1>Booking Form</h1>
 <%= simple_form_for @request do |f| %>
   <%= f.input :date %>
-  <%= f.input :shift %>
   <%= f.input :cost_pennies %>
+  <%= f.input :start_hours %>
+  <%= f.input :end_hours %>
   <select multiple name="request[chef_ids][]">
     <%= @chefs.each do |chef_id| %>
       <option value=<%= chef_id.to_i %>><%= chef_id %></option>

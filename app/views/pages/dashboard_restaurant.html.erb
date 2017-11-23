@@ -1,1 +1,26 @@
 <h1>restaurant dashboard</h1>
+
+
+<h1>Pending Requests</h1>
+
+<ul>
+  <% @requests.each do |request| %>
+  <li><% request.id %></li>
+  <li><% request.chefs.each do |chef| %>
+       <li><%= chef.name %></li>
+
+    <%= link_to 'cancel', cancel_request_path(request), method: :patch %>
+  </li>
+  <% end %>
+  <% end %>
+</ul>
+
+<h1>Accepted Bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+  <li>
+    <p><%= booking.id %> - <%= booking.chef.name %> wants you for <%= booking.shift %> and will pay <%= booking.cost_pennies %></p>
+  </li>
+  <% end %>
+</ul>

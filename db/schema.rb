@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171123180750) do
 
   # These are extensions that must be enabled in order to support this database
@@ -23,6 +24,8 @@ ActiveRecord::Schema.define(version: 20171123180750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cost_pennies", default: 0, null: false
+    t.integer "start_hours"
+    t.integer "end_hours"
     t.index ["chef_id"], name: "index_bookings_on_chef_id"
     t.index ["restaurant_id"], name: "index_bookings_on_restaurant_id"
   end
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 20171123180750) do
     t.string "description"
     t.float "avg_rating"
     t.integer "price_pennies", default: 0, null: false
+    t.integer "max_hours"
     t.index ["email"], name: "index_chefs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_chefs_on_reset_password_token", unique: true
   end
@@ -74,6 +78,9 @@ ActiveRecord::Schema.define(version: 20171123180750) do
     t.datetime "updated_at", null: false
     t.integer "accepted_chef_ids", default: [], array: true
     t.integer "number_of_chefs"
+    t.integer "start_hours"
+    t.integer "end_hours"
+    t.string "status", default: "pending"
     t.index ["restaurant_id"], name: "index_requests_on_restaurant_id"
   end
 
