@@ -18,9 +18,14 @@ def show
 end
 
 def search
-  date = Date.parse(params[:date])
-  @chefs = Chef.where.not(id: Booking.where(date: date).pluck('chef_id'))
+  unless params[:date] = ""
+    date = Date.parse(params[:date])
+  # take all chefs that has different id returned by Booking.where(date: date)
+    @chefs = Chef.where.not(id: Booking.where(date: date).pluck('chef_id'))
   # chefs = Chef.joins('LEFT OUTER JOIN bookings ON bookings.chef_id = chefs.id').where('date != ?', date)
+  else
+    @chefs = Chef.all
+  end
   authorize(@chefs)
 end
 
