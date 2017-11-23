@@ -62,7 +62,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:date, :shift, :cost_pennies, { :chef_ids => [] }, :number_of_chefs, :end_hours, :star_hours)
+    params.require(:request).permit(:date, :shift, :cost_pennies, { :chef_ids => [] }, :number_of_chefs, :end_hours, :start_hours)
   end
 
 end

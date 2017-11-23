@@ -18,7 +18,7 @@ resources :chefs, only: [ :index, :edit, :update, :show ] do
     member do
       patch 'cancel'
     end
-
+    resources :messages, only: [ :new, :create, :show, :index ]
   end
 
 end
