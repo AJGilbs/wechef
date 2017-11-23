@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122173251) do
+ActiveRecord::Schema.define(version: 20171123150938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 20171122173251) do
     t.integer "price_pennies", default: 0, null: false
     t.index ["email"], name: "index_chefs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_chefs_on_reset_password_token", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_messages_on_author_type_and_author_id"
   end
 
   create_table "requests", force: :cascade do |t|
