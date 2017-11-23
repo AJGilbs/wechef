@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.5'
 
+
+gem 'stripe'
 gem 'cloudinary'
 gem "pundit"
 gem 'money-rails'
