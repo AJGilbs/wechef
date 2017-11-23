@@ -10,17 +10,28 @@ class MessagesController < ApplicationController
     else
       @over_ten = false
     end
+    @messages = policy_scope(Message)
   end
 
   def new
+     @request = Request.find(params[:request_id])
      @message = Message.new
+     authorize(@message)
   end
 
   def create
-    @request = Request.find(params[:request_id])
     @message = Message.new(message_params)
-    @message.request = @request
-
+    authorize(@message)
+    if @message.save
+      render 'index'
+    else
+      render "new"
+    end
   end
 
+  private
+
+  def message_params
+    params.require(:message).permit(:body, :author_id)
+  end
 end
