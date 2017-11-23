@@ -1,0 +1,8 @@
+<% simple_form for [@request, @message] do |t| %>
+  <%= t.input :body %>
+  <% if current_chef %>
+    <%= f.input :author, value: current_chef.id, type: "hidden" %>
+  <% else %>
+    <%= f.input :author, value: current_restaurent.id, type: "hidden" %>
+  <% end %>
+<% end %>
