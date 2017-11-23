@@ -22,8 +22,14 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     authorize(@message)
+    if current_chef
+      user = current_chef
+    else
+      user = current_restaurent
+    end
+    @message.author = user
     if @message.save
-      render 'index'
+      render 'dashboard'
     else
       render "new"
     end

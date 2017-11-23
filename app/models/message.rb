@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :author, polymorphic: true
+  belongs_to :request
 
   validates :body, :author_id, presence: true
 
