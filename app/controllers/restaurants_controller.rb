@@ -3,7 +3,9 @@ class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [ :show, :update, :edit ]
 
   def show
+    @booking = Booking.new
     authorize @restaurant
+    authorize @booking
   end
 
   def edit

@@ -2,6 +2,8 @@
   <div class="">
    <%= cl_image_tag current_chef.photo, height: 250, width: 250, crop: :fill, class: "profile-photo"%>
    <h2><%= current_chef.name %> </h2>
+    <%= link_to 'edit', edit_chef_registration_path, class: "btn btn-primary dash" %>
+
 
    </div>
   </div>
@@ -12,9 +14,14 @@
   <% @requests.each do |request| %>
   <li>
     <p><%= request.id %> - <%= request.restaurant.name %> wants you for <%= request.shift %> and will pay <%= request.cost_pennies %></p>
-    <%= link_to 'Accept', request_path(request), method: :delete %>
-    <%= link_to 'Decline', request_path(request), method: :patch %>
+    <% if request.status == "complete" %>
+      <p>this request has been completed</p>
+    <% else %>
+      <%= link_to 'Accept', request_path(request), method: :delete %>
+      <%= link_to 'Decline', request_path(request), method: :patch %>
+    <% end %>
   </li>
+
   <% end %>
 </ul>
 

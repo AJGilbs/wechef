@@ -28,7 +28,6 @@ def search
   # redirect_to search_chefs_path
 end
 
-
 def edit
   authorize(@chef)
 end

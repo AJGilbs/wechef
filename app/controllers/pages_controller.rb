@@ -7,8 +7,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard_restaurant
+    @requests = Request.where(restaurant_id: current_restaurant.id, status: 'pending').all
+    @bookings = current_restaurant.bookings
 
   end
+
 
   def dashboard_chef
     @requests = []

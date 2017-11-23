@@ -1,9 +1,17 @@
 class RequestsController < ApplicationController
+  before_action :set_request, only: [:cancel, :update, :destroy]
 
   def new
     @request = Request.new
     @chefs = Chef.all.map { |chef| chef.id }
     authorize @request
+  end
+
+  def cancel
+
+    @request.status = "cancel"
+    @request.save!
+    redirect_to myrestaurant_path
   end
 
   def create
@@ -18,42 +26,43 @@ class RequestsController < ApplicationController
   end
 
   def update
-    request_to_update = Request.find(params[:id])
-    authorize request_to_update
-    request_to_update.chef_ids.delete(current_chef.id)
-    request_to_update.save
+    @request.chef_ids.delete(current_chef.id)
+    @request.save
     redirect_to dashboard_path
   end
 
   def destroy
-    # get my request
-    request_to_destroy = Request.find(params[:id])
-    # authorize
-    authorize request_to_destroy
     # delete current_chef id from the request's chef_ids array
-    request_to_destroy.chef_ids.delete(current_chef.id)
+    @request.chef_ids.delete(current_chef.id)
     # add current_chef id to the request's accepted_chef_ids
-    request_to_destroy.accepted_chef_ids << current_chef.id
-    request_to_destroy.save
+    @request.accepted_chef_ids << current_chef.id
+    @request.save
     # create a booking for the current_chef
-    new_booking = Booking.new
-    new_booking.date = request_to_destroy.date
-    new_booking.shift = request_to_destroy.shift
-    new_booking.cost_pennies = request_to_destroy.cost_pennies
-    new_booking.restaurant = request_to_destroy.restaurant
-    new_booking.chef = current_chef
+    new_booking = Booking.new(
+      date: @request.date,
+      shift: @request.shift,
+      cost_pennies: @request.cost_pennies,
+      restaurant: @request.restaurant,
+      chef: current_chef
+    )
     new_booking.save
-    if request_to_destroy.accepted_chef_ids.count == request_to_destroy.number_of_chefs
+    if @request.accepted_chef_ids.count == @request.number_of_chefs
       # destroy request
-      request_to_destroy.destroy
+      @request.status = "complete"
+      @request.save!
     end
     redirect_to dashboard_path
   end
 
   private
 
+  def set_request
+    @request = Request.find(params[:id])
+    authorize @request
+  end
+
   def request_params
-    params.require(:request).permit(:date, :shift, :cost_pennies, :chef_ids => [], :number_of_chefs)
+    params.require(:request).permit(:date, :shift, :cost_pennies, { :chef_ids => [] }, :number_of_chefs, :end_hours, :star_hours)
   end
 
 end
