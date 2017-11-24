@@ -1,8 +1,47 @@
 <h1>Results</h1>
+ <ul>
 
 <% @chefs.each do |chef| %>
-
-  <%= chef.name %><br>
+<div> <li> [<%= chef.id %>]<%= chef.name %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div></li></div>
 <% end %>
+ </ul>
 
+<p><% if current_restaurant %>
+    <%= link_to "Request", new_request_path %>
+    <% end %>
+</p>
+<ul id="selected-chefs">
+  Selected Chefs
 
+</ul>
+
+<input type="hidden" id="hidden-list">
+
+<script>
+  var idArray = []
+  var selectBtns = document.querySelectorAll(".btn-select");
+  selectBtns.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      var btnTarget = event.currentTarget;
+      if (btnTarget.classList.contains("disabled")) {
+        btnTarget.classList.remove("disabled");
+        idArray.pop(btnTarget.id);
+        btnTarget.innerHtml = "Selected";
+      }
+      else {
+        idArray.push(btnTarget.id);
+        btnTarget.classList.add("disabled");
+        btnTarget.innerHtml = "Select";
+      }
+      displaySelected(idArray);
+    });
+  });
+
+  var displaySelected = (chef_ids) => {
+    var list = document.getElementById("selected-chefs");
+    $("#selected-chefs > li").remove();
+    chef_ids.forEach((chef_id) => {
+      list.insertAdjacentHTML("beforeend", `<li>${chef_id}</li>`);
+    });
+  };
+</script>
