@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:cancel, :update, :destroy]
+  before_action :set_request, only: [:cancel_all, :cancel_chef, :update, :destroy]
 
   def new
     @request = Request.new
@@ -7,12 +7,18 @@ class RequestsController < ApplicationController
     authorize @request
   end
 
-  def cancel
-
+  def cancel_all
     @request.status = "cancel"
     @request.save!
     redirect_to myrestaurant_path
   end
+
+  def cancel_chef
+    @request.chef_ids.delete(params['chef'].to_i)
+    @request.save!
+    redirect_to myrestaurant_path
+  end
+
 
   def create
     new_request = Request.new(request_params)

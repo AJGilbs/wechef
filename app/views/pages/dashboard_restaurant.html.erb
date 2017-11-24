@@ -4,15 +4,18 @@
 <h1>Pending Requests</h1>
 
 <ul>
-  <% @requests.each do |request| %>
-  <li><% request.id %></li>
-  <li><% request.chefs.each do |chef| %>
-       <li><%= chef.name %></li>
 
-    <%= link_to 'cancel', cancel_request_path(request), method: :patch %>
-  </li>
+  <% @requests.each do |request| %>
+    <%= link_to 'cancel request', cancel_all_request_path(request), method: :patch %>
+
+    <% request.chefs.each do |chef| %>
+      <li><%= chef.name %></li>
+        <%= link_to 'cancel chef', cancel_chef_request_path(request, chef: chef), method: :patch %>
+      </li>
+    <% end %>
+
   <% end %>
-  <% end %>
+
 </ul>
 
 <h1>Accepted Bookings</h1>

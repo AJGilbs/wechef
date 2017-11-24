@@ -1,8 +1,16 @@
-<h1>Results</h1>
+<h1>Search Results</h1>
+<ul>
+  <% @chefs.each do |chef| %>
 
-<% @chefs.each do |chef| %>
-
-  <%= chef.name %><br>
+  <li><%= chef.name %> <div onclick="document.getElementById('hiddenField').value = '<%= chef.name %>'">Add chef</div></li>
 <% end %>
+</ul>
 
 
+<input id="hiddenField" value="">
+
+
+
+
+
+  <li><%= chef.name %> <div onclick="myFunction(<% gfdfgg %>)">Add chef</div></li>

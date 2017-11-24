@@ -17,8 +17,12 @@ class RequestPolicy < ApplicationPolicy
     record.chef_ids.include?(user.id)
   end
 
-  def cancel?
+  def cancel_all?
     record.restaurant_id == user.id && user.class.name == 'Restaurant'
+  end
+
+  def cancel_chef?
+    cancel_all?
   end
 
 end

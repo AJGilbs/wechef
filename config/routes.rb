@@ -16,7 +16,8 @@ resources :chefs, only: [ :index, :edit, :update, :show ] do
   get 'myrestaurant', to: 'pages#dashboard_restaurant'
   resources :requests, only: [ :new, :create, :update, :destroy ] do
     member do
-      patch 'cancel'
+      patch 'cancel_all'
+      patch 'cancel_chef'
     end
     resources :messages, only: [ :new, :create, :show, :index ]
   end
