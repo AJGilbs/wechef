@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
 
   def index
-    @request = Request.find(params[:request_id])
+    @request = policy_scope(Request).find(params[:request_id])
     @messages = @request.messages
     if @messages.length > 10
       @over_ten = true
@@ -10,7 +10,6 @@ class MessagesController < ApplicationController
     else
       @over_ten = false
     end
-    @messages = policy_scope(Message)
   end
 
   def new
@@ -20,14 +19,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @request = Request.find(params[:request_id])
+    @message = @request.messages.new(message_params)
+    @message.author = current_chef || current_restaurant
     authorize(@message)
-    if current_chef
-      user = current_chef
-    else
-      user = current_restaurent
-    end
-    @message.author = user
     if @message.save
       render 'dashboard'
     else
@@ -38,6 +33,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body, :author_id)
+    params.require(:message).permit(:body)
   end
 end
