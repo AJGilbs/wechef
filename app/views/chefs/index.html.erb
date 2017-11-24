@@ -1,14 +1,7 @@
-<div class="container">
-  <h1>All chefs</h1>
-  <ul>
-    <% @chefs.each do |chef| %>
-    <li><%= chef.name %> -id:<%= chef.id %></li>
-    <% end %>
-  </ul>
-</div>
+<h1>We Chef</h1>
 
 
-<form action="search">
-  <input type="date" name="date">
+<form action="chefs/search">
+  <input type="date" name="date" placeholder="when you need a chef?">
   <input type="submit" value="Search">
 </form>

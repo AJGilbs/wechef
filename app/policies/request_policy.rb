@@ -1,7 +1,11 @@
 class RequestPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      if user.is_a?(Restaurant)
+        scope.where(restaurant: user)
+      elsif user.is_a?(Chef)
+        scope.where('? = ANY (chef_ids)', user.id)
+      end
     end
   end
 
