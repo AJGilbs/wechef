@@ -18,6 +18,7 @@ def show
 end
 
 def search
+  @selection = []
   unless params[:date] = ""
     date = Date.parse(params[:date])
   # take all chefs that has different id returned by Booking.where(date: date)
@@ -27,6 +28,10 @@ def search
     @chefs = Chef.all
   end
   authorize(@chefs)
+end
+
+def selection
+  # @chefs =
 end
 
 def edit
