@@ -1,8 +1,112 @@
-.shortlist-container {
-  position:fixed;
-  bottom:0;
-  left:0;
-  background-color:#fff;
-  width:100%;
-  height:75px;
+.shortlist-container
+{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    background-color: #fff;
+    display:flex;
+}
+
+.shortlist-avatars
+{
+    display: inline-block;
+
+    width: calc(100% - 140px);
+    height: 70px;
+
+    background: #fff;
+
+    div {
+          position: absolute;
+
+          overflow: hidden;
+
+          width: 40px;
+          height: 40px;
+
+          border-radius: 50%;
+          background-color: #000;
+          background-color: $brand-primary;
+      }
+
+    div:nth-child(1) {
+          top: 15px;
+          left: 15px;
+      }
+    div:nth-child(2) {
+          top: 15px;
+          left: 35px;
+      }
+    div:nth-child(3) {
+          top: 15px;
+          left: 55px;
+      }
+    div:nth-child(4) {
+          top: 15px;
+          left: 75px;
+      }
+    div:nth-child(5) {
+          top: 15px;
+          left: 95px;
+      }
+    div:nth-child(6) {
+          top: 15px;
+          left: 115px;
+      }
+    div:nth-child(7) {
+          top: 15px;
+          left: 135px;
+      }
+    div:nth-child(8) {
+          top: 15px;
+          left: 155px;
+      }
+    div:nth-child(9) {
+          top: 15px;
+          left: 155px;
+      }
+    div:nth-child(10) {
+          top: 15px;
+          left: 155px;
+      }
+}
+
+
+
+.book-btn
+{
+    display: inline-block;
+
+    width: 130px;
+    height: 40px;
+
+    text-align: center;
+    font-size: 15px;
+
+    border-width: 0;
+    background-color: $brand-primary;
+    margin:16px;
+    border-radius: 3px;
+}
+
+.review-btn
+{
+    display: inline-block;
+
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+
+    text-align: center;
+
+    border-width: 0;
+    border-radius: 0;
+    background-color: $brand-secondary;
+    margin:15px 0 15px 15px;
+    color:#fff;
+    border-radius: 3px;
 }

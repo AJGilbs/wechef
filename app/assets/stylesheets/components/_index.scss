@@ -2,9 +2,11 @@
 @import 'alert';
 @import 'navbar';
 
+
 *
 {
     box-sizing: border-box;
+    font-family: $body-font !important;
 }
 
 body
@@ -25,4 +27,20 @@ a
 .container
 {
     margin: 75px 0;
+}
+
+
+.when-links, .when-links:active, .when-links:hover {
+  background-color: #fff;
+  color: $content-color;
+  border-radius: 3px;
+  border-color: #989898;
+  border-width: 1px;
+  border-style: solid;
+  height:40px;
+  padding: 0 15px;
+  line-height:38px;
+  font-size: 14px;
+  text-decoration: none;
+  display:inline-block;
 }

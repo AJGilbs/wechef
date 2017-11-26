@@ -1,4 +1,4 @@
-<h1>We Chef</h1>
+<h1>When do you need a Chef?</h1>
 
 
 <form action="chefs/search">
@@ -6,8 +6,8 @@
   <input type="submit" value="Search">
 </form>
 
-<a href="http://localhost:3000/chefs/search?date=<%= DateTime.now.strftime("%d-%m-%Y") %>">Today</a>
+<a href="http://localhost:3000/chefs/search?date=<%= DateTime.now.strftime("%d-%m-%Y") %>" class="when-links">Today</a>
 
-<a href="http://localhost:3000/chefs/search?date=<%= (DateTime.now + 1).strftime("%d-%m-%Y") %>">Tomorrow</a>
+<a href="http://localhost:3000/chefs/search?date=<%= (DateTime.now + 1).strftime("%d-%m-%Y") %>" class="when-links">Tomorrow</a>
 
-<a href="http://localhost:3000/chefs/search?date=2017-11-10">Next 7 days</a>
+<a href="http://localhost:3000/chefs/search?date=2017-11-10" class="when-links">Next 7 days</a>
