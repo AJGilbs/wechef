@@ -1,3 +1,28 @@
 // Import your components CSS files here.
-@import "alert";
-@import "navbar";
+@import 'alert';
+@import 'navbar';
+
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: Montserrat;
+
+    margin: 0;
+
+    color: $content-color;
+    background-color: $gray-base;
+}
+
+a
+{
+    color: $content-color;
+}
+
+.container
+{
+    margin: 75px 0;
+}

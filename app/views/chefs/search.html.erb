@@ -1,15 +1,19 @@
 <h1>Results</h1>
- <ul>
+
 
 <% @chefs.each do |chef| %>
-<div> <li> [<%= chef.id %>]<%= chef.name %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div></li></div>
+<div class="card">
+  [<%= chef.id %>]<%= chef.name %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
+</div>
 <% end %>
- </ul>
+
 
 <p><% if current_restaurant %>
     <%= link_to "Request", new_request_path %>
     <% end %>
 </p>
+
+
 <ul id="selected-chefs">
   Selected Chefs
 
@@ -45,3 +49,6 @@
     });
   };
 </script>
+
+
+<%= render 'shared/shortlist' %>

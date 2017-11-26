@@ -1,22 +1,77 @@
-<% if restaurant_signed_in? %>
-  <li>
-  <%= link_to('Logout of restaurant', destroy_restaurant_session_path, method: :delete) %>
-  <%= link_to "Complete Restaurant profile", edit_restaurant_path(current_restaurant) %>
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login to restaurant', new_restaurant_session_path) %> -
-  <%= link_to "Sign up as resturant", new_restaurant_registration_path %>
-  </li>
-<% end %>
+<nav>
 
-<% if chef_signed_in? %>
-  <li>
-  <%= link_to('Logout of chef', destroy_chef_session_path, method: :delete) %>
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login to chef', new_chef_session_path) %> -
-  <%= link_to "Sign up as chef", new_chef_registration_path %>
-  </li>
-<% end %>
+  <div class="search-icon" id="searchMenuButton"></div>
+
+  <%= link_to root_path do %>
+    <div class="logo"></div>
+  <% end %>
+
+  <div class="avatar" id="userMenuButton"></div>
+
+
+</nav>
+
+<div class="user-menu" id="userMenu">
+  <div class="close-btn" id="closeUserMenu"></div>
+  <h1>Menu</h1>
+  <div>
+    <% if restaurant_signed_in? %>
+    <li>
+    <%= link_to('Logout of restaurant', destroy_restaurant_session_path, method: :delete) %>
+    <%= link_to "Complete Restaurant profile", edit_restaurant_path(current_restaurant) %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to('Login to restaurant', new_restaurant_session_path) %> -
+    <%= link_to "Sign up as resturant", new_restaurant_registration_path %>
+    </li>
+  <% end %>
+
+  <% if chef_signed_in? %>
+    <li>
+    <%= link_to('Logout of chef', destroy_chef_session_path, method: :delete) %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to('Login to chef', new_chef_session_path) %> -
+    <%= link_to "Sign up as chef", new_chef_registration_path %>
+    </li>
+  <% end %>
+  </div>
+</div>
+
+<div class="search-menu" id="searchMenu">
+  <div class="close-btn" id="closeSearchMenu"></div>
+  <h1>Search</h1>
+  </div>
+</div>
+
+<script>
+  //USER MENU
+  //Open user menu
+  var userMenuButton = document.getElementById("userMenuButton");
+  var userMenu = document.getElementById("userMenu")
+  userMenuButton.addEventListener("click", function(){
+    userMenu.style.top = 0;
+  });
+
+  //Close user menu
+  var closeMenu = document.getElementById("closeUserMenu");
+  closeUserMenu.addEventListener("click", function(){
+    userMenu.style.top = "100vh";
+  });
+
+  //SEARCH MENU
+  //Open search menu
+  var searchMenuButton = document.getElementById("searchMenuButton");
+  var searchMenu = document.getElementById("searchMenu")
+  searchMenuButton.addEventListener("click", function(){
+    searchMenu.style.top = 0;
+  });
+
+  //Close search menu
+  var closeSearchMenu = document.getElementById("closeSearchMenu");
+  closeSearchMenu.addEventListener("click", function(){
+    searchMenu.style.top = "100vh";
+  });
+</script>

@@ -5,3 +5,9 @@
   <input type="date" name="date" placeholder="when you need a chef?">
   <input type="submit" value="Search">
 </form>
+
+<a href="http://localhost:3000/chefs/search?date=<%= DateTime.now.strftime("%d-%m-%Y") %>">Today</a>
+
+<a href="http://localhost:3000/chefs/search?date=<%= (DateTime.now + 1).strftime("%d-%m-%Y") %>">Tomorrow</a>
+
+<a href="http://localhost:3000/chefs/search?date=2017-11-10">Next 7 days</a>
