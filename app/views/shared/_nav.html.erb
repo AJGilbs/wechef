@@ -49,18 +49,20 @@
 </div>
 
 <script>
-  //USER MENU
+   //USER MENU
   //Open user menu
   var userMenuButton = document.getElementById("userMenuButton");
   var userMenu = document.getElementById("userMenu")
   userMenuButton.addEventListener("click", function(){
     userMenu.style.top = 0;
+    document.getElementsByTagName('body')[0].style = 'overflow: hidden';
   });
 
   //Close user menu
   var closeMenu = document.getElementById("closeUserMenu");
   closeUserMenu.addEventListener("click", function(){
     userMenu.style.top = "100vh";
+    document.getElementsByTagName('body')[0].style = 'overflow: scroll';
   });
 
   //SEARCH MENU
@@ -69,11 +71,13 @@
   var searchMenu = document.getElementById("searchMenu")
   searchMenuButton.addEventListener("click", function(){
     searchMenu.style.top = 0;
+    document.getElementsByTagName('body')[0].style = 'overflow: hidden';
   });
 
   //Close search menu
   var closeSearchMenu = document.getElementById("closeSearchMenu");
   closeSearchMenu.addEventListener("click", function(){
     searchMenu.style.top = "100vh";
+    document.getElementsByTagName('body')[0].style = 'overflow: scroll';
   });
 </script>
