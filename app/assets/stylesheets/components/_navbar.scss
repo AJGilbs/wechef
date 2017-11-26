@@ -26,13 +26,13 @@ nav
 .avatar
 {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
 
     overflow: hidden;
 
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 
     border-radius: 50%;
     background-color: #000;
@@ -75,12 +75,9 @@ nav
     position: absolute;
     top: 15px;
     left: 15px;
-
+    padding:5px;
     width: 40px;
     height: 40px;
-
-    border-radius: 50%;
-    background-color: #000;
 }
 
 .search-menu
