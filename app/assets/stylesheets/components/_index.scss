@@ -31,16 +31,17 @@ a
 
 
 .when-links, .when-links:active, .when-links:hover {
-  background-color: #fff;
-  color: $content-color;
-  border-radius: 3px;
-  border-color: #989898;
-  border-width: 1px;
-  border-style: solid;
-  height:40px;
-  padding: 0 15px;
-  line-height:38px;
-  font-size: 14px;
-  text-decoration: none;
-  display:inline-block;
+    display: inline-block;
+    text-decoration: none;
+    height: 40px;
+    font-size: 16px;
+  padding: 0 13px;
+    text-align: center;
+    line-height:38px;
+    border-width: 0;
+    border-radius: 0;
+    background-color: $brand-secondary;
+    margin:0 15px 0 0 0;
+    color:#606019;
+    border-radius: 3px;
 }

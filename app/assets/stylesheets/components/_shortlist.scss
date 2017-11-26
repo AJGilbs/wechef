@@ -30,7 +30,7 @@
 
           border-radius: 50%;
           background-color: #000;
-          background-color: $brand-primary;
+          background-color: #fff;
       }
 
     div:nth-child(1) {
@@ -86,7 +86,7 @@
 
     text-align: center;
     font-size: 15px;
-
+    color: #606019;
     border-width: 0;
     background-color: $brand-primary;
     margin:16px;
@@ -107,6 +107,6 @@
     border-radius: 0;
     background-color: $brand-secondary;
     margin:15px 0 15px 15px;
-    color:#fff;
+    color:#606019;
     border-radius: 3px;
 }
