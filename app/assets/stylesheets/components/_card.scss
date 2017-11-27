@@ -1,5 +1,12 @@
 .card {
-  img {
-    width:50px;
+  width: calc(100%);
+  margin: 0 0 15px 0;
+  border-width: 0 0 1px 0;
+  border-color: #ddd;
+  border-style:solid;
+  display: block;
+  .card-avatar {
+    width:100px;
+    border-radius: 50%;
   }
 }
