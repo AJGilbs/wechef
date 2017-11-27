@@ -1,47 +1,60 @@
 <h1>Results</h1>
- <ul>
+
 
 <% @chefs.each do |chef| %>
-<div> <li> [<%= chef.id %>]<%= chef.name %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div></li></div>
+<div class="card">
+  [<%= chef.id %>]<%= chef.name %> <%= cl_image_tag(chef.photo) %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
+</div>
 <% end %>
- </ul>
 
-<p><% if current_restaurant %>
-    <%= link_to "Request", new_request_path %>
-    <% end %>
-</p>
-<ul id="selected-chefs">
-  Selected Chefs
 
-</ul>
+<form action="../requests/new">
+  <input type="hidden" value="" name= "selected" id="hidden-selected">
+  <button type="submit">Request</button>
+</form>
 
-<input type="hidden" id="hidden-list">
+
+<%= render 'shared/shortlist' %>
 
 <script>
-  var idArray = []
-  var selectBtns = document.querySelectorAll(".btn-select");
+  const shortListBar = document.getElementById("shortlist");
+  const selectBtns = document.querySelectorAll(".btn-select");
+  const hiddenImput = document.getElementById("hidden-selected");
+  const idArray = []
+  // const list = document.getElementById("selected-chefs");
+
+  const displaySelected = (imgPath, chefId) => {
+    let item = `<div id= "avatar${chefId}" class="shortlist-avatar"><img src =${imgPath} width="50">
+    </div>`
+    shortListBar.insertAdjacentHTML("beforeend", item);
+  };
+  const removeSelected = (id) => {
+    let toDelete = document.getElementById(`avatar${id}`);
+    toDelete.remove();
+  }
+
   selectBtns.forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      var btnTarget = event.currentTarget;
+      let chefId = event.currentTarget.id;
+      let chefImgSrc = event.target.parentElement.firstElementChild.src;
+      let btnTarget = event.currentTarget;
       if (btnTarget.classList.contains("disabled")) {
         btnTarget.classList.remove("disabled");
         idArray.pop(btnTarget.id);
         btnTarget.innerHtml = "Selected";
+        removeSelected(chefId);
       }
       else {
         idArray.push(btnTarget.id);
         btnTarget.classList.add("disabled");
         btnTarget.innerHtml = "Select";
+        displaySelected(chefImgSrc, chefId);
       }
-      displaySelected(idArray);
+      hiddenImput.value = idArray;
     });
   });
 
-  var displaySelected = (chef_ids) => {
-    var list = document.getElementById("selected-chefs");
-    $("#selected-chefs > li").remove();
-    chef_ids.forEach((chef_id) => {
-      list.insertAdjacentHTML("beforeend", `<li>${chef_id}</li>`);
-    });
-  };
 </script>
+
+
+

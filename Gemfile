@@ -4,6 +4,7 @@ ruby '2.3.5'
 
 gem 'stripe'
 gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 gem "pundit"
 gem 'money-rails'
 gem 'devise'

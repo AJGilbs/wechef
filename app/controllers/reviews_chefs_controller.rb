@@ -11,6 +11,8 @@ class ReviewsChefsController < ApplicationController
     @review_chef = ReviewsChef.new(review_params)
     @review_chef.chef_id = @chef.id
     # @review_chef.restaurant_id = current_restaurant.id
+    # @review_chef.booking =
+
     authorize @review_chef
     if @review_chef.save!
      redirect_to root_path
