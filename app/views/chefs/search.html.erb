@@ -6,23 +6,31 @@
 <% end %>
  </ul>
 
-<p><% if current_restaurant %>
-    <%= link_to "Request", new_request_path %>
-    <% end %>
-</p>
+<form action="../requests/new">
+  <input type="hidden" value="" name= "selected" id="hidden-selected">
+  <button type="submit">Request</button>
+</form>
 <ul id="selected-chefs">
   Selected Chefs
 
 </ul>
 
-<input type="hidden" id="hidden-list">
 
 <script>
-  var idArray = []
-  var selectBtns = document.querySelectorAll(".btn-select");
+  const displaySelected = (chef_ids) => {
+    const list = document.getElementById("selected-chefs");
+    $("#selected-chefs > li").remove();
+    chef_ids.forEach((chef_id) => {
+      list.insertAdjacentHTML("beforeend", `<li>${chef_id}</li>`);
+    });
+  };
+  const hiddenImput = document.getElementById("hidden-selected");
+  console.log(hiddenImput);
+  const idArray = []
+  const selectBtns = document.querySelectorAll(".btn-select");
   selectBtns.forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      var btnTarget = event.currentTarget;
+      let btnTarget = event.currentTarget;
       if (btnTarget.classList.contains("disabled")) {
         btnTarget.classList.remove("disabled");
         idArray.pop(btnTarget.id);
@@ -33,15 +41,9 @@
         btnTarget.classList.add("disabled");
         btnTarget.innerHtml = "Select";
       }
+      hiddenImput.value = idArray;
       displaySelected(idArray);
     });
   });
 
-  var displaySelected = (chef_ids) => {
-    var list = document.getElementById("selected-chefs");
-    $("#selected-chefs > li").remove();
-    chef_ids.forEach((chef_id) => {
-      list.insertAdjacentHTML("beforeend", `<li>${chef_id}</li>`);
-    });
-  };
 </script>
