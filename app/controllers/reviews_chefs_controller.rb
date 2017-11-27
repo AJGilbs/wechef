@@ -3,16 +3,16 @@ class ReviewsChefsController < ApplicationController
   before_action :find_review, only: [ :edit, :update, :destroy]
 
   def new
-    @reviewChef = ReviewsChef.new
-    authorize (@reviewChef)
+    @review_chef = ReviewsChef.new
+    authorize (@review_chef)
   end
 
   def create
-    @reviewChef = ReviewsChef.new(review_params)
-    @reviewChef.chef_id = @chef.id
-    @reviewChef.restaurant_id = current_restaurant.id
-    authorize @reviewChef
-    if @reviewChef.save!
+    @review_chef = ReviewsChef.new(review_params)
+    @review_chef.chef_id = @chef.id
+    # @review_chef.restaurant_id = current_restaurant.id
+    authorize @review_chef
+    if @review_chef.save!
      redirect_to root_path
     else
       render 'new'

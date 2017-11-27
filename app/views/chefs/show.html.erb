@@ -1,8 +1,8 @@
 <h1><%= @chef.name %> Page</h1>
 <%= render 'shared/form_booking' %>
-<%= @chef.reviewsChef %>
+<%= @chef.reviews_chef.count %>
 <%= link_to "Add review", new_chef_reviews_chef_path(@chef) %>
-<%= @chef.reviewsChef.each do |reviewChef| %>
-  <%= reviewChef.rating %>
-  <%= reviewChef.comment %>
+<% @chef.reviews_chef.each do |rev| %>
+  <%= rev.rating %>
+  <%= rev.comment %>
 <% end %>
