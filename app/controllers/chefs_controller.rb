@@ -36,13 +36,16 @@ end
 
 def edit
   @position = Position.new
-  authorize(@position)
   authorize(@chef)
 end
 
 def update
   authorize(@chef)
-  if @chef.update(chef_params)
+  if position_params
+    @position = Position.new(position_params)
+    unless @position.save
+    end
+  elsif @chef.update(chef_params)
     redirect_to chef_path(@chef)
   else
     render "edit"
@@ -51,12 +54,16 @@ end
 
 private
 
-def find_chef
-  @chef = Chef.find(params[:id])
-end
+  def find_chef
+    @chef = Chef.find(params[:id])
+  end
 
-def chef_params
-  params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :description)
-end
+  def chef_params
+    params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :description)
+  end
+
+  def position_params
+      params.require(:chef).permit(:position => [:title, :description, :start_date, :end_date])
+  end
 
 end

@@ -4,14 +4,18 @@
   <%= f.input :experience %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
+  Position:
+  <%= f.simple_fields_for :positions do |position| %>
+    <%= position.input :title,  collection: ["Executive Chef", "Head Chef", "Sous Chef", "Chef de Partie", "Commis Chef", "None of these"], prompt: "You've worked as..." %>
+    <%= position.input :description %>
+    <%= position.input :start_date %>
+    <%= position.input :end_date %>
+    <% end %>
   <div class="submit-holder">
     <%= f.button :submit, "Save", class: "submit-btn" %>
   </div>
 <% end %>
-<p>positions</p>
-<%= @chef.positions.each do |p| %>
-  <%= p.title %>
-<% end %>
-<p>add a position</p>
-<%= render "/shared/form_chef_position" %>
+
+
+
 

@@ -13,6 +13,10 @@ class ChefPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    update?
+  end
+
   def update?
     user.id == record.id
   end

@@ -9,10 +9,6 @@ class PositionPolicy < ApplicationPolicy
     user.is_a?(Chef)
   end
 
-  def edit?
-    user.id == record.chef.id
-  end
-
   def destroy?
     user == record.chef
   end

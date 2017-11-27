@@ -9,10 +9,8 @@ class PositionsController < ApplicationController
     @position = Position.new(position_params)
     @position.chef = current_chef
     authorize(@position)
-    if @position.save
-      redirect_to edit_chef(@chef)
-    else
-      render "new"
+    if not @position.save
+      render edit_chef(@chef)
     end
   end
 
