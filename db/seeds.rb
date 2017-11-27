@@ -44,6 +44,31 @@ joe = Chef.new(email: "hello@joe.com", password: '123456', name: "Joe Running", 
 joe.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
 joe.save!
 
+booking = Booking.new(date: Date.today, start_hours: 13, end_hours: 20)
+booking.restaurant = sketch
+booking.chef = nathalia
+booking.save!
+booking = Booking.new(date: Date.today, start_hours: 6, end_hours: 14)
+booking.restaurant = hawksmoor
+booking.chef = cris
+booking.save!
+booking = Booking.new(date: Date.today, start_hours: 14, end_hours: 22)
+booking.restaurant = bao
+booking.chef = david
+booking.save!
+booking = Booking.new(date: Date.today, start_hours: 15, end_hours: 23)
+booking.restaurant = bao
+booking.chef = david
+booking.save!
+booking = Booking.new(date: Date.today, start_hours: 15, end_hours: 23)
+booking.restaurant = ceviche
+booking.chef = khaled
+booking.save!
+booking = Booking.new(date: Date.today, start_hours: 13, end_hours: 23)
+booking.restaurant = hoppers
+booking.chef = joe
+booking.save!
+
 #Requests
 # request_sketch = Requests.new("")
 # request_sketch.restaurant = sketch

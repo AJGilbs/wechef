@@ -59,10 +59,24 @@
   </div>
 </div>
 
-
-
 <%= render 'shared/form_booking' %>
+
+<!-- <div class="submit-holder">
+  <input type="submit" class="submit-btn" value="Request">
+</div> -->
+
+<% if @chef.been_booked_by_restautant?(current_restaurant) %>
+  <%= link_to "Add review", new_chef_reviews_chef_path(@chef) %>
+<% end %>
+
 
 <div class="submit-holder">
   <input type="submit" class="submit-btn" value="Request">
 </div>
+
+ <%= @chef.reviews_chef.count %>
+<% @chef.reviews_chef.each do |rev| %>
+    <%= rev.rating %>
+    <%= rev.comment %>
+  <% end %>
+
