@@ -105,7 +105,33 @@ ActiveRecord::Schema.define(version: 20171127115237) do
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end
 
+  create_table "reviews_chefs", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "chef_id"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_chefs_on_booking_id"
+    t.index ["chef_id"], name: "index_reviews_chefs_on_chef_id"
+  end
+
+  create_table "reviews_restaurants", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "booking_id"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_restaurants_on_booking_id"
+    t.index ["restaurant_id"], name: "index_reviews_restaurants_on_restaurant_id"
+  end
+
   add_foreign_key "bookings", "chefs"
   add_foreign_key "bookings", "restaurants"
   add_foreign_key "requests", "restaurants"
+  add_foreign_key "reviews_chefs", "bookings"
+  add_foreign_key "reviews_chefs", "chefs"
+  add_foreign_key "reviews_restaurants", "bookings"
+  add_foreign_key "reviews_restaurants", "restaurants"
 end
