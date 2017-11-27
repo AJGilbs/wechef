@@ -1,3 +1,4 @@
+
 class PagesController < ApplicationController
 
   before_action :authenticate_restaurant!, only: :dashboard_restaurant

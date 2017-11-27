@@ -9,4 +9,10 @@ class Chef < ApplicationRecord
 
   monetize :price_pennies
   mount_uploader :photo, PhotoUploader
+
+  def been_booked_by_restautant?(restaurant)
+    bookings.any? do |b|
+      b.restaurant == restaurant
+    end
+  end
 end
