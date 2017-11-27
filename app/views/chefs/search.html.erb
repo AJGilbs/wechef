@@ -1,18 +1,20 @@
-<h1>Results</h1>
+<div class="container">
+
+  <h1>Results</h1>
+
+  <% @chefs.each do |chef| %>
+  <div class="card">
+    [<%= chef.id %>]<%= chef.name %> <%= cl_image_tag(chef.photo) %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
+  </div>
+  <% end %>
 
 
-<% @chefs.each do |chef| %>
-<div class="card">
-  [<%= chef.id %>]<%= chef.name %> <%= cl_image_tag(chef.photo) %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
+  <form action="../requests/new">
+    <input type="hidden" value="" name= "selected" id="hidden-selected">
+    <button type="submit">Request</button>
+  </form>
+
 </div>
-<% end %>
-
-
-<form action="../requests/new">
-  <input type="hidden" value="" name= "selected" id="hidden-selected">
-  <button type="submit">Request</button>
-</form>
-
 
 <%= render 'shared/shortlist' %>
 
