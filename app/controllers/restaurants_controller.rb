@@ -1,4 +1,4 @@
-class RestaurantsController < Devise::RegistrationsController
+class RestaurantsController < ApplicationController
   before_action :authenticate_restaurant!, except: [:index]
   before_action :find_restaurant, only: [ :show, :update, :edit ]
 

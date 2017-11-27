@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: 'chefs#index'
 
-  devise_for :chefs
   resources :chefs, only: [ :index, :edit, :update, :show] do
     resources :reviews_chefs, only: [ :new, :create ]
 
@@ -12,7 +11,6 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :restaurants
   resources :restaurants, only: [:edit, :update, :show] do
     resources :reviews_restaurants, only: [ :new, :create ]
   end
@@ -26,5 +24,8 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [ :new, :create, :show, :index ]
   end
+
+  devise_for :restaurants
+  devise_for :chefs
 
 end
