@@ -1,0 +1,12 @@
+  <% @chefs.each do |chef| %>
+  <div class="card">
+    <%= link_to "", chef_path(chef.id), class: "card-link" %>
+    <div class="card-left">
+      <%= cl_image_tag(chef.photo, :class => "card-avatar") %>
+      <div class="card-rating">*****</div>
+    </div>
+
+
+    <%= chef.name %>  <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
+  </div>
+  <% end %>
