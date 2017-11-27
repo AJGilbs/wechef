@@ -9,9 +9,9 @@ class ReviewsChefsController < ApplicationController
 
   def create
     @review_chef = ReviewsChef.new(review_params)
-    @review_chef.chef_id = @chef.id
-    # @review_chef.restaurant_id = current_restaurant.id
-    # @review_chef.booking =
+    @review_chef.chef = @chef
+    @review_chef.booking = current_restaurant.bookings.where(chef: @chef).last
+
     authorize @review_chef
     if @review_chef.save!
      redirect_to root_path

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :chefs
   resources :chefs, only: [ :index, :edit, :update, :show] do
+    resources :reviews_chefs, only: [ :new, :create ]
+
     resources :bookings, only: [ :new, :create ]
     collection do
       get 'search', to: 'chefs#search'
@@ -11,7 +13,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :restaurants
-  resources :restaurants, only: [:edit, :update, :show]
+  resources :restaurants, only: [:edit, :update, :show] do
+    resources :reviews_restaurants, only: [ :new, :create ]
+  end
 
   get 'dashboard', to: 'pages#dashboard_chef'
   get 'myrestaurant', to: 'pages#dashboard_restaurant'
