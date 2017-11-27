@@ -7,4 +7,5 @@ class Chef < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   monetize :price_pennies
+  mount_uploader :photo, PhotoUploader
 end

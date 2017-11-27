@@ -3,7 +3,7 @@
 
 <% @chefs.each do |chef| %>
 <div class="card">
-  [<%= chef.id %>]<%= chef.name %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
+  [<%= chef.id %>]<%= chef.name %> <%= cl_image_tag(chef.photo) %> <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
 </div>
 <% end %>
 
@@ -14,24 +14,24 @@
 </form>
 
 
-<ul id="selected-chefs">
-  Selected Chefs
-
-</ul>
-
+<%= render 'shared/shortlist' %>
 
 <script>
-  const displaySelected = (chef_ids) => {
-    const list = document.getElementById("selected-chefs");
-    $("#selected-chefs > li").remove();
-    chef_ids.forEach((chef_id) => {
-      list.insertAdjacentHTML("beforeend", `<li>${chef_id}</li>`);
-    });
-  };
-  const hiddenImput = document.getElementById("hidden-selected");
-  console.log(hiddenImput);
-  const idArray = []
+  const shortListBar = document.getElementById("shortlist");
   const selectBtns = document.querySelectorAll(".btn-select");
+  const hiddenImput = document.getElementById("hidden-selected");
+  const idArray = []
+  // const list = document.getElementById("selected-chefs");
+
+  const displaySelected = (imgPath) => {
+    let item = `<div class="shortlist-avatar"><img src =${imgPath} width="50">
+    </div>`
+    shortListBar.insertAdjacentHTML("beforeend", item);
+  };
+  const removeSelected = (img) => {
+
+  }
+
   selectBtns.forEach((btn) => {
     btn.addEventListener('click', (event) => {
       let btnTarget = event.currentTarget;
@@ -39,18 +39,19 @@
         btnTarget.classList.remove("disabled");
         idArray.pop(btnTarget.id);
         btnTarget.innerHtml = "Selected";
+        removeSelected(event.target.parentElement.firstElementChild.src);
       }
       else {
         idArray.push(btnTarget.id);
         btnTarget.classList.add("disabled");
         btnTarget.innerHtml = "Select";
+        displaySelected(event.target.parentElement.firstElementChild.src);
       }
       hiddenImput.value = idArray;
-      displaySelected(idArray);
     });
   });
 
 </script>
 
 
-<%= render 'shared/shortlist' %>
+
