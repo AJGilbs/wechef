@@ -1,3 +1,60 @@
 // Import your components CSS files here.
-@import "alert";
-@import "navbar";
+@import 'alert';
+@import 'navbar';
+
+
+*
+{
+    box-sizing: border-box;
+    font-family: $body-font !important;
+}
+
+body
+{
+    font-family: Montserrat;
+
+    margin: 0;
+
+    color: $content-color;
+    background-color: $gray-base;
+}
+
+a
+{
+    color: $content-color;
+}
+
+.container
+{
+    margin: 75px 0 90px 0;
+}
+
+.home-content {
+  width: 100%;
+  height:calc(100vh - 180px);
+  text-align: center;
+  div {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+
+.when-links, .when-links:active, .when-links:hover {
+    display: inline-block;
+    text-decoration: none;
+    height: 40px;
+    font-size: 16px;
+  padding: 0 13px;
+    text-align: center;
+    line-height:38px;
+    border-width: 0;
+    border-radius: 0;
+    background-color: $brand-secondary;
+    margin:0 15px 0 0 0;
+    color:#606019;
+    border-radius: 3px;
+}
