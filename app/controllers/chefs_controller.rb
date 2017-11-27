@@ -35,6 +35,8 @@ def selection
 end
 
 def edit
+  @position = Position.new
+  authorize(@position)
   authorize(@chef)
 end
 

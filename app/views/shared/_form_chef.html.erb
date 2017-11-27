@@ -8,3 +8,10 @@
     <%= f.button :submit, "Save", class: "submit-btn" %>
   </div>
 <% end %>
+<p>positions</p>
+<%= @chef.positions.each do |p| %>
+  <%= p.title %>
+<% end %>
+<p>add a position</p>
+<%= render "/shared/form_chef_position" %>
+

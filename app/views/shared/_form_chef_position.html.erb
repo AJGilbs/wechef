@@ -1,0 +1,7 @@
+<%= simple_form_for @position do |f| %>
+  <%= f.input :title, collectin: ["Executive Chef", "Head Chef", "Sous Chef", "Chef de Partie", "Commis Chef"] %>
+  <%= f.input :description %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit %>
+<% end %>
