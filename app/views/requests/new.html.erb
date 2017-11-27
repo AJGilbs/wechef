@@ -4,11 +4,12 @@
   <%= f.input :cost_pennies %>
   <%= f.input :start_hours %>
   <%= f.input :end_hours %>
-  <select multiple name="request[chef_ids][]">
+  <%= f.input :chef_ids, :as => :hidden, :input_html => { :value => params[:selected]} %>
+  <!-- <select multiple name="request[chef_ids][]">
     <%= @chefs.each do |chef_id| %>
       <option value=<%= chef_id.to_i %>><%= chef_id %></option>
     <% end %>
-  </select>
+  </select> -->
   <%= f.input :number_of_chefs  %>
   <%= f.submit 'Create Booking' %>
 <% end %>
