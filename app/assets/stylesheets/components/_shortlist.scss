@@ -26,7 +26,7 @@
     position:relative;
     margin: 20px 0 0 0;
     width: calc(100% - 140px);
-    height: 90px;
+    height: 50px;
 
     div {
           position: absolute;
@@ -87,25 +87,6 @@
     border-width: 0;
     background-color: $brand-primary;
     margin:16px;
-    border-radius: 3px;
-    outline:none;
-}
-
-.review-btn
-{
-    display: inline-block;
-
-    width: 140px;
-    height: 60px;
-    font-size: 16px;
-
-    text-align: center;
-
-    border-width: 0;
-    border-radius: 0;
-    background-color: $brand-secondary;
-    margin:15px 0 15px 15px;
-    color:#606019;
     border-radius: 3px;
     outline:none;
 }

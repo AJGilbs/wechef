@@ -96,3 +96,60 @@ nav
 
     background-color: $gray-base;
 }
+
+.restaurant-menu-container, .chef-menu-container {
+  width: 100%;
+  h2 {
+   font-size:12px;
+   text-align:center;
+  }
+  a {
+    width:calc(100% - 30px);
+    margin: 0 0 0 15px;
+    color: $content-color;
+    display:block;
+    line-height: 55px;
+    text-align:left;
+    border-width: 0 0 1px 0;
+    border-style:solid !important;
+    border-color: #ddd;
+    padding: 0 10px
+  }
+  a:last-child {
+    border-width: 0;
+    border-style:solid !important;
+    border-color: #ddd;
+    font-size: 14px;
+    text-align:right;
+  }
+
+}
+
+
+.become-chef-container {
+  width: 100%;
+  background-color: $gray-base;
+  position:absolute;
+  bottom: 0;
+}
+
+.become-chef-btn {
+  display: inline-block;
+
+  width: calc(100% - 30px);
+  height: 60px;
+  line-height: 58px;
+  font-size: 18px;
+  color: #606019;
+  border-width: 0;
+  background-color: $brand-primary;
+  margin:15px 15px 15px 0;
+  border-radius: 3px;
+  outline:none;
+  border-width: 0 !important;
+  text-align: center !important;
+}
+
+.chef-sign-in {
+  font-size: 14px;
+}

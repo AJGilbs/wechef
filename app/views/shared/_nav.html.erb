@@ -18,29 +18,48 @@
 <div class="user-menu" id="userMenu">
   <div class="close-btn" id="closeUserMenu"></div>
   <h1>Menu</h1>
-  <div>
-    <% if restaurant_signed_in? %>
-    <li>
-    <%= link_to('Logout of restaurant', destroy_restaurant_session_path, method: :delete) %>
-    <%= link_to "Complete Restaurant profile", edit_restaurant_path(current_restaurant) %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login to restaurant', new_restaurant_session_path) %> -
-    <%= link_to "Sign up as resturant", new_restaurant_registration_path %>
-    </li>
-  <% end %>
+  <div class="restaurant-menu-container">
 
-  <% if chef_signed_in? %>
-    <li>
-    <%= link_to('Logout of chef', destroy_chef_session_path, method: :delete) %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login to chef', new_chef_session_path) %> -
-    <%= link_to "Sign up as chef", new_chef_registration_path %>
-    </li>
-  <% end %>
+    <% if restaurant_signed_in? %>
+      <h2>My Restaurant</h2>
+      <%= link_to "Dashboard", dashboard_path(current_restaurant) %>
+
+      <%= link_to "Your Restauant", restaurant_path(current_restaurant) %>
+
+      <%= link_to "Manage Restaurant", edit_restaurant_path(current_restaurant) %>
+
+      <%= link_to "Bookings", restaurant_path(current_restaurant) %>
+
+      <%= link_to('Sign out of Restaurant', destroy_restaurant_session_path, method: :delete) %>
+    <% else %>
+
+      <%= link_to('Sign in to Restaurant', new_restaurant_session_path) %>
+      <%= link_to "Sign up as Restaurant", new_restaurant_registration_path %>
+
+    <% end %>
+  </div>
+
+  <div class="chef-menu-container">
+    <% if chef_signed_in? %>
+      <h2>Chef</h2>
+
+      <%= link_to "Dashboard", dashboard_path(current_chef) %>
+
+      <%= link_to "Your Profile", chef_path(current_chef) %>
+
+      <%= link_to "Manage Profile", edit_chef_path(current_chef) %>
+
+      <%= link_to "Bookings", chef_path(current_chef) %>
+
+      <%= link_to('Sign out of Chef', destroy_chef_session_path, method: :delete) %>
+
+    <% else %>
+      <div class="become-chef-container">
+        <%= link_to "Become a Chef", new_chef_registration_path, class: "become-chef-btn" %>
+
+        <%= link_to('Sign in as a Chef', new_chef_session_path, class: "chef-sign-in") %>
+      </div>
+    <% end %>
   </div>
 </div>
 

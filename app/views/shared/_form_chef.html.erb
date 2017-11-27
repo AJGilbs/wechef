@@ -4,5 +4,7 @@
   <%= f.input :experience %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
-  <%= f.button :submit %>
+  <div class="submit-holder">
+    <%= f.button :submit, "Save", class: "submit-btn" %>
+  </div>
 <% end %>
