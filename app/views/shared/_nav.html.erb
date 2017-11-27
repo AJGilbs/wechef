@@ -42,6 +42,15 @@
   <div class="chef-menu-container">
     <% if chef_signed_in? %>
       <h2>Chef</h2>
+
+      <%= link_to "Dashboard", dashboard_path(current_chef) %>
+
+      <%= link_to "Your Profile", chef_path(current_chef) %>
+
+      <%= link_to "Manage Profile", edit_chef_path(current_chef) %>
+
+      <%= link_to "Bookings", chef_path(current_chef) %>
+
       <%= link_to('Sign out of Chef', destroy_chef_session_path, method: :delete) %>
 
     <% else %>
