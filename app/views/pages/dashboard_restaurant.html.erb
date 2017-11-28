@@ -21,9 +21,18 @@
 <h1>Accepted Bookings</h1>
 
 <ul>
-  <% @bookings.each do |booking| %>
+  <% @bookings.where(status: 'unpaid').each do |unpaid_booking| %>
   <li>
-    <p><%= booking.id %> - <%= booking.chef.name %> wants you for <%= booking.shift %> and will pay <%= booking.cost_pennies %></p>
+    <p><%= unpaid_booking.id %> - <%= unpaid_booking.chef.name %> - <%= unpaid_booking.shift %></p>
+    <%= link_to 'Pay', new_booking_payment_path(unpaid_booking) %> - <%= unpaid_booking.cost_pennies %>
+  </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @bookings.where(status: 'paid').each do |paid_booking| %>
+  <li>
+    <p><%= paid_booking.id %> - <%= paid_booking.chef.name %> - <%= paid_booking.shift %> -  paid: <%= paid_booking.cost_pennies %></p>
   </li>
   <% end %>
 </ul>
