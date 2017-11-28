@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128174105) do
+ActiveRecord::Schema.define(version: 20171128183232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20171128174105) do
     t.bigint "restaurant_id"
     t.bigint "chef_id"
     t.date "date"
-    t.string "shift"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "start_hours"

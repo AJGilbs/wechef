@@ -1,4 +1,7 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_restaurant!, only: [:new, :create, :cancel_chef, :cancel_all ]
+  before_action :authenticate_chef!, only: [:update, :destroy]
+
   before_action :set_request, only: [:cancel_all, :cancel_chef, :update, :destroy]
 
   def new
@@ -22,13 +25,14 @@ class RequestsController < ApplicationController
   def create
     new_request = Request.new(request_params)
     new_request.restaurant = current_restaurant
+    new_request.chef_ids = params[:request][:chef_ids].split(',')
     authorize new_request
     if new_request.save
       new_request.chef_ids.each do |chef_id|
         conversation = Conversation.create(chef_id: chef_id, restaurant: current_restaurant, request: new_request)
-        conversation.messages.create(author: current_chef, body: new_request.description)
+        conversation.messages.create(author: current_restaurant, body: new_request.description)
       end
-      redirect_to root_path
+      redirect_to myrestaurant_path
     else
       redirect_back(fallback_location: new_request_path)
     end
@@ -50,18 +54,21 @@ class RequestsController < ApplicationController
     # create a booking for the current_chef
     new_booking = Booking.new(
       date: @request.date,
-      shift: @request.shift,
+      start_hours: @request.start_hours,
+      end_hours: @request.end_hours,
       cost_pennies: @request.cost_pennies,
       restaurant: @request.restaurant,
       chef: current_chef
     )
     new_booking.save
+
     if @request.accepted_chef_ids.count == @request.number_of_chefs
       # destroy request
       @request.status = "complete"
-      @request.save!
+      @request.save
     end
-    redirect_to dashboard_path
+
+    redirect_to dashboard_path, notice: 'Accepted!'
   end
 
   private
@@ -72,7 +79,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:date, :shift, :cost_pennies, { :chef_ids => [] }, :number_of_chefs, :end_hours, :start_hours)
+    params.require(:request).permit(:date, :shift, :cost_pennies, :number_of_chefs, :end_hours, :start_hours, :description)
   end
 
 end

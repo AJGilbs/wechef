@@ -75,53 +75,50 @@ puts 'Bookings are created'
 # Requests
 request_sketch = Request.new(date: Date.today)
 request_sketch.restaurant = sketch
-request_sketch.chef_ids = [1]
+request_sketch.chef_ids = [nathalia.id]
 request_sketch.save!
 request_hawksmoor = Request.new(date: Date.today)
 request_hawksmoor.restaurant = hawksmoor
-request_hawksmoor.chef_ids = [2]
+request_hawksmoor.chef_ids = [cris.id]
 request_hawksmoor.save!
 request_bao = Request.new(date: Date.today)
 request_bao.restaurant = bao
-request_bao.chef_ids = [3]
+request_bao.chef_ids = [david.id]
 request_bao.save!
 request_ceviche = Request.new(date: Date.today)
 request_ceviche.restaurant = ceviche
-request_ceviche.chef_ids = [4]
+request_ceviche.chef_ids = [khaled.id]
 request_ceviche.save!
 request_hoppers = Request.new(date: Date.today)
 request_hoppers.restaurant = hoppers
-request_hoppers.chef_ids = [5]
+request_hoppers.chef_ids = [joe.id]
 request_hoppers.save!
 
 puts 'Requests are created'
 
-
-conversation1 = Conversation.new(request: request_sketch, restaurant: sketch, chef: david)
-conversation2 = Conversation.new(request: request_bao, restaurant: bao, chef: joe)
-conversation3 = Conversation.new(request: request_hoppers, restaurant: hoppers, chef: khaled)
+conversation1 = Conversation.create(request: request_sketch, restaurant: sketch, chef: nathalia)
+conversation2 = Conversation.create(request: request_bao, restaurant: bao, chef: david)
+conversation3 = Conversation.create(request: request_hoppers, restaurant: hoppers, chef: joe)
+conversation4 = Conversation.create(request: request_ceviche, restaurant: ceviche, chef: khaled)
+conversation5 = Conversation.create(request: request_bao, restaurant: bao, chef: david)
 
 puts 'Conversations are created'
 
 
 # Messages
-message = Message.new(body: "hello" )
-message.author = nathalia
+message = Message.new(body: "can you make it tomorrow?" )
+message.author = sketch
 message.conversation = conversation1
 message.save!
-message = Message.new(body: "hello" )
-message.author = cris
-message.conversation = conversation2
-message.save!
-message = Message.new(body: "hello" )
+message = Message.new(body: "yes!" )
 message.author = david
 message.conversation = conversation1
 message.save!
-message = Message.new(body: "hello" )
-message.author = khaled
-message.conversation = conversation3
+message = Message.new(body: "can you make it tomorrow?" )
+message.author = bao
+message.conversation = conversation2
 message.save!
-message = Message.new(body: "hello" )
+message = Message.new(body: "yes!" )
 message.author = joe
 message.conversation = conversation2
 message.save!

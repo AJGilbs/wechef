@@ -1,4 +1,4 @@
-<h1>Conversation <%= @conversation.id %></h1>
+<h1>Conversation <%= @conversation.chef.name %> and <%= @conversation.restaurant.name %></h1>
 
 <ul>
   <% @conversation.messages.each do |message| %>
