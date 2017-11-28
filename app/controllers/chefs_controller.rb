@@ -7,6 +7,7 @@ class ChefsController < ApplicationController
   end
 
   def show
+    @allow = true
     @request = Request.new
     authorize(@chef)
     authorize(@request)

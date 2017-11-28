@@ -13,6 +13,10 @@ class RequestPolicy < ApplicationPolicy
     user.class.name == 'Restaurant'
   end
 
+  def show?
+    true
+  end
+
   def update?
     destroy?
   end

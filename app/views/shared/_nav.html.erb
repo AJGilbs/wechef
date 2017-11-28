@@ -1,5 +1,5 @@
 <nav>
-  <% if current_page?(@chef_path) %>
+  <% if @allow %>
     <a href="javascript:history.go(-1)" class="back-btn">Back</a>
   <% else %>
     <div class="search-icon" id="searchMenuButton">
@@ -12,7 +12,13 @@
   <% end %>
 
   <div class="avatar" id="userMenuButton">
-    <img src="https://avatars1.githubusercontent.com/u/3418144?s=460&v=4" width="30">
+    <% if chef_signed_in? %>
+      <%= cl_image_tag current_chef.photo, height: 30, width: 30, crop: :fill %>
+    <% elsif restaurant_signed_in? %>
+      <%= cl_image_tag current_restaurant.photo, height: 30, width: 30, crop: :fill %>
+    <% else %>
+      Menu
+    <% end %>
   </div>
 
 
@@ -34,6 +40,7 @@
       <%= link_to "Bookings", restaurant_path(current_restaurant) %>
 
       <%= link_to('Sign out of Restaurant', destroy_restaurant_session_path, method: :delete) %>
+
     <% else %>
 
       <%= link_to('Sign in to Restaurant', new_restaurant_session_path) %>

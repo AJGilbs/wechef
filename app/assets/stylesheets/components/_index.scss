@@ -65,17 +65,17 @@ h1 {
 
 .submit-holder {
   width: 100%;
-  height: 90px;
+  height: 74px;
   position:fixed;
   bottom:0;
-  background-color: $gray-base;
+  background-color: rgba(255,255,255,0.95);
 }
 
 .submit-btn {
     display: inline-block;
 
     width: calc(100% - 30px);
-    height: 60px;
+    height: 44px;
 
     text-align: center;
     font-size: 15px;
@@ -92,7 +92,7 @@ h1 {
     display: inline-block;
 
     width: calc(100% - 30px);
-    height: 60px;
+    height: 44px;
 
     text-align: center;
     font-size: 15px;
@@ -121,6 +121,9 @@ a
   width: 100%;
   height:calc(100vh - 180px);
   text-align: center;
+  h1 {
+    margin: 0 0 50px 0;
+  }
   div {
     position: relative;
     top: 50%;
@@ -130,19 +133,28 @@ a
   }
 }
 
+.index-search-bar {
+  height: 38px;
+  padding: 0 13px;
+  line-height:38px;
+  border-radius: 3px;
+  margin: 15px 0 0 0;
+  border-width: 0;
+}
+
 
 .when-links, .when-links:active, .when-links:hover {
     display: inline-block;
     text-decoration: none;
     height: 40px;
     font-size: 16px;
-  padding: 0 13px;
+    padding: 0 13px;
     text-align: center;
     line-height:38px;
     border-width: 0;
     border-radius: 0;
     background-color: $brand-secondary;
-    margin:0 15px 0 0 0;
+    margin: 0 15px 0 0 0;
     color:#606019;
     border-radius: 3px;
 }
