@@ -111,9 +111,19 @@
 
   <% if @chef.reviews_chef.count == 0 %>
 
-    <div class="reviews-none">
-      <%= @chef.name %> has not been reviewed yet
-    </div>
+    <% if @chef.been_booked_by_restautant?(current_restaurant) %>
+
+      <div class="reviews-none">
+        <%= link_to "Be the first to review #{@chef.name}", new_chef_reviews_chef_path(@chef) %>
+      </div>
+
+    <% else %>
+
+      <div class="reviews-none">
+        <%= @chef.name %> has not been reviewed yet
+      </div>
+
+    <% end %>
 
   <% else %>
 
@@ -140,23 +150,12 @@
   <% end %>
 
 
-
-
   <%= render 'shared/form_booking' %>
-
-  <% if @chef.been_booked_by_restautant?(current_restaurant) %>
-    <%= link_to "Add review", new_chef_reviews_chef_path(@chef) %>
-  <% end %>
 
 
   <div class="submit-holder">
     <input type="submit" class="request-btn" value="Request">
   </div>
-
-
-
-
-
 
 </div>
 
@@ -164,4 +163,3 @@
   var daysScroll = document.getElementById("daysScroll");
   daysScroll.scrollLeft += 50;
 </script>
-
