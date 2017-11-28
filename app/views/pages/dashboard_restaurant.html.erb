@@ -1,10 +1,8 @@
-<h1>restaurant dashboard</h1>
-
+<div class="results-container">
 
 <h1>Pending Requests</h1>
 
 <ul>
-
   <% @requests.each do |request| %>
     <%= link_to 'cancel request', cancel_all_request_path(request), method: :patch %>
 
@@ -15,10 +13,11 @@
     <% end %>
 
   <% end %>
-
 </ul>
 
 <h1>Accepted Bookings</h1>
+
+unpaid bookings:
 
 <ul>
   <% @bookings.where(status: 'unpaid').each do |unpaid_booking| %>
@@ -29,6 +28,8 @@
   <% end %>
 </ul>
 
+Paid bookings:
+
 <ul>
   <% @bookings.where(status: 'paid').each do |paid_booking| %>
   <li>
@@ -36,3 +37,5 @@
   </li>
   <% end %>
 </ul>
+
+</div>

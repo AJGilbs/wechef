@@ -1,4 +1,4 @@
-class Restaurant::RegistrationsController < Devise::RegistrationsController
+class Chef::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -9,8 +9,8 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if chef_signed_in?
-      sign_out current_chef
+    if restaurant_signed_in?
+      sign_out current_restaurant
     end
     super
   end
@@ -48,7 +48,7 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   params.require(:user).permit(:email, :display_name, :terms_of_services, :profile, :password, :password_confirmation)
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
   # The path used after sign up.

@@ -9,6 +9,10 @@
     <%= @chef.name %>
   </div>
 
+  <div class="profile-description">
+    <%= @chef.description %>
+  </div>
+
   <div class="profile-headers">
     Availability
   </div>
@@ -105,8 +109,9 @@
     </div>
   </div>
 
-<%= render 'shared/request_form' %>
-
+  <% if current_chef != @chef %>
+    <%= render 'shared/request_form' %>
+  <% end %>
 
   <div class="profile-reviews__title">Reviews</div>
 
@@ -120,13 +125,31 @@
 
     <% else %>
 
-      <div class="reviews-none">
-        <%= @chef.name %> has not been reviewed yet
-      </div>
+      <% if current_chef == @chef %>
+
+        <div class="reviews-none">
+          You have not been reviewed yet
+        </div>
+
+     <% else %>
+
+        <div class="reviews-none">
+          <%= @chef.name %> has not been reviewed yet
+        </div>
+
+      <% end %>
 
     <% end %>
 
   <% else %>
+
+    <% if @chef.been_booked_by_restautant?(current_restaurant) %>
+
+      <div class="reviews-none">
+        <%= link_to "Leave a review for #{@chef.name}", new_chef_reviews_chef_path(@chef) %>
+      </div>
+
+    <% end %>
 
      <div class="reviews-container">
       <% @chef.reviews_chef.each do |rev| %>
@@ -150,13 +173,11 @@
 
   <% end %>
 
-
-  <%= render 'shared/form_booking' %>
-
-
-  <div class="submit-holder">
-    <input type="submit" class="request-btn" value="Request">
-  </div>
+  <% if current_chef != @chef %>
+    <div class="submit-holder">
+      <input type="submit" class="request-btn" value="Request">
+    </div>
+  <% end %>
 
 </div>
 

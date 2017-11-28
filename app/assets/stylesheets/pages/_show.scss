@@ -29,8 +29,16 @@
 .profile-name {
   text-align:center;
   font-size: 30px;
-  padding: 10px 20px 20px 20px;
+  padding: 10px 20px 0px 20px;
   margin: 20px 0 0 0;
+}
+
+.profile-description {
+  font-family: $font-light;
+  text-align:center;
+  font-size: 16px;
+  padding: 10px 20px 20px 20px;
+  margin: 0 0 0 0;
 }
 
 .profile-headers {
