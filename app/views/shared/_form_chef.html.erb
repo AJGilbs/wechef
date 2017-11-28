@@ -2,9 +2,17 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :experience %>
+  <%= f.input :price %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
   <div class="submit-holder">
     <%= f.button :submit, "Save", class: "submit-btn" %>
   </div>
 <% end %>
+<%= @chef.positions.each do |position| %>
+  <%= position.title  %> - <%= link_to "delete", chef_position_path(position), method: :delete,
+      data: { confirm: "Are you sure?" } do %>
+      <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
+<% end %>
+<%= render "shared/form_chef_position" %>

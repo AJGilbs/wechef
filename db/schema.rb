@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171127185943) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +69,17 @@ ActiveRecord::Schema.define(version: 20171127185943) do
     t.bigint "request_id"
     t.index ["author_type", "author_id"], name: "index_messages_on_author_type_and_author_id"
     t.index ["request_id"], name: "index_messages_on_request_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "chef_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chef_id"], name: "index_positions_on_chef_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -131,6 +144,7 @@ ActiveRecord::Schema.define(version: 20171127185943) do
 
   add_foreign_key "bookings", "chefs"
   add_foreign_key "bookings", "restaurants"
+  add_foreign_key "positions", "chefs"
   add_foreign_key "requests", "restaurants"
   add_foreign_key "reviews_chefs", "bookings"
   add_foreign_key "reviews_chefs", "chefs"
