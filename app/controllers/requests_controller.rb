@@ -21,6 +21,7 @@ class RequestsController < ApplicationController
 
 
   def create
+    raise
     new_request = Request.new(request_params)
     new_request.restaurant = current_restaurant
     authorize new_request

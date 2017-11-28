@@ -17,4 +17,10 @@ class Chef < ApplicationRecord
       b.restaurant == restaurant
     end
   end
+
+  def self.search_by_avaiability(date)
+     # take all chefs that has different id returned by Booking.where(date: date)
+    self.where.not(id: Booking.where(date: date).pluck('chef_id'))
+  end
+
 end
