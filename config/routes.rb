@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bookings, only: [ :show ] do
+    resources :payments, only: [:new, :create]
+  end
+
   devise_for :restaurants
 
   resources :restaurants, only: [:edit, :update, :show] do

@@ -1,0 +1,17 @@
+<h1>Pay booking <%= @booking.id %></h1>
+<%= form_tag booking_payments_path(@booking) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= humanized_money_with_symbol(@booking.cost_pennies) %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="Booking"
+    data-email="<%= current_restaurant.email %>"
+    data-description="Paying booking"
+    data-amount="<%= @booking.cost_pennies %>"
+    data-currency="<%= @booking.cost.currency %>"></script>
+
+<% end %>
