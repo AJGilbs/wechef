@@ -9,6 +9,7 @@
 puts "Deleting all"
 Message.destroy_all
 Request.destroy_all
+ReviewsChef.destroy_all
 Booking.destroy_all
 Restaurant.destroy_all
 Chef.destroy_all
@@ -27,6 +28,8 @@ ceviche.save!
 hoppers = Restaurant.new(email: "hello@hoppers.com", password: '123456', name: "Hoppers", address: "Hoppers, London", phone_number: "02080000000", photo: "https://i.pinimg.com/736x/52/96/5d/52965dcbd26099f65658ecd3bcc7d840--restaurant-food-sketch-restaurant.jpg")
 hoppers.save!
 
+puts 'Restaurants are created'
+
 #Chefs
 nathalia = Chef.new(email: "hello@nathalia.com", password: '123456', name: "Nathalia de Luccas", address: "144, Liverpool Road", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
 nathalia.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
@@ -44,6 +47,8 @@ joe = Chef.new(email: "hello@joe.com", password: '123456', name: "Joe Running", 
 joe.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
 joe.save!
 
+puts 'Chefs are created'
+
 booking = Booking.new(date: Date.today, start_hours: 13, end_hours: 20)
 booking.restaurant = sketch
 booking.chef = nathalia
@@ -57,10 +62,6 @@ booking.restaurant = bao
 booking.chef = david
 booking.save!
 booking = Booking.new(date: Date.today, start_hours: 15, end_hours: 23)
-booking.restaurant = bao
-booking.chef = david
-booking.save!
-booking = Booking.new(date: Date.today, start_hours: 15, end_hours: 23)
 booking.restaurant = ceviche
 booking.chef = khaled
 booking.save!
@@ -69,30 +70,57 @@ booking.restaurant = hoppers
 booking.chef = joe
 booking.save!
 
+puts 'Bookings are created'
+
 # Requests
-request = Request.new(date: Date.today)
-request.restaurant = sketch
-request.chef_ids = [1]
-request.save!
-request = Request.new(date: Date.today)
-request.restaurant = hawksmoor
-request.chef_ids = [2]
-request.save!
-request = Request.new(date: Date.today)
-request.chef_ids = [3]
-request.save!
-request = Request.new(date: Date.today)
-request.restaurant = ceviche
-request.chef_ids = [4]
-request.save!
-request = Request.new(date: Date.today)
-request.restaurant = hoppers
-request.chef_ids = [5]
-request.save!
+request_sketch = Request.new(date: Date.today)
+request_sketch.restaurant = sketch
+request_sketch.chef_ids = [nathalia.id]
+request_sketch.save!
+request_hawksmoor = Request.new(date: Date.today)
+request_hawksmoor.restaurant = hawksmoor
+request_hawksmoor.chef_ids = [cris.id]
+request_hawksmoor.save!
+request_bao = Request.new(date: Date.today)
+request_bao.restaurant = bao
+request_bao.chef_ids = [david.id]
+request_bao.save!
+request_ceviche = Request.new(date: Date.today)
+request_ceviche.restaurant = ceviche
+request_ceviche.chef_ids = [khaled.id]
+request_ceviche.save!
+request_hoppers = Request.new(date: Date.today)
+request_hoppers.restaurant = hoppers
+request_hoppers.chef_ids = [joe.id]
+request_hoppers.save!
+
+puts 'Requests are created'
+
+conversation1 = Conversation.create(request: request_sketch, restaurant: sketch, chef: nathalia)
+conversation2 = Conversation.create(request: request_bao, restaurant: bao, chef: david)
+conversation3 = Conversation.create(request: request_hoppers, restaurant: hoppers, chef: joe)
+conversation4 = Conversation.create(request: request_ceviche, restaurant: ceviche, chef: khaled)
+conversation5 = Conversation.create(request: request_bao, restaurant: bao, chef: david)
+
+puts 'Conversations are created'
+
 
 # Messages
-# messages = Message.new(body: "hello" )
-# message.author = nathalia
-# message.save!
+message = Message.new(body: "can you make it tomorrow?" )
+message.author = sketch
+message.conversation = conversation1
+message.save!
+message = Message.new(body: "yes!" )
+message.author = david
+message.conversation = conversation1
+message.save!
+message = Message.new(body: "can you make it tomorrow?" )
+message.author = bao
+message.conversation = conversation2
+message.save!
+message = Message.new(body: "yes!" )
+message.author = joe
+message.conversation = conversation2
+message.save!
 
 puts "Completed"

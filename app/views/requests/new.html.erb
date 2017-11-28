@@ -1,15 +1,2 @@
-<h1>Booking Form</h1>
-<%= simple_form_for @request do |f| %>
-  <%= f.input :date %>
-  <%= f.input :start_hours, :as => :time, :minute_step => 15 %>
-  <%= f.input :end_hours, :as => :time, :minute_step => 15 %>
-  <%= f.input :chef_ids, :as => :hidden, :input_html => { :value => params[:selected]} %>
-  <%= f.input :number_of_chefs  %>
-  <%= f.input :cost, :as :hidden, value: "50"%>
-  <div class="cost"></div>
-  <%= f.submit 'Create Booking' %>
-<% end %>
 
-<script>
-
-</script>
+<%= render 'shared/request_form' %>

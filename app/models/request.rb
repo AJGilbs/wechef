@@ -1,6 +1,6 @@
 class Request < ApplicationRecord
   belongs_to :restaurant
-  has_many :messages
+  has_many :conversations, dependent: :destroy
 
   def chefs
     Chef.where(id: chef_ids)

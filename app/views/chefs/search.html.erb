@@ -35,28 +35,32 @@
   };
   const removeSelected = (id) => {
     let toDelete = document.getElementById(`avatar${id}`);
-    toDelete.remove();
+    if (toDelete != null) {
+      toDelete.remove();
+    }
   }
 
   selectBtns.forEach((btn) => {
     btn.addEventListener('click', (event) => {
       let chefId = event.currentTarget.id;
-      let chefImgSrc = event.target.parentElement.firstElementChild.src;
+      let chefImgSrc = event.target.parentElement.querySelector('img').src;
       let btnTarget = event.currentTarget;
+
       if (btnTarget.classList.contains("disabled")) {
+        idArray.push(btnTarget.id);
         btnTarget.classList.remove("disabled");
-        idArray.pop(btnTarget.id);
         btnTarget.innerHTML = "Remove from Shortlist";
         btnTarget.classList.add("btn-selected");
-        removeSelected(chefId);
+        displaySelected(chefImgSrc, chefId);
       } else {
-        idArray.push(btnTarget.id);
         btnTarget.classList.add("disabled");
+        idArray.pop(btnTarget.id);
         btnTarget.innerHTML = "Add to Shortlist";
         btnTarget.classList.remove("btn-selected");
-        displaySelected(chefImgSrc, chefId);
+        removeSelected(chefId);
       }
       hiddenImput.value = idArray;
+      console.log(hiddenImput.value)
     });
   });
 

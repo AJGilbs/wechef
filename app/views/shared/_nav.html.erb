@@ -33,11 +33,13 @@
       <h2>My Restaurant</h2>
       <%= link_to "Dashboard", myrestaurant_path %>
 
-      <%= link_to "Your Restaurant", restaurant_path(current_restaurant) %>
+      <%= link_to "My Restaurant", restaurant_path(current_restaurant) %>
 
       <%= link_to "Manage Restaurant", edit_restaurant_path(current_restaurant) %>
 
-      <%= link_to "Bookings", restaurant_path(current_restaurant) %>
+      <%= link_to "Dashboard", myrestaurant_path %>
+
+      <%= link_to "Conversations", conversations_path %>
 
       <%= link_to('Sign out of Restaurant', destroy_restaurant_session_path, method: :delete) %>
 
@@ -60,6 +62,8 @@
       <%= link_to "Manage Profile", edit_chef_path(current_chef) %>
 
       <%= link_to "Bookings", chef_path(current_chef) %>
+
+      <%= link_to "Conversations", conversations_path %>
 
       <%= link_to('Sign out of Chef', destroy_chef_session_path, method: :delete) %>
 

@@ -4,36 +4,36 @@
 
 <ul>
   <% @requests.each do |request| %>
-    <%= link_to 'cancel request', cancel_all_request_path(request), method: :patch %>
-
+    <p><%= link_to 'Cancel Chef Request', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'} %></p>
     <% request.chefs.each do |chef| %>
       <li><%= chef.name %></li>
-        <%= link_to 'cancel chef', cancel_chef_request_path(request, chef: chef), method: :patch %>
+        <%= link_to 'Cancel Chef', cancel_chef_request_path(request, chef: chef), method: :patch, data: {confirm: 'Are you sure?'} %> -
+        <%= link_to "Chat with #{chef.name.capitalize}", conversation_path(request.conversations.find_by(chef: chef)) %>
       </li>
     <% end %>
-
+    <hr>
   <% end %>
 </ul>
 
 <h1>Accepted Bookings</h1>
 
-unpaid bookings:
-
 <ul>
+  <p>Unpaid bookings:</p>
   <% @bookings.where(status: 'unpaid').each do |unpaid_booking| %>
   <li>
-    <p><%= unpaid_booking.id %> - <%= unpaid_booking.chef.name %> - <%= unpaid_booking.shift %></p>
-    <%= link_to 'Pay', new_booking_payment_path(unpaid_booking) %> - <%= unpaid_booking.cost_pennies %>
+    <p><%= unpaid_booking.chef.name %> - <%= unpaid_booking.start_hours %> until <%= unpaid_booking.end_hours %> on <%= unpaid_booking.date %><br>
+    <%= link_to "Pay ($#{unpaid_booking.cost_pennies / 100})" , new_booking_payment_path(unpaid_booking) %> - <%= link_to "Chat with #{unpaid_booking.chef.name.capitalize}", conversations_path %></p>
   </li>
   <% end %>
 </ul>
-
-Paid bookings:
-
+<hr>
 <ul>
+  <p>Paid bookings:</p>
   <% @bookings.where(status: 'paid').each do |paid_booking| %>
   <li>
-    <p><%= paid_booking.id %> - <%= paid_booking.chef.name %> - <%= paid_booking.shift %> -  paid: <%= paid_booking.cost_pennies %></p>
+    <p><%= paid_booking.chef.name %> - <%= paid_booking.start_hours %> to <%= paid_booking.end_hours %> on <%= paid_booking.date %> -  paid: <%= paid_booking.cost_pennies %><br>
+      <%= link_to "Chat with #{unpaid_booking.chef.name.capitalize}", conversations_path %>
+    </p>
   </li>
   <% end %>
 </ul>

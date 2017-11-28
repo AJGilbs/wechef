@@ -19,10 +19,9 @@
     <% else %>
       <%= link_to 'Accept', request_path(request), method: :delete %>
       <%= link_to 'Decline', request_path(request), method: :patch %>
-    <% end %>
+      <%= link_to "Chat with #{request.restaurant.name}", conversation_path(Conversation.between(current_chef, request.restaurant)) %>
 
-    <%= link_to "Send Message", new_request_message_path(request) %>
-    <%= link_to "Read Messages", request_messages_path(request) %>
+    <% end %>
 
   </li>
 
@@ -34,7 +33,9 @@
 <ul>
   <% @bookings.each do |booking| %>
   <li>
-    <p><%= booking.id %> - <%= booking.restaurant.name %> wants you for <%= booking.shift %> and will pay <%= booking.cost_pennies %></p>
+    <p><%= booking.restaurant.name %> wants you for <%= booking.start_hours %> to <%= booking.end_hours %> on <%= booking.date %> and will pay $<%= booking.cost_pennies / 100 %><br>
+      <%= link_to "Chat with #{booking.restaurant.name}", conversation_path(Conversation.between(booking.chef, booking.restaurant)) %>
+    </p>
   </li>
   <% end %>
 </ul>
