@@ -18,7 +18,15 @@ class Chef < ApplicationRecord
     end
   end
 
-  def self.search_by_avaiability(date)
+  def self.search_by_date_position(date, position)
+    self.where.not(id: Booking.where(date: date).pluck('chef_id'))
+  end
+
+  def self.search_by_position(position)
+    self.joins(:positions).where("positions.title" => position)
+  end
+
+  def self.search_by_date(date)
      # take all chefs that has different id returned by Booking.where(date: date)
     self.where.not(id: Booking.where(date: date).pluck('chef_id'))
   end

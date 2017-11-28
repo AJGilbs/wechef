@@ -14,14 +14,15 @@ class ChefsController < ApplicationController
   end
 
   def search
-    if params[:date] != ""
+    if params[:date] != "" && params[:position]
       date = Date.parse(params[:date])
-      @chefs = Chef.search_by_avaiability(date)
+      @chefs = Chef.search_by_date_position(date, params[:position])
+    elsif  params[:date] != "" && params[:position].nil
+      @chefs = search_by_date(params[:date])
+    elsif params[:date] == "" && params[:position]
+      @chefs = Chef.search_by_position(params[:position])
     else
       @chefs = Chef.all
-    end
-    if params[:position]
-      @chefs = filter_by_position(@chefs, params[:position])
     end
     authorize(@chefs)
   end
