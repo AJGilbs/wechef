@@ -14,14 +14,16 @@ class ChefsController < ApplicationController
   end
 
   def search
-    if params[:date] != ""
+    if params[:date] != "" && params[:position]
       date = Date.parse(params[:date])
-      @chefs = Chef.search_by_avaiability(date)
+      @chefs = Chef.where.not(id: Booking.where(date: date).pluck('chef_id')).joins(:positions).where("positions.title" => params[:position])
+    elsif  params[:date] != ""
+      date = Date.parse(params[:date])
+      @chefs = Chef.where.not(id: Booking.where(date: date).pluck('chef_id'))
+    elsif params[:position]
+      @chefs = Chef.search_by_position(params[:position])
     else
       @chefs = Chef.all
-    end
-    if params[:position]
-      @chefs = filter_by_position(@chefs, params[:position])
     end
     authorize(@chefs)
   end
