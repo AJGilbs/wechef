@@ -1,6 +1,5 @@
 class PositionsController < ApplicationController
 
-
   def create
     @chef = current_chef
     @position = Position.new(position_params)

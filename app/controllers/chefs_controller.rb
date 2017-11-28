@@ -7,26 +7,32 @@ class ChefsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
+    @request = Request.new
     authorize(@chef)
-    authorize(@booking)
+    authorize(@request)
+  end
+
+  def contains_position?(chef, position)
+    chef.positions.find {|p| p.title = position}
+  end
+
+  def filter_by_position(chefs, position)
+    chefs.select do |chef|
+      chef.positions.find {|p| p.title = position}
+    end
   end
 
   def search
-    @selection = []
     unless params[:date] = ""
       date = Date.parse(params[:date])
-    # take all chefs that has different id returned by Booking.where(date: date)
-      @chefs = Chef.where.not(id: Booking.where(date: date).pluck('chef_id'))
-    # chefs = Chef.joins('LEFT OUTER JOIN bookings ON bookings.chef_id = chefs.id').where('date != ?', date)
+      @chefs = Chef.search_by_avaiability(date)
     else
       @chefs = Chef.all
     end
+    if params[:position]
+      @chefs = filter_by_position(@chefs, params[:position])
+    end
     authorize(@chefs)
-  end
-
-  def selection
-    # @chefs =
   end
 
   def edit
