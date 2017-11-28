@@ -50,7 +50,7 @@ private
   end
 
   def chef_params
-    params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :description)
+    params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :description, :price)
   end
 
   # def position_params
