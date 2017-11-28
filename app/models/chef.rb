@@ -18,10 +18,6 @@ class Chef < ApplicationRecord
     end
   end
 
-  def self.search_by_date_position(date, position)
-    self.where.not(id: Booking.where(date: date).pluck('chef_id'))
-  end
-
   def self.search_by_position(position)
     self.joins(:positions).where("positions.title" => position)
   end

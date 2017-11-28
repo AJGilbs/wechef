@@ -7,7 +7,6 @@ class ChefsController < ApplicationController
   end
 
   def show
-
     @request = Request.new
     authorize(@chef)
     authorize(@request)
@@ -56,9 +55,4 @@ private
   #     params.require(:chef).permit(:position => [:title, :description, :start_date, :end_date])
   # end
 
-  def filter_by_position(chefs, position)
-    chefs.select do |chef|
-      chef.positions.find {|p| p.title = position}
-    end
-  end
 end
