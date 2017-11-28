@@ -1,9 +1,6 @@
-<div class="container">
-
-  <h1>Results</h1>
-
+<div class="results-container">
   <%= render 'shared/card' %>
-
+  <div class="clear"></div>
 </div>
 
 <%= render 'shared/shortlist' %>
@@ -16,7 +13,7 @@
   // const list = document.getElementById("selected-chefs");
 
   const displaySelected = (imgPath, chefId) => {
-    let item = `<div id= "avatar${chefId}" class="shortlist-avatar"><img src =${imgPath} width="50">
+    let item = `<div id="avatar${chefId}" class="shortlist-avatar"><img src =${imgPath} width="50">
     </div>`
     shortListBar.insertAdjacentHTML("beforeend", item);
   };
@@ -33,13 +30,15 @@
       if (btnTarget.classList.contains("disabled")) {
         btnTarget.classList.remove("disabled");
         idArray.pop(btnTarget.id);
-        btnTarget.innerHtml = "Selected";
+        btnTarget.innerHTML = "Remove from Shortlist";
+        btnTarget.classList.add("btn-selected");
         removeSelected(chefId);
       }
       else {
         idArray.push(btnTarget.id);
         btnTarget.classList.add("disabled");
-        btnTarget.innerHtml = "Select";
+        btnTarget.innerHTML = "Add to Shortlist";
+        btnTarget.classList.remove("btn-selected");
         displaySelected(chefImgSrc, chefId);
       }
       hiddenImput.value = idArray;

@@ -1,12 +1,26 @@
   <% @chefs.each do |chef| %>
   <div class="card">
     <%= link_to "", chef_path(chef.id), class: "card-link" %>
-    <div class="card-left">
-      <%= cl_image_tag(chef.photo, :class => "card-avatar") %>
-      <div class="card-rating">*****</div>
+
+    <%= cl_image_tag(chef.photo, :class => "card-avatar") %>
+    <div class="card-name"><%= chef.name %></div>
+    <div class="card-rating">
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </div>
+    <div class="card-details__title">
+      <div class="left">Experience</div>
+      <div class="right">Hourly Rate</div>
+    </div>
+    <div class="card-details">
+      <div class="left">3 years</div>
+      <div class="right">£<%= chef.price_pennies %></div>
     </div>
 
 
-    <%= chef.name %>  <div class="btn btn-primary btn-select" id="<%= chef.id %>">Select</div>
+      <div class="btn-select" id="<%= chef.id %>">Add to Shortlist</div>
   </div>
   <% end %>
