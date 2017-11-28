@@ -9,10 +9,11 @@
     <%= f.button :submit, "Save", class: "submit-btn" %>
   </div>
 <% end %>
-<%= @chef.positions.each do |position| %>
-  <%= position.title  %> - <%= link_to "delete", chef_position_path(position), method: :delete,
-      data: { confirm: "Are you sure?" } do %>
-      <i class="fa fa-trash" aria-hidden="true"></i>
-      <% end %>
+<% @chef.positions.each do |position| %>
+  <div></div>
+  <p><%= position.title  %> at: <%= position.restaurant_name %></p>
+  <%= link_to "remove", chef_position_path(@chef, position), method: :delete %>
 <% end %>
-<%= render "shared/form_chef_position" %>
+
+  <%= render "shared/form_chef_position" %>
+
