@@ -70,29 +70,29 @@ booking.chef = joe
 booking.save!
 
 # Requests
-request = Requests.new(date: Date.today)
+request = Request.new(date: Date.today)
 request.restaurant = sketch
 request.chef_ids = [1]
 request.save!
-request = Requests.new(date: Date.today)
+request = Request.new(date: Date.today)
 request.restaurant = hawksmoor
 request.chef_ids = [2]
 request.save!
-request = Requests.new(date: Date.today)
+request = Request.new(date: Date.today)
 request.chef_ids = [3]
 request.save!
-request = Requests.new(date: Date.today)
+request = Request.new(date: Date.today)
 request.restaurant = ceviche
 request.chef_ids = [4]
 request.save!
-request = Requests.new(date: Date.today)
+request = Request.new(date: Date.today)
 request.restaurant = hoppers
 request.chef_ids = [5]
 request.save!
 
 # Messages
-messages = Message.new(body: "hello" )
-message.author = nathalia
-message.save!
+# messages = Message.new(body: "hello" )
+# message.author = nathalia
+# message.save!
 
 puts "Completed"
