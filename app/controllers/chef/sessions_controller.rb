@@ -1,4 +1,4 @@
-class Restaurant::SessionsController < Devise::SessionsController
+class Chef::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -8,8 +8,8 @@ class Restaurant::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    if chef_signed_in?
-      sign_out current_chef
+    if restaurant_signed_in?
+      sign_out current_restaurant
     end
     super
   end
