@@ -16,14 +16,8 @@ class ChefsController < ApplicationController
     chef.positions.find {|p| p.title = position}
   end
 
-  def filter_by_position(chefs, position)
-    chefs.select do |chef|
-      chef.positions.find {|p| p.title = position}
-    end
-  end
-
   def search
-    unless params[:date] = ""
+    if params[:date] != ""
       date = Date.parse(params[:date])
       @chefs = Chef.search_by_avaiability(date)
     else
@@ -63,4 +57,9 @@ private
   #     params.require(:chef).permit(:position => [:title, :description, :start_date, :end_date])
   # end
 
+  def filter_by_position(chefs, position)
+    chefs.select do |chef|
+      chef.positions.find {|p| p.title = position}
+    end
+  end
 end
