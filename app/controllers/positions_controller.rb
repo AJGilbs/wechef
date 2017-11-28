@@ -1,10 +1,5 @@
 class PositionsController < ApplicationController
 
-  # def new
-  #   @position = Position.new
-  #   authorize(@position)
-  # end
-
   def create
     @position = Position.new(position_params)
     @position.chef = current_chef

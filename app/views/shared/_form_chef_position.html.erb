@@ -1,7 +1,10 @@
-<%= simple_form_for [@chef, @position] do |f| %>
-  <%= f.input :title, collectin: ["Executive Chef", "Head Chef", "Sous Chef", "Chef de Partie", "Commis Chef"] %>
-  <%= f.input :description %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit %>
-<% end %>
+  <p>Add Last Position</p>
+  <%= simple_fields_for :positions do |p| %>
+    <%= p.input :title,  collection: ["Executive Chef", "Head Chef", "Sous Chef", "Chef de Partie", "Commis Chef", "None of these"], prompt: "You've worked as..." %>
+    <%= p.input :description %>
+    <%= p.input :start_date, as: :date, order: [:month, :year] %>
+    <%= p.input :end_date, as: :date, order: [:month, :year] %>
+  <% end %>
+
+
+

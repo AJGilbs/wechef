@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 devise_for :chefs, :controllers => { :registrations => "chefs" }
 resources :chefs, only: [ :index, :edit, :update, :show ] do
-  resources :positions, only: [:new, :edit, :create, :destroy]
+  resources :positions, only: [:new, :create, :destroy]
    resources :bookings, only: [ :new, :create ]
     collection do
       get 'search', to: 'chefs#search'
