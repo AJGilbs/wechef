@@ -1,5 +1,9 @@
+.profile-container {
+  margin: 70px 0 90px 0;
+}
+
 .profile-banner {
-  margin: 70px 0 0 0;
+  margin: 0;
   width: 100%;
   height: 160px;
   display:block;
@@ -79,4 +83,66 @@
       }
     }
   }
+}
+
+.reviews-none {
+  width: 100%;
+  text-align:center;
+  padding: 0px;
+  font-size: 14px;
+  color: #989898;
+  margin: 0 0 20px 0;
+}
+
+.profile-reviews__title {
+  width: 100%;
+  text-align:center;
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+.reviews-container {
+  width: calc(100% - 30px);
+  margin: 0 0 0 15px;
+  }
+
+.review-row {
+  width: 100%;
+  border-width: 0 0 1px 0;
+  border-color: #ddd;
+  border-style: solid;
+  margin: 0 0 20px 0;
+}
+
+.review-row:last-child {
+  width: 100%;
+  border-width: 0 0 0 0;
+  border-color: #ddd;
+  border-style: solid;
+  margin: 0 0 20px 0;
+}
+
+.review-avatar {
+  width: 50px;
+  height:50px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.review-top {
+  display: flex;
+  width:100%;
+  .left {
+    width:50px;
+  }
+  .right {
+    font-size: 16px;
+    margin: 0 0 0 15px;
+  }
+}
+
+.review-content {
+  margin: 0 0 20px 0;
+  padding: 20px 5px 0 5px;
+  font-size: 15px;
 }
