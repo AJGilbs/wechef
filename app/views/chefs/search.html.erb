@@ -1,4 +1,5 @@
 <div class="results-container">
+
   <div class="search-bar">
     Filter by last position:
     <form action="search">
@@ -13,6 +14,9 @@
         <input type="hidden" name="date" value="<%= params[:date] %>">
         <button type="submit">Filter</button>
   <div class="clear"></div>
+
+  <%= render 'shared/card' %>
+
 </div>
 
 <%= render 'shared/shortlist' %>
@@ -25,7 +29,7 @@
   // const list = document.getElementById("selected-chefs");
 
   const displaySelected = (imgPath, chefId) => {
-    let item = `<div id="avatar${chefId}" class="shortlist-avatar"><img src =${imgPath} width="50">
+    let item = `<div id =avatar${chefId} class="shortlist-avatar"><img src =${imgPath} width="50">
     </div>`
     shortListBar.insertAdjacentHTML("beforeend", item);
   };
@@ -45,8 +49,7 @@
         btnTarget.innerHTML = "Remove from Shortlist";
         btnTarget.classList.add("btn-selected");
         removeSelected(chefId);
-      }
-      else {
+      } else {
         idArray.push(btnTarget.id);
         btnTarget.classList.add("disabled");
         btnTarget.innerHTML = "Add to Shortlist";

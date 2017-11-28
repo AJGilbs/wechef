@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'chefs#index'
 
-  devise_for :chefs
+  devise_for :chefs, controllers: { sessions: 'chef/sessions', registrations: 'chef/registrations' }
 
   resources :chefs, only: [ :index, :edit, :update, :show] do
     resources :reviews_chefs, only: [ :new, :create ]
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
 
-  devise_for :restaurants
+  devise_for :restaurants, controllers: { sessions: 'restaurant/sessions', registrations: 'restaurant/registrations' }
 
   resources :restaurants, only: [:edit, :update, :show] do
     resources :reviews_restaurants, only: [ :new, :create ]

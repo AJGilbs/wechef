@@ -7,15 +7,16 @@
 }
 
 @font-face {
-    font-family: 'circular';
+    font-family: 'circular book';
     font-weight: 300;
 
-    src: font-url('circular-medium.otf');
+    src: font-url('circular-book.otf');
 }
 
 // Define fonts for body and headers
 $body-font: 'circular';
 $headers-font: 'circular';
+$font-light: 'circular book';
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

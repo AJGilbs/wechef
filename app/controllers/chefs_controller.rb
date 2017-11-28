@@ -7,13 +7,10 @@ class ChefsController < ApplicationController
   end
 
   def show
+
     @request = Request.new
     authorize(@chef)
     authorize(@request)
-  end
-
-  def contains_position?(chef, position)
-    chef.positions.find {|p| p.title = position}
   end
 
   def search
