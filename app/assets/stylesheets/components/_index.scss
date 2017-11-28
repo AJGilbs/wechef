@@ -87,6 +87,23 @@ h1 {
     outline:none;
 }
 
+
+.request-btn {
+    display: inline-block;
+
+    width: calc(100% - 30px);
+    height: 60px;
+
+    text-align: center;
+    font-size: 15px;
+    color: #606019;
+    border-width: 0;
+    background-color: $brand-primary;
+    margin:15px 15px 15px 15px;
+    border-radius: 3px;
+    outline:none;
+}
+
 .form-control:focus {
   border-color: #989898;
 }

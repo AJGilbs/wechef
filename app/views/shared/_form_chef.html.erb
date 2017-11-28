@@ -2,9 +2,18 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :experience %>
+  <%= f.input :price %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
   <div class="submit-holder">
     <%= f.button :submit, "Save", class: "submit-btn" %>
   </div>
 <% end %>
+<% @chef.positions.each do |position| %>
+  <div></div>
+  <p><%= position.title  %> at: <%= position.restaurant_name %></p>
+  <%= link_to "remove", chef_position_path(@chef, position), method: :delete %>
+<% end %>
+
+  <%= render "shared/form_chef_position" %>
+

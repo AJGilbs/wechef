@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :chefs, only: [ :index, :edit, :update, :show] do
     resources :reviews_chefs, only: [ :new, :create ]
-
+    resources :positions, only: [:new, :create, :destroy]
     resources :bookings, only: [ :new, :create ]
     collection do
       get 'search', to: 'chefs#search'
