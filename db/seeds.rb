@@ -69,14 +69,30 @@ booking.restaurant = hoppers
 booking.chef = joe
 booking.save!
 
-#Requests
-# request_sketch = Requests.new("")
-# request_sketch.restaurant = sketch
-# request_sketch.save!
+# Requests
+request = Requests.new(date: Date.today)
+request.restaurant = sketch
+request.chef_ids = [1]
+request.save!
+request = Requests.new(date: Date.today)
+request.restaurant = hawksmoor
+request.chef_ids = [2]
+request.save!
+request = Requests.new(date: Date.today)
+request.chef_ids = [3]
+request.save!
+request = Requests.new(date: Date.today)
+request.restaurant = ceviche
+request.chef_ids = [4]
+request.save!
+request = Requests.new(date: Date.today)
+request.restaurant = hoppers
+request.chef_ids = [5]
+request.save!
 
-#Messages
-# nathalia_message = Message.new(body: "gfcgdg", )
-# nathalia_message.author = nathalia_message
-# nathalia_message.save!
+# Messages
+messages = Message.new(body: "hello" )
+message.author = nathalia
+message.save!
 
 puts "Completed"
