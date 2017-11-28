@@ -1,0 +1,148 @@
+.profile-container {
+  margin: 70px 0 90px 0;
+}
+
+.profile-banner {
+  margin: 0;
+  width: 100%;
+  height: 160px;
+  display:block;
+  background-color: #989898;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  position:absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  left:50%;
+  margin: 0 0 0 -60px;
+  background-color: #fff;
+  img {
+    width: 120px;
+  }
+}
+
+.profile-name {
+  text-align:center;
+  font-size: 30px;
+  padding: 10px 20px 20px 20px;
+  margin: 20px 0 0 0;
+}
+
+.profile-headers {
+  font-size: 16px;
+  padding: 20px 20px 10px 20px;
+  text-align:center;
+  width: calc(100% - 30px);
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #ddd;
+  margin: 0 0 20px 15px;
+}
+
+
+.profile-days::-webkit-scrollbar {
+    display: none;
+}
+
+.profile-days {
+  width: 100%;
+  height: calc((100vw / 4) + 32px - 20px);
+  padding: 0 5px;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  .day-container {
+    span {
+      display:block;
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      text-indent: 13px;
+      margin: 0 0 8px 0;
+    }
+    .day {
+      width:calc((100vw / 4) - 20px);
+      height:calc((100vw / 4) - 20px);
+      overflow:hidden;
+      border-radius: 50%;
+      margin: 0 0 0 15px;
+      .lunch {
+        width:calc((100vw / 4) - 20px);
+        height:calc(((100vw / 4) - 20px) / 2);
+        background-color:yellow;
+      }
+      .dinner {
+        width:calc((100vw / 4) - 20px);
+        height:calc(((100vw / 4) - 20px) / 2);
+        background-color: blue;
+      }
+    }
+  }
+}
+
+.reviews-none {
+  width: 100%;
+  text-align:center;
+  padding: 0px;
+  font-size: 14px;
+  color: #989898;
+  margin: 0 0 20px 0;
+}
+
+.profile-reviews__title {
+  width: 100%;
+  text-align:center;
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+.reviews-container {
+  width: calc(100% - 30px);
+  margin: 0 0 0 15px;
+  }
+
+.review-row {
+  width: 100%;
+  border-width: 0 0 1px 0;
+  border-color: #ddd;
+  border-style: solid;
+  margin: 0 0 20px 0;
+}
+
+.review-row:last-child {
+  width: 100%;
+  border-width: 0 0 0 0;
+  border-color: #ddd;
+  border-style: solid;
+  margin: 0 0 20px 0;
+}
+
+.review-avatar {
+  width: 50px;
+  height:50px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.review-top {
+  display: flex;
+  width:100%;
+  .left {
+    width:50px;
+  }
+  .right {
+    font-size: 16px;
+    margin: 0 0 0 15px;
+  }
+}
+
+.review-content {
+  margin: 0 0 20px 0;
+  padding: 20px 5px 0 5px;
+  font-size: 15px;
+}

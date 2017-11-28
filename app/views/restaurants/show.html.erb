@@ -1,3 +1,6 @@
+
+
+
 <div class="profile-banner">
   <div class="profile-avatar">
     <img src="<%= @restaurant.photo %>">
@@ -7,3 +10,14 @@
 <div class="profile-name">
   <%= @restaurant.name %>
 </div>
+
+<% if @restaurant.booked_chef?(current_restaurant) %>
+  <%= link_to "Add review", new_restaurant_reviews_restauran_path(@restaurant) %>
+<% end %>
+
+<%= @restaurant.reviews_restaurant.count %>
+  <% @restaurant.reviews_restaurant.each do |rev| %>
+    <%= rev.rating %>
+    <%= rev.comment %>
+  <% end %>
+

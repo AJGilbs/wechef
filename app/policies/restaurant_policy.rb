@@ -5,6 +5,14 @@ class RestaurantPolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+    update?
+  end
+
+  def new?
+    true
+  end
+
   def create?
     true
   end
