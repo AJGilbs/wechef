@@ -1,8 +1,11 @@
 <nav>
-
-  <div class="search-icon" id="searchMenuButton">
-    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxMDI0IiB3aWR0aD0iOTczLjEyNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOTYwIDgzMkw3MTAuODc1IDU4Mi44NzVDNzQ2LjQzOCA1MjQuODEyIDc2OCA0NTcuMTU2IDc2OCAzODQgNzY4IDE3MS45NjkwMDAwMDAwMDAwNSA1OTYgMCAzODQgMCAxNzEuOTY5IDAgMCAxNzEuOTY5MDAwMDAwMDAwMDUgMCAzODRjMCAyMTIgMTcxLjk2OSAzODQgMzg0IDM4NCA3My4xNTYgMCAxNDAuODEyLTIxLjU2MiAxOTguODc1LTU3TDgzMiA5NjBjMTcuNSAxNy41IDQ2LjUgMTcuMzc1IDY0IDBsNjQtNjRDOTc3LjUgODc4LjUgOTc3LjUgODQ5LjUgOTYwIDgzMnpNMzg0IDY0MGMtMTQxLjM3NSAwLTI1Ni0xMTQuNjI1LTI1Ni0yNTZzMTE0LjYyNS0yNTYgMjU2LTI1NiAyNTYgMTE0LjYyNSAyNTYgMjU2UzUyNS4zNzUgNjQwIDM4NCA2NDB6Ii8+PC9zdmc+" width="20">
-  </div>
+  <% if current_page?(@chef_path) %>
+    <a href="javascript:history.go(-1)" class="back-btn">Back</a>
+  <% else %>
+    <div class="search-icon" id="searchMenuButton">
+      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxMDI0IiB3aWR0aD0iOTczLjEyNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOTYwIDgzMkw3MTAuODc1IDU4Mi44NzVDNzQ2LjQzOCA1MjQuODEyIDc2OCA0NTcuMTU2IDc2OCAzODQgNzY4IDE3MS45NjkwMDAwMDAwMDAwNSA1OTYgMCAzODQgMCAxNzEuOTY5IDAgMCAxNzEuOTY5MDAwMDAwMDAwMDUgMCAzODRjMCAyMTIgMTcxLjk2OSAzODQgMzg0IDM4NCA3My4xNTYgMCAxNDAuODEyLTIxLjU2MiAxOTguODc1LTU3TDgzMiA5NjBjMTcuNSAxNy41IDQ2LjUgMTcuMzc1IDY0IDBsNjQtNjRDOTc3LjUgODc4LjUgOTc3LjUgODQ5LjUgOTYwIDgzMnpNMzg0IDY0MGMtMTQxLjM3NSAwLTI1Ni0xMTQuNjI1LTI1Ni0yNTZzMTE0LjYyNS0yNTYgMjU2LTI1NiAyNTYgMTE0LjYyNSAyNTYgMjU2UzUyNS4zNzUgNjQwIDM4NCA2NDB6Ii8+PC9zdmc+" width="20">
+    </div>
+  <% end %>
 
   <%= link_to root_path do %>
     <div class="logo"></div>
@@ -24,7 +27,7 @@
       <h2>My Restaurant</h2>
       <%= link_to "Dashboard", myrestaurant_path %>
 
-      <%= link_to "Your Restauant", restaurant_path(current_restaurant) %>
+      <%= link_to "Your Restaurant", restaurant_path(current_restaurant) %>
 
       <%= link_to "Manage Restaurant", edit_restaurant_path(current_restaurant) %>
 

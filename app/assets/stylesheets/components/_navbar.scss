@@ -70,6 +70,15 @@ nav
     background-color: #000;
 }
 
+.back-btn, .back-btn:active {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding:5px;
+    width: 40px;
+    height: 40px;
+}
+
 .search-icon
 {
     position: absolute;
