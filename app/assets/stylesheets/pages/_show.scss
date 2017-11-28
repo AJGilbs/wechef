@@ -61,7 +61,8 @@
   width: 100%;
   height: calc((100vw / 4) + 32px - 20px);
   padding: 0 5px;
-  display: flex;
+  // display: flex;
+  display: none;
   overflow-y: hidden;
   overflow-x: scroll;
   .day-container {

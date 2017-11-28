@@ -17,4 +17,9 @@ class Chef < ApplicationRecord
       b.restaurant == restaurant
     end
   end
+
+  def self.search_by_position(position)
+    self.joins(:positions).where("positions.title" => position)
+  end
+
 end

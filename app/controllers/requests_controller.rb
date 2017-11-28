@@ -23,6 +23,7 @@ class RequestsController < ApplicationController
   end
 
   def create
+    raise
     new_request = Request.new(request_params)
     new_request.restaurant = current_restaurant
     new_request.chef_ids = params[:request][:chef_ids].split(',')

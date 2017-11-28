@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :new, :create ]
     collection do
       get 'search', to: 'chefs#search'
-      get 'selection', to: 'chefs#selection'
     end
   end
 
