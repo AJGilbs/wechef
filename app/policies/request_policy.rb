@@ -17,6 +17,10 @@ class RequestPolicy < ApplicationPolicy
     destroy?
   end
 
+  def show?
+    true
+  end
+
   def destroy?
     record.chef_ids.include?(user.id)
   end

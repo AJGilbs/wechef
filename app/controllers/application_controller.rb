@@ -19,10 +19,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
 
-   private
+  private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)/
   end
 
+
+  def authenticate_someone!
+    unless current_chef || current_restaurant
+      redirect_to root_path, alert: "You need to sign in for that!"
+    end
+  end
 end

@@ -19,12 +19,15 @@ class RequestsController < ApplicationController
     redirect_to myrestaurant_path
   end
 
-
   def create
     new_request = Request.new(request_params)
     new_request.restaurant = current_restaurant
     authorize new_request
     if new_request.save
+      new_request.chef_ids.each do |chef_id|
+        conversation = Conversation.create(chef_id: chef_id, restaurant: current_restaurant, request: new_request)
+        conversation.messages.create(author: current_chef, body: new_request.description)
+      end
       redirect_to root_path
     else
       redirect_back(fallback_location: new_request_path)
@@ -34,6 +37,7 @@ class RequestsController < ApplicationController
   def update
     @request.chef_ids.delete(current_chef.id)
     @request.save
+    @request.conversations.find_by(chef: current_chef.id)&.destroy
     redirect_to dashboard_path
   end
 

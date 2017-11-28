@@ -1,0 +1,8 @@
+<h1>My Conversations</h1>
+
+<ul>
+  <% @conversations.each do |conversation| %>
+    <li><%= link_to "Show conversation #{conversation.id}", conversation_path(conversation) %></li>
+  <% end %>
+</ul>
+

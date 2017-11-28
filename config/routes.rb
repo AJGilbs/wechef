@@ -30,7 +30,11 @@ Rails.application.routes.draw do
       patch 'cancel_all'
       patch 'cancel_chef'
     end
-    resources :messages, only: [ :new, :create, :show, :index ]
+  end
+
+
+  resources :conversations, only: [:index, :show] do
+    resources :messages, only: [ :create ]
   end
 
 

@@ -1,0 +1,12 @@
+<h1>Conversation <%= @conversation.id %></h1>
+
+<ul>
+  <% @conversation.messages.each do |message| %>
+    <li><%= message.body %> by <%= message.author.name %></li>
+  <% end %>
+</ul>
+
+<%= simple_form_for [@conversation, @message] do |f| %>
+  <%= f.input :body %>
+  <%= f.submit %>
+<% end %>

@@ -6,7 +6,6 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def create?
-    record.request.restaurant == user ||
-    (record.request.chef_ids.include?(user.id) && user.is_a?(Chef))
+    record.conversation.chef == user || record.conversation.restaurant == user
   end
 end

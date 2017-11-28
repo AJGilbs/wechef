@@ -7,9 +7,9 @@ class ChefsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
+    @request = Request.new
     authorize(@chef)
-    authorize(@booking)
+    authorize(@request)
   end
 
   def search
