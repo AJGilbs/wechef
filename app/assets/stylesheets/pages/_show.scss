@@ -33,12 +33,51 @@
   margin: 20px 0 0 0;
 }
 
+.profile-rating {
+  text-align:center;
+  font-size: 20px;
+  padding: 10px 20px 0px 20px;
+  margin: 0;
+}
+
 .profile-description {
   font-family: $font-light;
   text-align:center;
   font-size: 16px;
   padding: 10px 20px 20px 20px;
   margin: 0 0 0 0;
+}
+
+.experience-bar {
+  width: calc(100% - 30px);
+  margin: 0 15px;
+  height: 20px;
+  border-radius: 3px;
+  background-color:#ededed;
+  overflow:hidden;
+  .highlight {
+    width: 75%;
+    background-color: $brand-primary;
+    height: 20px;
+  }
+}
+
+.experience-words {
+  font-size: 14px;
+  padding: 10px;
+  text-align:center;
+  width: calc(100% - 30px);
+  margin: 0 0 20px 15px;
+}
+
+.positions-container {
+  width: calc(100% - 30px);
+  margin: 15px 15px 40px 15px;
+  display: block;
+  .row {
+    text-align:center;
+    font-size: 15px;
+  }
 }
 
 .profile-headers {

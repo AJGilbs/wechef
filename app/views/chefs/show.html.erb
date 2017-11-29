@@ -9,104 +9,36 @@
     <%= @chef.name %>
   </div>
 
+  <div class="profile-rating">
+    <%= @chef.avg_rating %>*****
+  </div>
+
   <div class="profile-description">
     <%= @chef.description %>
   </div>
 
-  <div class="profile-headers">
-    Availability
+  <h2>Experience</h2>
+  <div class="h2_underline"></div>
+  <div class="experience">
+    <div class="experience-bar">
+      <div class="highlight"></div>
+    </div>
+  </div>
+  <div class="experience-words">
+    3 Years
   </div>
 
-  <div class="profile-days" id="daysScroll">
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Mon 3rd</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
+  <h2>Previously held positions</h2>
+  <div class="h2_underline"></div>
+  <div class="positions-container">
+    <div class="row">
+      Headchef at Sketch
     </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Tue 4th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
+    <div class="row">
+      Headchef at Sketch
     </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Wed 5th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Thu 6th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Fri 7th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Sat 8th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Sun 9th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Mon 10th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Tue 11th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
-
-    <!-- Day begins -->
-    <div class="day-container">
-      <span>Wed 12th</span>
-      <div class="day">
-        <div class="lunch"></div>
-        <div class="dinner"></div>
-      </div>
-    </div>
+    <div class="row">
+      Headchef at Sketch
   </div>
 
   <% if current_chef != @chef %>
@@ -177,10 +109,6 @@
 
   <%= render 'shared/request_form' %>
 
-
-  <div class="submit-holder">
-    <input type="submit" class="request-btn" value="Request">
-  </div>
 
   <% if current_chef != @chef %>
     <div class="submit-holder">

@@ -5,7 +5,7 @@
 
   <% @requests.each do |request| %>
     <% request.chefs.each do |chef| %>
-
+      <%= link_to "", chef_path(chef.id), class: "dashboard-link" %>
       <div class="dash-card">
         <div class="dash-card__top">
           <div class="dash-avatar">
