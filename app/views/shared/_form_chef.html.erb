@@ -1,7 +1,7 @@
 <%= simple_form_for @chef do |f|%>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :experience %>
+  <%= f.input :experience, collection: ["Less than 1 year", "1 year", "2 years", "3 years or more"], prompt: "you're a chef since..." %>
   <%= f.input :price %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
