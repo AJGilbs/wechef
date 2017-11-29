@@ -3,15 +3,13 @@
 <h2>Pending Requests</h2>
 <div class="h2_underline"></div>
 
-
-
   <% @requests.each do |request| %>
     <% request.chefs.each do |chef| %>
 
       <div class="dash-card">
         <div class="dash-card__top">
           <div class="dash-avatar">
-            <%= cl_image_tag chef.photo, height: 50, width: 50, crop: :fill %>
+            <%= cl_image_tag chef.photo, height: 66, width: 66, crop: :fill %>
           </div>
           <div class="dash-card__right">
             <div class="top">
@@ -22,12 +20,17 @@
                 £<%= chef.price_pennies %> p/h
               </div>
             </div>
-            <div class="bottom">
+            <div class="middle">
               <div class="left">
                 *****
               </div>
               <div class="right">
                 pending
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="left">
+                <%= request.start_hours %> until <%= request.end_hours %> on <%= request.date %>
               </div>
             </div>
           </div>
@@ -37,6 +40,7 @@
           <%= link_to 'Cancel Request', cancel_chef_request_path(request, chef: chef), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-50-cancel" %>
         </div>
       </div>
+
       <div class="dash-cancel__wrapper">
         <%= link_to 'Cancel all Chefs', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-100-cancel" %>
       </div>
@@ -53,7 +57,7 @@
       <div class="dash-card">
         <div class="dash-card__top">
           <div class="dash-avatar">
-            <%= cl_image_tag unpaid_booking.chef.photo, height: 50, width: 50, crop: :fill %>
+            <%= cl_image_tag unpaid_booking.chef.photo, height: 66, width: 66, crop: :fill %>
           </div>
           <div class="dash-card__right">
             <div class="top">
@@ -64,36 +68,66 @@
                 £<%= unpaid_booking.chef.price_pennies %> p/h
               </div>
             </div>
-            <div class="bottom">
+            <div class="middle">
               <div class="left">
                 *****
               </div>
               <div class="right">
-                pending
+                Accepted
+              </div>
+            </div>
+            <div class="middle">
+              <div class="left">
+                <%= unpaid_booking.start_hours %> until <%= unpaid_booking.end_hours %> on <%= unpaid_booking.date %>
               </div>
             </div>
           </div>
         </div>
         <div class="dash-buttons">
-          <%= link_to "Pay £#{unpaid_booking.cost_pennies / 100}" , new_booking_payment_path(unpaid_booking), class: "dash-50-button" %>
-          <%= link_to "Chat with #{unpaid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-cancel" %>
+          <%= link_to "Pay £#{unpaid_booking.cost_pennies / 100}" , new_booking_payment_path(unpaid_booking), class: "dash-50-dark" %>
+          <%= link_to "Message #{unpaid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-chat" %>
         </div>
       </div>
 
-
-   <%= unpaid_booking.chef.name %> - <%= unpaid_booking.start_hours %> until <%= unpaid_booking.end_hours %> on <%= unpaid_booking.date %>
-
-
   <% end %>
 
-
-
   <% @bookings.where(status: 'paid').each do |paid_booking| %>
-  <li>
-    <p><%= paid_booking.chef.name %> - <%= paid_booking.start_hours %> to <%= paid_booking.end_hours %> on <%= paid_booking.date %> -  paid: <%= paid_booking.cost_pennies %><br>
-      <%= link_to "Chat with #{unpaid_booking.chef.name.capitalize}", conversations_path %>
-    </p>
-  </li>
+
+    <div class="dash-card">
+      <div class="dash-card__top">
+        <div class="dash-avatar">
+          <%= cl_image_tag paid_booking.chef.photo, height: 66, width: 66, crop: :fill %>
+        </div>
+        <div class="dash-card__right">
+          <div class="top">
+            <div class="left">
+              <%= paid_booking.chef.name %>
+            </div>
+            <div class="right">
+              £<%= paid_booking.chef.cost_pennies %>
+            </div>
+          </div>
+          <div class="middle">
+            <div class="left">
+              *****
+            </div>
+            <div class="right">
+              Paid
+            </div>
+          </div>
+          <div class="middle">
+            <div class="left">
+              <%= paid_booking.start_hours %> until <%= paid_booking.end_hours %> on <%= paid_booking.date %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-buttons">
+        <%= link_to "Pay £#{paid_booking.cost_pennies / 100}" , new_booking_payment_path(paid_booking), class: "dash-50-dark" %>
+        <%= link_to "Message #{paid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-chat" %>
+      </div>
+    </div>
+
   <% end %>
 
 </div>

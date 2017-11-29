@@ -14,8 +14,8 @@ display:flex;
 }
 
 .dash-avatar {
-  width:50px;
-  height:50px;
+  width:66px;
+  height:66px;
   border-radius: 50%;
   overflow:hidden;
 }
@@ -29,6 +29,16 @@ display:flex;
     }
     .right {
       margin: 0 0 0 15px;
+      text-align:right;
+    }
+  }
+  .middle {
+    display:flex;
+    .left {
+    }
+    .right {
+      margin: 0 0 0 15px;
+      text-align:right;
     }
   }
   .bottom {
@@ -37,6 +47,7 @@ display:flex;
     }
     .right {
       margin: 0 0 0 15px;
+      text-align:right;
     }
   }
 }
@@ -52,6 +63,30 @@ display:flex;
   background-color: #ddd;
   border-radius: 3px;
   color: #424242;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  margin: 0 15px 0 0;
+}
+
+.dash-50-chat, .dash-100-chat {
+  width:50%;
+  height: 44px;
+  background-color: #ddd;
+  border-radius: 3px;
+  color: #424242;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  margin: 0;
+}
+
+.dash-50-dark, .dash-100-dark {
+  width:50%;
+  height: 44px;
+  background-color: #707070;
+  border-radius: 3px;
+  color: #fff !important;
   line-height:44px;
   font-size: 14px;
   display: block;
