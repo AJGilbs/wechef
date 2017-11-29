@@ -13,7 +13,7 @@
 <ul>
   <% @requests.each do |request| %>
   <li>
-    <p><%= request.id %> - <%= request.restaurant.name %> wants you for <%= request.shift %> and will pay <%= request.cost_pennies %></p>
+    <p><%= request.id %> - <%= request.restaurant.name %> wants you for <%= request.shift %> and will pay <%= request.cost %></p>
     <% if request.status == "complete" %>
       <p>this request has been completed</p>
     <% else %>
@@ -33,7 +33,7 @@
 <ul>
   <% @bookings.each do |booking| %>
   <li>
-    <p><%= booking.restaurant.name %> wants you for <%= booking.start_hours %> to <%= booking.end_hours %> on <%= booking.date %> and will pay $<%= booking.cost_pennies / 100 %><br>
+    <p><%= booking.restaurant.name %> wants you for <%= booking.start_hours %> to <%= booking.end_hours %> on <%= booking.date %> and will pay $<%= booking.cost %><br>
       <%= link_to "Chat with #{booking.restaurant.name}", conversation_path(Conversation.between(booking.chef, booking.restaurant)) %>
     </p>
   </li>
