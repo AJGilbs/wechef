@@ -5,6 +5,13 @@
   <%= f.input :price %>
   <%= f.input :address %>
   <%= f.input :phone_number %>
+   <div class="img-preview-container">
+      <img id="img-preview" class="img-preview">
+      <%= f.file_field :photo, id: "img-file", class: "img-button" %>
+      <%= f.file_field :background_photo, id: "img-file", class: "img-button" %>
+      <p>Upload your photo!</p>
+    </div>
+
   <div class="submit-holder">
     <%= f.button :submit, "Save", class: "submit-btn" %>
   </div>
