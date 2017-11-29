@@ -1,26 +1,21 @@
 <div class="container">
-<%= simple_form_for(@restaurant) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name, required: true, autofocus: true %>
-    <%= f.input :address, required: true %>
-    <%= f.input :phone_number, required: true %>
-    <%= f.input :website_address %>
-
-    <%= f.input :email, required: true %>
-
-    <%# if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <!-- <p>Currently waiting confirmation for: <%# resource.unconfirmed_email %></p> -->
-    <%# end %>
-
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-  </div>
-
-  <div class="submit-holder">
-    <%= f.button :submit, "Save", class: "submit-btn" %>
-  </div>
-<% end %>
+<%= render 'shared/form_restaurant' %>
 </div>
+
+<script>
+
+//image preview
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#img-preview').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+$("#img-file").change(function(){
+  readURL(this);
+});
+
+</script>

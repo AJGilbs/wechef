@@ -1,11 +1,14 @@
-<h2>Conversation <%= @conversation.chef.name %> and <%= @conversation.restaurant.name %></h2>
+<% recipient = current_chef ? @conversation.restaurant.name : @conversation.chef.name %>
+<div class="message-container">
+
+<h2>You're chatting with <%= recipient %></h2>
 
 <div class="h2_underline"></div>
 
-<div class="message-container">
-
   <% @conversation.messages.each do |message| %>
-    <div class="message-row">
+    <% sender = current_chef ? current_chef : current_restaurant %>
+    <% is_author = message.author == sender ? 'flex-reverse' : '' %>
+    <div class="message-row <%= is_author %>">
       <div class="left">
         <%= cl_image_tag message.author.photo, height: 44, width: 44, crop: :fill %>
         <% message.author.name %>
@@ -15,7 +18,7 @@
           <%= message.body %>
         </div>
         <div class="bottom">
-          date
+          <%= time_ago_in_words(message.created_at).gsub('about','').capitalize %> ago
         </div>
       </div>
     </div>
@@ -55,4 +58,3 @@
       }
   })
 </script>
-

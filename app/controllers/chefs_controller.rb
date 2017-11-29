@@ -48,7 +48,7 @@ private
   end
 
   def chef_params
-    params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :description, :price)
+    params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :background_photo, :description, :price)
   end
 
   # def position_params

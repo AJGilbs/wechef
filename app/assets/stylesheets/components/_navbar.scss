@@ -42,7 +42,7 @@ nav
 .user-menu
 {
     position: fixed;
-    z-index: 101;
+    z-index: 999999;
     top: 0;
     left: 100vw;
 
@@ -94,7 +94,7 @@ nav
 .search-menu
 {
     position: fixed;
-    z-index: 101;
+    z-index: 999999;
     top: 0;
     right: 100vw;
 
