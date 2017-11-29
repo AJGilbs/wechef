@@ -15,6 +15,14 @@
             user-select: none;
 }
 
+*:hover {
+  text-decoration:none !important;
+}
+
+a {
+  color: inherit !important;
+}
+
 body
 {
     margin: 0;
@@ -27,6 +35,22 @@ body
 
 h1 {
   text-align: center
+}
+
+h2 {
+  font-size: 16px;
+  padding: 20px 20px 10px 20px;
+  text-align:center;
+  width: calc(100% - 30px);
+  margin: 20px 0 8px 15px;
+  padding: 0;
+}
+
+.h2_underline {
+  width:80px;
+  height:1px;
+  margin: 0 auto 20px auto;
+  background-color: #ddd;
 }
 
 .form-control, .form-control:focus {

@@ -1,34 +1,93 @@
 <div class="results-container">
 
-<h1>Pending Requests</h1>
+<h2>Pending Requests</h2>
+<div class="h2_underline"></div>
 
-<ul>
+
+
   <% @requests.each do |request| %>
-    <p><%= link_to 'Cancel Chef Request', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'} %></p>
     <% request.chefs.each do |chef| %>
-      <li><%= chef.name %></li>
-        <%= link_to 'Cancel Chef', cancel_chef_request_path(request, chef: chef), method: :patch, data: {confirm: 'Are you sure?'} %> -
-        <%= link_to "Chat with #{chef.name.capitalize}", conversation_path(request.conversations.find_by(chef: chef)) %>
-      </li>
+
+      <div class="dash-card">
+        <div class="dash-card__top">
+          <div class="dash-avatar">
+            <%= cl_image_tag chef.photo, height: 50, width: 50, crop: :fill %>
+          </div>
+          <div class="dash-card__right">
+            <div class="top">
+              <div class="left">
+                <%= chef.name %>
+              </div>
+              <div class="right">
+                £<%= chef.price_pennies %> p/h
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="left">
+                *****
+              </div>
+              <div class="right">
+                pending
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-buttons">
+          <%= link_to "Message #{chef.name.partition(" ").first.capitalize}", conversation_path(request.conversations.find_by(chef: chef)), class: "dash-50-button" %>
+          <%= link_to 'Cancel Request', cancel_chef_request_path(request, chef: chef), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-50-cancel" %>
+        </div>
+      </div>
+      <div class="dash-cancel__wrapper">
+        <%= link_to 'Cancel all Chefs', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-100-cancel" %>
+      </div>
+
     <% end %>
-    <hr>
   <% end %>
-</ul>
 
-<h1>Accepted Bookings</h1>
 
-<ul>
-  <p>Unpaid bookings:</p>
+<h2>Accepted Bookings</h2>
+<div class="h2_underline"></div>
+
   <% @bookings.where(status: 'unpaid').each do |unpaid_booking| %>
-  <li>
-    <p><%= unpaid_booking.chef.name %> - <%= unpaid_booking.start_hours %> until <%= unpaid_booking.end_hours %> on <%= unpaid_booking.date %><br>
-    <%= link_to "Pay ($#{unpaid_booking.cost_pennies / 100})" , new_booking_payment_path(unpaid_booking) %> - <%= link_to "Chat with #{unpaid_booking.chef.name.capitalize}", conversations_path %></p>
-  </li>
+
+      <div class="dash-card">
+        <div class="dash-card__top">
+          <div class="dash-avatar">
+            <%= cl_image_tag unpaid_booking.chef.photo, height: 50, width: 50, crop: :fill %>
+          </div>
+          <div class="dash-card__right">
+            <div class="top">
+              <div class="left">
+                <%= unpaid_booking.chef.name %>
+              </div>
+              <div class="right">
+                £<%= unpaid_booking.chef.price_pennies %> p/h
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="left">
+                *****
+              </div>
+              <div class="right">
+                pending
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-buttons">
+          <%= link_to "Pay £#{unpaid_booking.cost_pennies / 100}" , new_booking_payment_path(unpaid_booking), class: "dash-50-button" %>
+          <%= link_to "Chat with #{unpaid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-cancel" %>
+        </div>
+      </div>
+
+
+   <%= unpaid_booking.chef.name %> - <%= unpaid_booking.start_hours %> until <%= unpaid_booking.end_hours %> on <%= unpaid_booking.date %>
+
+
   <% end %>
-</ul>
-<hr>
-<ul>
-  <p>Paid bookings:</p>
+
+
+
   <% @bookings.where(status: 'paid').each do |paid_booking| %>
   <li>
     <p><%= paid_booking.chef.name %> - <%= paid_booking.start_hours %> to <%= paid_booking.end_hours %> on <%= paid_booking.date %> -  paid: <%= paid_booking.cost_pennies %><br>
@@ -36,6 +95,5 @@
     </p>
   </li>
   <% end %>
-</ul>
 
 </div>
