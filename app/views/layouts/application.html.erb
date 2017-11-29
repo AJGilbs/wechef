@@ -10,10 +10,8 @@
   </head>
   <body>
     <%= render 'shared/nav' %>
-    <div id="content">
       <%= render 'shared/flashes' %>
       <%= yield %>
-    </div>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
