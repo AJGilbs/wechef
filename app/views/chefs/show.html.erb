@@ -1,5 +1,5 @@
 <div class="profile-container">
-  <div class="profile-banner">
+  <div class="profile-banner" style="background-image: url(<%= @chef.background_photo %>)">
     <div class="profile-avatar">
       <img src="<%= @chef.photo %>">
     </div>
@@ -41,11 +41,8 @@
       Headchef at Sketch
   </div>
 
-  <% if current_chef != @chef %>
-    <%= render 'shared/request_form' %>
-  <% end %>
-
-  <div class="profile-reviews__title">Reviews</div>
+  <h2>Reviews</h2>
+  <div class="h2_underline"></div>
 
   <% if @chef.reviews_chef.count == 0 %>
 
@@ -105,10 +102,9 @@
 
   <% end %>
 
-
-
-  <%= render 'shared/request_form' %>
-
+  <% if current_chef != @chef %>
+    <%= render 'shared/request_form' %>
+  <% end %>
 
   <% if current_chef != @chef %>
     <div class="submit-holder">

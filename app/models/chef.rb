@@ -11,6 +11,7 @@ class Chef < ApplicationRecord
 
   monetize :price_pennies
   mount_uploader :photo, PhotoUploader
+  mount_uploader :background_photo, PhotoUploader
 
   def been_booked_by_restautant?(restaurant)
     bookings.any? do |b|
