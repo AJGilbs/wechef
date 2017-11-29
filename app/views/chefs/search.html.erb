@@ -13,6 +13,7 @@
         </select>
         <input type="hidden" name="date" value="<%= params[:date] %>">
         <button type="submit">Filter</button>
+    </form>
   <div class="clear"></div>
 
   <%= render 'shared/card' %>
@@ -60,7 +61,6 @@
         removeSelected(chefId);
       }
       hiddenImput.value = idArray;
-      console.log(hiddenImput.value)
     });
   });
 
