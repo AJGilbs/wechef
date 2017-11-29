@@ -1,0 +1,122 @@
+.dash-card {
+  width: calc(100% - 30px);
+  margin: 15px;
+  display: block;
+  padding:18px;
+  text-align: center;
+  position:relative;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.dash-card__top {
+display:flex;
+}
+
+.dash-avatar {
+  width:66px;
+  height:66px;
+  border-radius: 50%;
+  overflow:hidden;
+}
+
+.dash-card__right {
+  margin: 0 0 0 15px;
+  font-size:16px;
+  .top {
+    display:flex;
+    .left {
+    }
+    .right {
+      margin: 0 0 0 15px;
+      text-align:right;
+    }
+  }
+  .middle {
+    display:flex;
+    .left {
+    }
+    .right {
+      margin: 0 0 0 15px;
+      text-align:right;
+    }
+  }
+  .bottom {
+    display:flex;
+    .left {
+    }
+    .right {
+      margin: 0 0 0 15px;
+      text-align:right;
+    }
+  }
+}
+
+.dash-buttons {
+  display: flex;
+  margin: 15px 0 0 0;
+}
+
+.dash-50-button, .dash-100-button {
+  width:50%;
+  height: 44px;
+  background-color: #ddd;
+  border-radius: 3px;
+  color: #424242;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  margin: 0 15px 0 0;
+}
+
+.dash-50-chat, .dash-100-chat {
+  width:50%;
+  height: 44px;
+  background-color: #ddd;
+  border-radius: 3px;
+  color: #424242;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  margin: 0;
+}
+
+.dash-50-dark, .dash-100-dark {
+  width:50%;
+  height: 44px;
+  background-color: #707070;
+  border-radius: 3px;
+  color: #fff !important;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  margin: 0 15px 0 0;
+}
+
+.dash-50-cancel, .dash-100-cancel {
+  width:50%;
+  background-color: $gray-base;
+  border-width:1px;
+  border-style: solid;
+  border-color:#ddd;
+  border-radius: 3px;
+  color: #707070;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+}
+
+.dash-100-button {
+  width:100%;
+}
+
+.dash-100-cancel {
+  width:100%;
+}
+
+.dash-cancel__wrapper {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 0 40px 0;
+}
