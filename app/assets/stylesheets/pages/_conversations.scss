@@ -1,0 +1,145 @@
+
+.conversation-wrapper {
+  width: 100%;
+  display: flex;
+  padding: 15px;
+  position:relative;
+  .last-date {
+    position:absolute;
+    top: 15px;
+    right:15px;
+    color: #ddd;
+    font-size:14px;
+  }
+  .left {
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 15px 0 0;
+    min-width:66px;
+    width: 66px;
+    height:66px;
+    display:block;
+  }
+  .right {
+    max-height: 66px;
+    overflow:hidden;
+    .name {
+      font-size: 17px;
+    }
+    .last-message {
+      font-size: 15px;
+      color: #989898;
+    }
+  }
+}
+
+.conversations-none {
+  width: 100%;
+  text-align:center;
+  padding: 0px;
+  font-size: 14px;
+  color: #989898;
+  margin: 0 0 20px 0;
+}
+
+.conversation-break {
+  width: calc(100% - 30px);
+  height:1px;
+  display:block;
+  margin: 0 0 0 15px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #ddd;
+}
+
+.conversation-break:last-child {
+  display: none;
+}
+
+.conversation-link {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  display:block;
+  z-index:1;
+}
+
+.flip {
+  -webkit-transform: scaleX(-1);
+}
+
+.message-container {
+  margin: 15px 0 85px 0;
+}
+
+
+.message-row {
+  display: flex;
+  margin: 0 0 15px 15px;
+  .left {
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+    min-width:44px;
+    max-width:44px;
+    overflow:hidden;
+    border-radius: 50%;
+    margin: 0 15px 0 0;
+    background-color: #ddd;
+  }
+  .right {
+    .top {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+    .bottom {
+      text-align: right;
+      font-size: 14px;
+      color: #ddd;
+      padding: 5px 10px 5px 5px;
+    }
+  }
+}
+
+.reply-container {
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  background: rgba(60,60,60,0.95);
+  width: 100%;
+  height: 74px;
+  padding: 15px;
+  textarea, textarea:focus {
+    width: calc(100% - 60px);
+    border-radius: 3px 0 0 3px !important;
+    font-size: 15px;
+    height: 44px;
+    border-width:0 !important;
+    background-color: #fff !important;
+    padding: 11px 20px 10px 13px;
+  }
+  label { display: none !important; }
+  input {
+    position: absolute;
+    top:15px;
+    right: 15px;
+    color: #ddd;
+    height: 44px;
+    width: 70px;
+    border-width:0;
+    border-radius: 0 3px 3px 0 !important;
+    background-color: #fff;
+  }
+}
+
+
+
+
+
+
+
