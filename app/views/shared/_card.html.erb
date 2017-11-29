@@ -17,10 +17,11 @@
     </div>
     <div class="card-details">
       <div class="left">3 years</div>
-      <div class="right">£<%= chef.price %></div>
+      <div class="right" id="price<%= chef.id %>">£<%= chef.price %></div>
     </div>
 
 
       <div class="btn-select disabled" id="<%= chef.id %>">Add to Shortlist</div>
   </div>
   <% end %>
+

@@ -1,10 +1,72 @@
 <h1>Request Form</h1>
 <%= simple_form_for @request do |f| %>
   <%= f.input :date %>
-  <%= f.input :start_hours, :as => :time, :minute_step => 15 %>
-  <%= f.input :end_hours, :as => :time, :minute_step => 15 %>
+  <%= f.input :start_hours, :as => :time, :minute_step => 15, :label => "Start time", :input_html => {id: :start_hours }%>
+  <%= f.input :end_hours, :as => :time, :minute_step => 15, :label => "End Time", :input_html => { id: :end_hours }%>
   <%= f.input :chef_ids, :as => :hidden, :input_html => { :value => params[:selected]} %>
-  <%= f.input :number_of_chefs %>
+  <input type="hidden" id="prices" value="<%= params[:prices] %>">
+  <%= f.input :number_of_chefs, collection: 1..5, selected: 1, :label => 'How many chefs do you need?' %>
   <%= f.input :description %>
-  <%= f.submit 'Create Booking' %>
+  <%= f.submit 'Request' %>
 <% end %>
+  <button id="estimate">Estimate costs</button>
+  <p id="costs-range"></p>
+<script>
+  const startTime = document.getElementById("start_hours");
+  const endTime = document.getElementById("end_hours");
+  const costsRange = document.getElementById("costs-range");
+  const estimateBtn = document.getElementById("estimate");
+  const prices = document.getElementById("prices");
+
+  var startHours;
+  var endHours;
+  var min;
+
+    // return the biggest from the array
+    const getMax = ( array ) => {
+      return Math.max.apply( Math, array );
+    }
+
+    // return the lowest form the array
+    const getMin = ( array ) => {
+        return Math.min.apply( Math, array );
+    };
+
+
+
+  estimateBtn.addEventListener("click", (event) => {
+    // taking hours and minutes from form
+    let startH = startTime.value;
+    let startM = startTime.parentElement.lastElementChild.value;
+    let endH = endTime.value;
+    let endM = endTime.parentElement.lastElementChild.value;
+
+    // transforming everything in minutes (integer)
+    let startMin = (parseInt(startH, 10) * 60) + parseInt(startM, 10);
+    let endMin = (parseInt(endH, 10) * 60) + parseInt(endM, 10);
+    let totalRequestMin = endMin - startMin;
+
+    // taking the lowest and highest chefs prices p/ minutes
+    let pricesArray = prices.value.split(",");
+    let biggestPrice = getMax(pricesArray) / 60;
+    let lowestPrice = getMin(pricesArray) / 60;
+
+
+    // calculating total max and min cost
+    let lowestTotalCost = lowestPrice * totalRequestMin
+    let biggestTotalCost = biggestPrice * totalRequestMin
+    // displaying the estimating
+
+    startHours = `${startH}h${startM}`;
+    endHours = `${endH}h${endM}`;
+
+
+    costsRange.innerText = "";
+    costsRange.innerText = `Your booking from ${startHours} to ${endHours} could costs from £${lowestTotalCost}.00 to £${biggestTotalCost}.00`;
+  });
+
+</script>
+
+<!-- hour >>
+min >> event.target.parentElement.lastElementChild.value
+ -->
