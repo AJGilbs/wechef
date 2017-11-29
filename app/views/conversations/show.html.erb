@@ -1,12 +1,58 @@
-<h1>Conversation <%= @conversation.chef.name %> and <%= @conversation.restaurant.name %></h1>
+<h2>Conversation <%= @conversation.chef.name %> and <%= @conversation.restaurant.name %></h2>
 
-<ul>
+<div class="h2_underline"></div>
+
+<div class="message-container">
+
   <% @conversation.messages.each do |message| %>
-    <li><%= message.body %> by <%= message.author.name %></li>
+    <div class="message-row">
+      <div class="left">
+        <%= cl_image_tag message.author.photo, height: 44, width: 44, crop: :fill %>
+        <% message.author.name %>
+      </div>
+      <div class="right">
+        <div class="top">
+          <%= message.body %>
+        </div>
+        <div class="bottom">
+          date
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
 
-<%= simple_form_for [@conversation, @message] do |f| %>
-  <%= f.input :body %>
-  <%= f.submit %>
-<% end %>
+</div>
+
+<div class="reply-container">
+  <%= simple_form_for [@conversation, @message] do |f| %>
+    <%= f.input :body, id: "chatbox", class: "chatbox", placeholder: "Say something!" %>
+    <%= f.submit "Send", id: "sendButton" %>
+  <% end %>
+</div>
+
+<script>
+  var chatbox = document.getElementById("chatbox");
+  var heightLimit = 200; /* Maximum height: 200px */
+
+  chatbox.oninput = function() {
+    chatbox.style.height = ""; /* Reset the height*/
+    chatbox.style.height = Math.min(chatbox.scrollHeight, heightLimit) + "px";
+  };
+</script>
+
+<script>
+  var myForm = document.getElementById('chatbox');
+
+  myForm.addEventListener('submit', function () {
+      var allInputs = myForm.getElementsByTagName('input');
+
+      for (var i = 0; i < allInputs.length; i++) {
+          var input = allInputs[i];
+
+          if (input.name && !input.value) {
+              input.name = '';
+          }
+      }
+  })
+</script>
+

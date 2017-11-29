@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171129152246) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,15 +98,15 @@ ActiveRecord::Schema.define(version: 20171129152246) do
     t.integer "chef_ids", default: [], array: true
     t.date "date"
     t.string "shift"
-    t.integer "cost_pennies", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "accepted_chef_ids", default: [], array: true
     t.integer "number_of_chefs"
-    t.integer "start_hours"
-    t.integer "end_hours"
     t.string "status", default: "pending"
     t.text "description"
+    t.text "cost"
+    t.time "start_hours"
+    t.time "end_hours"
     t.index ["restaurant_id"], name: "index_requests_on_restaurant_id"
   end
 

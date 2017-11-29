@@ -1,8 +1,28 @@
-<h1>My Conversations</h1>
+<% if @conversations.count == 0 %>
 
-<ul>
+  <div class="conversations-none">
+    You have had a conversation yet
+  </div>
+
+<% else %>
+
   <% @conversations.each do |conversation| %>
-    <li><%= link_to "Show conversation #{conversation.id}", conversation_path(conversation) %></li>
+
+    <div class="conversation-wrapper">
+      <div class="last-date">Last message date</div>
+      <div class="left">
+        <%= cl_image_tag conversation.chef.photo, height: 66, width: 66, crop: :fill %>
+      </div>
+      <div class="right">
+        <div class="name"><%= conversation.chef.name %></div>
+        <div class="last-message">Last message should go here truncated. Last message should go here truncated. Last message should go here truncated.</div>
+      </div>
+      <%= link_to "", conversation_path(conversation), class: "conversation-link" %>
+    </div>
+    <div class="conversation-break"></div>
+
   <% end %>
-</ul>
+
+<% end %>
+
 

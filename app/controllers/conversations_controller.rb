@@ -12,6 +12,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @chatback = true
     @conversation = Conversation.find(params[:id])
     authorize @conversation
     @message = Message.new
