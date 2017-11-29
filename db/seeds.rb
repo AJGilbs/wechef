@@ -12,6 +12,7 @@ Request.destroy_all
 ReviewsChef.destroy_all
 Booking.destroy_all
 Restaurant.destroy_all
+Position.destroy_all
 Chef.destroy_all
 
 puts "Creating..."
@@ -31,23 +32,44 @@ hoppers.save!
 puts 'Restaurants are created'
 
 #Chefs
-nathalia = Chef.new(email: "hello@nathalia.com", password: '123456', name: "Nathalia de Luccas", address: "144, Liverpool Road", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+nathalia = Chef.new(email: "hello@nathalia.com", password: '123456', name: "Nathalia de Luccas", price: 200, address: "144, Liverpool Road", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
 nathalia.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
 nathalia.save!
-cris = Chef.new(email: "hello@cris.com", password: '123456', name: "Cris Hdo", address: "433, London", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+cris = Chef.new(email: "hello@cris.com", password: '123456', name: "Cris Hdo", price: 85, address: "433, London", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
 cris.remote_photo_url = "https://avatars0.githubusercontent.com/u/30732497?s=460&v=4"
 cris.save!
-david = Chef.new(email: "hello@david.com", password: '123456', name: "David Rossiter", address: "9 Barge Walk, Greenwich", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+david = Chef.new(email: "hello@david.com", password: '123456', name: "David Rossiter", price: 90, address: "9 Barge Walk, Greenwich", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
 david.remote_photo_url = "https://avatars2.githubusercontent.com/u/26829404?s=460&v=4"
 david.save!
-khaled = Chef.new(email: "hello@khaled.com", password: '123456', name: "Khaled McGonnell", address: "123, McGonnell Drive", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+khaled = Chef.new(email: "hello@khaled.com", password: '123456', name: "Khaled McGonnell", price: 100, address: "123, McGonnell Drive", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
 khaled.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
 khaled.save!
-joe = Chef.new(email: "hello@joe.com", password: '123456', name: "Joe Running", address: "1 Running Street", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+joe = Chef.new(email: "hello@joe.com", password: '123456', name: "Joe Running", price: 50, address: "1 Running Street", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
 joe.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
 joe.save!
 
 puts 'Chefs are created'
+
+position = Position.new(title: "Executive Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
+position.chef = nathalia
+position.save!
+position = Position.new(title: "Head Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
+position.chef = nathalia
+position.save!
+
+position = Position.new(title: "Head Chef", restaurant_name: "Mishoom", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
+position.chef = cris
+position.save!
+
+position = Position.new(title: "Sous Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
+position.chef = david
+position.save!
+
+position = Position.new(title: "Sous Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
+position.chef = khaled
+position.save!
+
+puts 'Positions are created'
 
 booking = Booking.new(date: Date.today, start_hours: 13, end_hours: 20)
 booking.restaurant = sketch

@@ -17,7 +17,7 @@
                 <%= chef.name %>
               </div>
               <div class="right">
-                £<%= chef.price_pennies %> p/h
+                £<%= chef.price %>
               </div>
             </div>
             <div class="middle">
@@ -84,7 +84,7 @@
           </div>
         </div>
         <div class="dash-buttons">
-          <%= link_to "Pay £#{unpaid_booking.cost_pennies / 100}" , new_booking_payment_path(unpaid_booking), class: "dash-50-dark" %>
+          <%= link_to "Pay £#{unpaid_booking.cost}" , new_booking_payment_path(unpaid_booking), class: "dash-50-dark" %>
           <%= link_to "Message #{unpaid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-chat" %>
         </div>
       </div>
@@ -123,7 +123,7 @@
         </div>
       </div>
       <div class="dash-buttons">
-        <%= link_to "Pay £#{paid_booking.cost_pennies / 100}" , new_booking_payment_path(paid_booking), class: "dash-50-dark" %>
+        <%= link_to "Pay £#{paid_booking.cost}" , new_booking_payment_path(paid_booking), class: "dash-50-dark" %>
         <%= link_to "Message #{paid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-chat" %>
       </div>
     </div>

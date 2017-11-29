@@ -23,10 +23,15 @@ class RequestsController < ApplicationController
   end
 
   def create
-    raise
     new_request = Request.new(request_params)
     new_request.restaurant = current_restaurant
     new_request.chef_ids = params[:request][:chef_ids].split(',')
+    hours = new_request.end_hours - new_request.start_hours
+    cost = {}
+    new_request.chef_ids.each do |chef_id|
+     cost[chef_id] = Chef.find(chef_id).price * hours
+    end
+    new_request.cost = cost
     authorize new_request
     if new_request.save
       new_request.chef_ids.each do |chef_id|
@@ -57,7 +62,7 @@ class RequestsController < ApplicationController
       date: @request.date,
       start_hours: @request.start_hours,
       end_hours: @request.end_hours,
-      cost_pennies: @request.cost_pennies,
+      cost: @request.cost[current_chef.id],
       restaurant: @request.restaurant,
       chef: current_chef
     )
