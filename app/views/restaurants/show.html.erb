@@ -1,23 +1,92 @@
+<div class="profile-container">
 
 
-
-<div class="profile-banner">
-  <div class="profile-avatar">
-    <img src="<%= @restaurant.photo %>">
+  <div class="profile-banner">
+    <div class="profile-avatar">
+      <img src="<%= @restaurant.photo %>">
+    </div>
   </div>
-</div>
 
-<div class="profile-name">
-  <%= @restaurant.name %>
-</div>
+  <div class="profile-name">
+    <%= @restaurant.name %>
+  </div>
 
-<% if @restaurant.booked_chef?(current_restaurant) %>
-  <%= link_to "Add review", new_restaurant_reviews_restauran_path(@restaurant) %>
-<% end %>
+  <div class="profile-description">
+    <%= @restaurant.website_address %>
+  </div>
 
-<%= @restaurant.reviews_restaurant.count %>
-  <% @restaurant.reviews_restaurant.each do |rev| %>
-    <%= rev.rating %>
-    <%= rev.comment %>
+<!--   <% if @restaurant.booked_chef?(current_restaurant) %>
+    <%= link_to "Add review", new_restaurant_reviews_restauran_path(@restaurant) %>
   <% end %>
+
+  <%= @restaurant.reviews_restaurant.count %>
+    <% @restaurant.reviews_restaurant.each do |rev| %>
+      <%= rev.rating %>
+      <%= rev.comment %>
+    <% end %> -->
+
+  <h2>Reviews</h2>
+  <div class="h2_underline"></div>
+
+<% if @restaurant.reviews_restaurant.count == 0 %>
+
+    <% if @restaurant.booked_chef?(current_restaurant) %>
+
+      <div class="reviews-none">
+        <%= link_to "Be the first to review #{@restaurant.name}", new_restaurant_reviews_restaurant_path(@restaurant) %>
+      </div>
+
+    <% else %>
+
+      <% if current_restaurant == @restaurant %>
+
+        <div class="reviews-none">
+          Your restaurant has not been reviewed yet
+        </div>
+
+     <% else %>
+
+        <div class="reviews-none">
+          <%= @restaurant.name %> has not been reviewed yet
+        </div>
+
+      <% end %>
+
+    <% end %>
+
+  <% else %>
+
+    <% if @restaurant.booked_chef?(current_restaurant) %>
+
+      <div class="reviews-none">
+        <%= link_to "Leave a review for #{@restaurant.name}", new_restaurant_reviews_restaurant_path(@restaurant) %>
+      </div>
+
+    <% end %>
+
+     <div class="reviews-container">
+      <% @restaurant.reviews_restaurant.each do |rev| %>
+        <!-- Start review -->
+        <div class="review-row">
+          <div class="review-top">
+            <div class="left">
+              <img src="http://res.cloudinary.com/dbaqcyzvv/image/upload/v1511801389/ob8ecwji0sxjo9pzeait.jpg" class="review-avatar">
+            </div>
+            <div class="right">
+              Username<br>
+              <%= rev.rating %>
+            </div>
+          </div>
+          <div class="review-content">
+            <%= rev.comment %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+
+</div>
+
+<%= render 'shared/form_restaurant' %>
 
