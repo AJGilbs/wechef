@@ -17,7 +17,7 @@
                 <%= chef.name %>
               </div>
               <div class="right">
-                £<%= chef.price %>
+                £<%= chef.price %> p/h
               </div>
             </div>
             <div class="middle">
@@ -76,7 +76,7 @@
             </div>
             <div class="bottom">
               <div class="left">
-                <%= request.start_hours %> until <%= request.end_hours %> on <%= request.date %>
+                <%= request.start_hours&.strftime("%H:%M") %> until <%= request.end_hours&.strftime("%H:%M") %> on <%= request.date&.strftime("%d-%m-%Y") %>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@
                 <%= unpaid_booking.chef.name %>
               </div>
               <div class="right">
-                £<%= unpaid_booking.chef.price_pennies %> p/h
+                £<%= unpaid_booking.chef.price %> p/h
               </div>
             </div>
             <div class="middle">
@@ -170,7 +170,7 @@
             </div>
             <div class="middle">
               <div class="left">
-                <%= unpaid_booking.start_hours %> until <%= unpaid_booking.end_hours %> on <%= unpaid_booking.date %>
+                <%= unpaid_booking.start_hours&.strftime("%H:%M") %> until <%= unpaid_booking.end_hours&.strftime("%H:%M") %> on <%= unpaid_booking.date&.strftime("%d-%m-%Y") %>
               </div>
             </div>
           </div>
@@ -196,7 +196,7 @@
               <%= paid_booking.chef.name %>
             </div>
             <div class="right">
-              £<%= paid_booking.chef.cost_pennies %>
+              £<%= paid_booking.chef.cost %>
             </div>
           </div>
           <div class="middle">
@@ -255,7 +255,7 @@
           </div>
           <div class="middle">
             <div class="left">
-              <%= paid_booking.start_hours %> until <%= paid_booking.end_hours %> on <%= paid_booking.date %>
+              <%= paid_booking.start_hours&.strftime("%H:%M") %> until <%= paid_booking.end_hours&.strftime("%H:%M") %> on <%= paid_booking.date&.strftime("%d-%m-%Y") %>
             </div>
           </div>
         </div>
