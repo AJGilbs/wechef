@@ -1,5 +1,10 @@
 <h1>Request Form</h1>
 <%= simple_form_for @request do |f| %>
+  <% if @request.errors.any? %>
+    <% @request.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  <% end %>
   <%= f.input :date %>
   <%= f.input :start_hours, :as => :time, :minute_step => 15, :label => "Start time", :input_html => {id: :start_hours }%>
   <%= f.input :end_hours, :as => :time, :minute_step => 15, :label => "End Time", :input_html => { id: :end_hours }%>
