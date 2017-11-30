@@ -119,11 +119,12 @@ request_hoppers.save!
 
 puts 'Requests are created'
 
-conversation1 = Conversation.create(request: request_sketch, restaurant: sketch, chef: nathalia)
-conversation2 = Conversation.create(request: request_bao, restaurant: bao, chef: david)
-conversation3 = Conversation.create(request: request_hoppers, restaurant: hoppers, chef: joe)
-conversation4 = Conversation.create(request: request_ceviche, restaurant: ceviche, chef: khaled)
-conversation5 = Conversation.create(request: request_bao, restaurant: bao, chef: david)
+conversation1 = Conversation.create!(request: request_sketch, restaurant: sketch, chef: nathalia)
+conversation2 = Conversation.create!(request: request_bao, restaurant: bao, chef: david)
+conversation3 = Conversation.create!(request: request_hoppers, restaurant: hoppers, chef: joe)
+conversation4 = Conversation.create!(request: request_ceviche, restaurant: ceviche, chef: khaled)
+conversation5 = Conversation.create!(request: request_bao, restaurant: bao, chef: david)
+conversation6 = Conversation.create!(request: request_hawksmoor, restaurant: hawksmoor, chef: cris)
 
 puts 'Conversations are created'
 

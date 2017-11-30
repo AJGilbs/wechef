@@ -3,9 +3,8 @@
     <div>
       <h1>When do you need a Chef?</h1>
 
-      <a href="http://localhost:3000/chefs/search?date=<%= DateTime.now.strftime("%d-%m-%Y") %>" class="when-links">Today</a>
-
-      <a href="http://localhost:3000/chefs/search?date=<%= (DateTime.now + 1).strftime("%d-%m-%Y") %>" class="when-links">Tomorrow</a>
+      <%= link_to 'Today', search_chefs_path(date: DateTime.now.strftime("%d-%m-%Y")), class: 'when-links' %>
+      <%= link_to 'Tomorrow', search_chefs_path(date: (DateTime.now + 1.day).strftime("%d-%m-%Y")), class: 'when-links' %>
 
       <form action="chefs/search">
         <input type="date" name="date" placeholder="when you need a chef?" class="index-search-bar">
