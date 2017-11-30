@@ -10,6 +10,7 @@
     <% @conversations.each do |conversation| %>
 
       <div class="conversation-wrapper">
+                                  <!-- if thes no messages.last don't tried the next method -->
         <div class="last-date"><%= conversation.messages.last&.created_at&.strftime("%d/%m/%Y") || Date.today.strftime("%d/%m/%Y") %></div>
         <div class="left">
           <%= cl_image_tag conversation.chef.photo, height: 66, width: 66, crop: :fill %>
