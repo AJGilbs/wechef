@@ -13,21 +13,20 @@
 }
 
 .create-model {
-  width: 85%;
-  height: 90%;
+  width: 100%;
+  height: calc(100% - 70px);
   position:absolute;
-  background-color:#fff;
-  border-radius:3px;
-  top:38%;
-  right: 7%;
-  margin: -250px 0 0 -275px;
-  padding:50px;
+  background-color: $gray-base;
+  top: 70px;
+  left: 0;
+  margin: 0;
+  padding:15px;
   z-index: 99;
 }
 
 .model-close {
   position:absolute;
-  top:20px;
+  top:85px;
   right:27px;
   cursor: pointer;
   i {
@@ -43,4 +42,56 @@
 
 .overflow-scroll {
   overflow: scroll;
+}
+
+
+.model-submit-btn {
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    left:15px;
+    width: calc(100% - 30px);
+    height: 44px;
+    text-align: center;
+    font-size: 15px;
+    color: $primary-text;
+    border-width: 0;
+    background-color: $primary-action;
+    border-radius: 3px;
+    outline:none;
+}
+
+.model-cancel-btn {
+    display: block;
+    position: absolute;
+    bottom: 74px;
+    left:15px;
+    width: calc(100% - 30px);
+    height: 44px;
+    text-align: center;
+    font-size: 15px;
+    line-height:44px;
+    color: #989898;
+    border-width: 1px;
+    border-color: #ddd;
+    border-style: solid;
+    background-color: $gray-base;
+    border-radius: 3px;
+    outline:none;
+}
+
+
+.add-experience-btn {
+    display: block;
+
+    width: 100%;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    font-size: 15px;
+    color: $brand-primary-dark;
+    border-width: 0;
+    background-color: $brand-primary;
+    border-radius: 3px;
+    outline:none;
 }
