@@ -7,6 +7,8 @@ class ChefsController < ApplicationController
   end
 
   def show
+    #do not delete this allow, it's o show the back arrow in the nav on show page!
+    @allow = true
     @request = Request.new
     authorize(@chef)
     authorize(@request)
@@ -48,7 +50,7 @@ private
   end
 
   def chef_params
-    params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :description, :price)
+    params.require(:chef).permit(:name, :addres, :phone_number, :experience, :photo, :background_photo, :description, :price)
   end
 
   # def position_params

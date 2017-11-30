@@ -1,38 +1,68 @@
 <nav>
   <% if @allow %>
-    <a href="javascript:history.go(-1)" class="back-btn">Back</a>
+    <a href="javascript:history.go(-1)" class="back-btn">
+      <div class="arrow-container">
+        <div class="arrow"></div>
+        <div class="arrow"></div>
+      </div>
+    </a>
   <% elsif @chatback %>
-    <%= link_to "Back", conversations_path, class: "back-btn" %>
+    <%= link_to conversations_path, class: "back-btn" do %>
+      <div class="arrow-container">
+        <div class="arrow"></div>
+        <div class="arrow"></div>
+      </div>
+    <% end %>
   <% else %>
     <div class="search-icon" id="searchMenuButton">
-      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxMDI0IiB3aWR0aD0iOTczLjEyNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNOTYwIDgzMkw3MTAuODc1IDU4Mi44NzVDNzQ2LjQzOCA1MjQuODEyIDc2OCA0NTcuMTU2IDc2OCAzODQgNzY4IDE3MS45NjkwMDAwMDAwMDAwNSA1OTYgMCAzODQgMCAxNzEuOTY5IDAgMCAxNzEuOTY5MDAwMDAwMDAwMDUgMCAzODRjMCAyMTIgMTcxLjk2OSAzODQgMzg0IDM4NCA3My4xNTYgMCAxNDAuODEyLTIxLjU2MiAxOTguODc1LTU3TDgzMiA5NjBjMTcuNSAxNy41IDQ2LjUgMTcuMzc1IDY0IDBsNjQtNjRDOTc3LjUgODc4LjUgOTc3LjUgODQ5LjUgOTYwIDgzMnpNMzg0IDY0MGMtMTQxLjM3NSAwLTI1Ni0xMTQuNjI1LTI1Ni0yNTZzMTE0LjYyNS0yNTYgMjU2LTI1NiAyNTYgMTE0LjYyNSAyNTYgMjU2UzUyNS4zNzUgNjQwIDM4NCA2NDB6Ii8+PC9zdmc+" width="20">
+      <div class="magnify">
+        <div class="glass"></div>
+        <div class="handle"></div>
+      </div>
     </div>
   <% end %>
 
   <%= link_to root_path do %>
-    <div class="logo"></div>
+    <div class="logo">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg enable-background="new 0 0 57 70.8" version="1.1" viewBox="0 0 57 70.8" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+        <path class="logo-fill" d="m38.9 11.3s-4.4-1.8-4.4-5.8c0-0.9-0.8-1.7-1.7-1.7s-1.7 0.8-1.7 1.7c0 6.3 6.2 8.8 6.5 9 9.5 3.7 15.9 12.7 15.9 22.3 0 13.1-11.5 24.1-25.1 24.1s-25-11-25-24.1c0-9.7 6.5-18.7 16.1-22.4h0.1c0.4-0.2 9.6-4.5 9.6-12.7 0-0.9-0.8-1.7-1.7-1.7s-1.7 0.8-1.7 1.7c0 5.7-7 9.3-7.6 9.5-10.9 4.3-18.2 14.5-18.2 25.6 0 12.5 9.2 23.4 21.3 26.6l-2.3 2.3c-0.7 0.7-0.7 1.7 0 2.4 0.3 0.3 0.8 0.5 1.2 0.5s0.9-0.2 1.2-0.5l3.9-3.9 0.1-0.1c0.5 0.1 0.9 0.1 1.4 0.1v4.9c0 0.9 0.8 1.7 1.7 1.7s1.7-0.8 1.7-1.7v-4.9c0.5 0 0.9-0.1 1.4-0.1l0.1 0.1 3.9 3.9c0.3 0.3 0.8 0.5 1.2 0.5s0.9-0.2 1.2-0.5c0.7-0.7 0.7-1.7 0-2.4l-2.3-2.3c12.1-3.2 21.3-14.1 21.3-26.6 0-11-7.3-21.2-18.1-25.5z"/>
+        <path class="logo-fill" d="m28.5 57.7c-11.6 0-21-9.4-21-21s9.4-21 21-21 21 9.4 21 21-9.4 21-21 21zm0-39c-9.9 0-18 8.1-18 18s8.1 18 18 18 18-8.1 18-18-8.1-18-18-18z"/>
+        <path class="logo-fill" d="m28.5 50.7c-7.7 0-14-6.3-14-14s6.3-14 14-14 14 6.3 14 14-6.3 14-14 14zm0-25c-6.1 0-11 4.9-11 11s4.9 11 11 11 11-4.9 11-11-4.9-11-11-11z"/>
+        <path class="logo-fill" d="m28.5 43.7c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.2 7-7 7zm0-11c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/>
+      </svg>
+    </div>
+    <div class="name">wechef</div>
   <% end %>
 
-  <div class="avatar" id="userMenuButton">
-    <% if chef_signed_in? %>
-      <%= cl_image_tag current_chef.photo, height: 30, width: 30, crop: :fill %>
-    <% elsif restaurant_signed_in? %>
-      <%= cl_image_tag current_restaurant.photo, height: 30, width: 30, crop: :fill %>
-    <% else %>
-      Menu
-    <% end %>
+  <div class="menu-icon" id="userMenuButton">
+    <div class="row"></div>
+    <div class="row"></div>
   </div>
+
+    <% #if chef_signed_in? %>
+    <div class="avatar" id="userMenuButton">
+      <%# cl_image_tag current_chef.photo, height: 33, width: 33, crop: :fill %>
+    </div>
+    <% #elsif restaurant_signed_in? %>
+    <div class="avatar" id="userMenuButton">
+      <%# cl_image_tag current_restaurant.photo, height: 30, width: 30, crop: :fill %>
+    </div>
+    <% #else %>
+
+    <% #end %>
 
 
 </nav>
 
 <div class="user-menu" id="userMenu">
-  <div class="close-btn" id="closeUserMenu"></div>
-  <h1>Menu</h1>
+  <div class="close-btn" id="closeUserMenu">
+    <div class="diag"></div>
+    <div class="diag"></div>
+  </div>
   <div class="restaurant-menu-container">
 
     <% if restaurant_signed_in? %>
-      <h2>My Restaurant</h2>
       <%= link_to "Dashboard", myrestaurant_path %>
 
       <%= link_to "My Restaurant", restaurant_path(current_restaurant) %>
@@ -53,8 +83,6 @@
 
   <div class="chef-menu-container">
     <% if chef_signed_in? %>
-      <h2>Chef</h2>
-
       <%= link_to "Dashboard", dashboard_path %>
 
       <%= link_to "Your Profile", chef_path(current_chef) %>
@@ -78,7 +106,10 @@
 </div>
 
 <div class="search-menu" id="searchMenu">
-  <div class="close-btn" id="closeSearchMenu"></div>
+  <div class="close-btn" id="closeSearchMenu">
+    <div class="diag"></div>
+    <div class="diag"></div>
+  </div>
   <h1>Search</h1>
   </div>
 </div>

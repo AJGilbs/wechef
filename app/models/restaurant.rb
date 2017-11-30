@@ -12,6 +12,7 @@ class Restaurant < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :photo, PhotoUploader
+  mount_uploader :background_photo, PhotoUploader
 
    def booked_chef?(chef)
     bookings.any? do |b|

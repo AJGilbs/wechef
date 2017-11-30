@@ -8,7 +8,7 @@
     height: 74px;
 
 
-    background-color: rgba(60,60,60,0.95);
+    background-color: $gray-base;
 
     display:flex;
     p {
@@ -86,9 +86,9 @@
 
     text-align: center;
     font-size: 15px;
-    color: #555516;
+    color: $primary-text;
     border-width: 0;
-    background-color: $brand-primary;
+    background-color: $primary-action;
     margin:16px;
     border-radius: 3px;
     outline:none;
