@@ -4,16 +4,8 @@
 @import 'model';
 
 
-*
-{
-    box-sizing: border-box;
-    font-family: $body-font !important;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+* {
+  font-family: $body-font !important;
 }
 
 ::-webkit-scrollbar {
@@ -28,12 +20,9 @@ a {
   color: inherit !important;
 }
 
-body
-{
-    margin: 0;
-
-    color: $content-color;
-    background-color: $gray-base;
+body {
+  color: $content-color;
+  background-color: $gray-base;
 }
 
 .clear { clear:both !important; }
