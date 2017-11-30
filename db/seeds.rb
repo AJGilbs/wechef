@@ -49,7 +49,6 @@ joe.save!
 
 puts 'Chefs are created'
 
-
 # ["Executive Chef", "Head Chef", "Sous Chef", "Chef de Partie", "Commis Chef"]
 nathalia.positions.create!(restaurant_name: 'Sketch', title: "Executive Chef", start_date: Date.today - 10.years, end_date: Date.today - 8.years)
 nathalia.positions.create!(restaurant_name: 'Bao', title: "Head Chef", start_date: Date.today - 8.years, end_date: Date.today - 5.years)
