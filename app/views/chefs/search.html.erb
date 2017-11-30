@@ -23,15 +23,27 @@
 <script>
   const shortListBar = document.getElementById("shortlist");
   const selectBtns = document.querySelectorAll(".btn-select");
-  const hiddenImput = document.getElementById("hidden-selected");
+  const hiddenSelected = document.getElementById("hidden-selected");
+  const hiddenPrice = document.getElementById("hidden-prices");
   const idArray = []
-  // const list = document.getElementById("selected-chefs");
+
+  const takePriceToRequest = (chef_ids) => {
+    let prices = []
+    const reg = /[^0-9]/;
+    chef_ids.forEach((chef_id) => {
+      let costValue = document.getElementById(`price${chef_id}`).innerHTML
+      cost = costValue.replace(reg, '');
+      prices.push(cost)
+    });
+    hiddenPrice.value = prices;
+  }
 
   const displaySelected = (imgPath, chefId) => {
     let item = `<div id =avatar${chefId} class="shortlist-avatar"><img src =${imgPath} width="50">
     </div>`
     shortListBar.insertAdjacentHTML("beforeend", item);
   };
+
   const removeSelected = (id) => {
     let toDelete = document.getElementById(`avatar${id}`);
     if (toDelete != null) {
@@ -58,7 +70,8 @@
         btnTarget.classList.remove("btn-selected");
         removeSelected(chefId);
       }
-      hiddenImput.value = idArray;
+      hiddenSelected.value = idArray;
+      takePriceToRequest(idArray);
     });
   });
 
