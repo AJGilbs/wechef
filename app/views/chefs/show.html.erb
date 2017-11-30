@@ -64,23 +64,11 @@
     <%= @chef.description %>
   </div>
 
-  <% if @chef.experience == "Less than 1 year" %>
-    <% experience = "17%" %>
-  <% elsif @chef.experience == "1 year" %>
-    <% experience = "35%" %>
-  <% elsif @chef.experience == "2 years" %>
-    <% experience = "70%" %>
-  <% elsif @chef.experience == "3 years or more" %>
-    <% experience = "100%" %>
-  <% else %>
-    <% experience = "1%" %>
-  <% end %>
-
   <style>
-  .highlight { width: <%= experience %>; }
+  .highlight { width: <%= @chef.experience_percentage %>; }
     @keyframes exgrow {
       from {width: 0%;}
-      to { width: <%= experience %>;}
+      to { width: <%= @chef.experience_percentage %>;}
     }
   </style>
 

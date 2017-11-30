@@ -23,4 +23,18 @@ class Chef < ApplicationRecord
     self.joins(:positions).where("positions.title" => position)
   end
 
+  def experience_percentage
+    if experience == "Less than 1 year"
+      return "17%"
+    elsif experience == "1 year"
+      return "35%"
+    elsif experience == "2 years"
+      return "70%"
+    elsif experience == "3 years or more"
+      return "100%"
+    else
+      return "1%"
+    end
+  end
+
 end
