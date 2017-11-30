@@ -1,26 +1,26 @@
   <% @chefs.each do |chef| %>
   <div class="card">
+    <div class="card-banner"  style="background-image: url(<%= chef.background_photo %>)"></div>
     <%= link_to "", chef_path(chef.id), class: "card-link" %>
-
-    <%= cl_image_tag(chef.photo, :class => "card-avatar") %>
-    <div class="card-name"><%= chef.name %></div>
-    <div class="card-rating">
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-    </div>
-    <div class="card-details__title">
-      <div class="left">Experience</div>
-      <div class="right">Hourly Rate</div>
-    </div>
-    <div class="card-details">
-      <div class="left">3 years</div>
-      <div class="right">£<%= chef.price %></div>
-    </div>
-
-
+    <div class="card-inner">
+      <%= cl_image_tag(chef.photo, :class => "card-avatar", height: 67, width: 67, crop: :fill) %>
+      <div class="card-name"><%= chef.name %></div>
+      <div class="card-rating">
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      </div>
+      <div class="card-details__title">
+        <div class="left">Experience</div>
+        <div class="right">Hourly Rate</div>
+      </div>
+      <div class="card-details">
+        <div class="left">3 years</div>
+        <div class="right">£<%= chef.price %></div>
+      </div>
       <div class="btn-select disabled" id="<%= chef.id %>">Add to Shortlist</div>
+      </div>
   </div>
   <% end %>

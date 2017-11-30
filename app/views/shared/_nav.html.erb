@@ -15,7 +15,7 @@
 
   <div class="avatar" id="userMenuButton">
     <% if chef_signed_in? %>
-      <%= cl_image_tag current_chef.photo, height: 30, width: 30, crop: :fill %>
+      <%= cl_image_tag current_chef.photo, height: 33, width: 33, crop: :fill %>
     <% elsif restaurant_signed_in? %>
       <%= cl_image_tag current_restaurant.photo, height: 30, width: 30, crop: :fill %>
     <% else %>
@@ -28,11 +28,9 @@
 
 <div class="user-menu" id="userMenu">
   <div class="close-btn" id="closeUserMenu"></div>
-  <h1>Menu</h1>
   <div class="restaurant-menu-container">
 
     <% if restaurant_signed_in? %>
-      <h2>My Restaurant</h2>
       <%= link_to "Dashboard", myrestaurant_path %>
 
       <%= link_to "My Restaurant", restaurant_path(current_restaurant) %>
@@ -53,8 +51,6 @@
 
   <div class="chef-menu-container">
     <% if chef_signed_in? %>
-      <h2>Chef</h2>
-
       <%= link_to "Dashboard", dashboard_path %>
 
       <%= link_to "Your Profile", chef_path(current_chef) %>

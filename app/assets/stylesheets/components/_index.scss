@@ -104,9 +104,9 @@ h2 {
 
     text-align: center;
     font-size: 15px;
-    color: #606019;
+    color: $primary-text;
     border-width: 0;
-    background-color: $brand-primary;
+    background-color: $primary-action;
     margin:15px 15px 15px 0;
     border-radius: 3px;
     outline:none;
@@ -121,9 +121,9 @@ h2 {
 
     text-align: center;
     font-size: 15px;
-    color: #606019;
+    color: $primary-text;
     border-width: 0;
-    background-color: $brand-primary;
+    background-color: $primary-action;
     margin:15px 15px 15px 15px;
     border-radius: 3px;
     outline:none;
