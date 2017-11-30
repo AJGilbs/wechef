@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
     @message.author = current_chef || current_restaurant
     authorize(@message)
     if @message.save
-      redirect_to conversation_path(@conversation)
+      redirect_to conversation_path(@conversation, anchor: 'bottom')
     else
       render "conversations/show"
     end
