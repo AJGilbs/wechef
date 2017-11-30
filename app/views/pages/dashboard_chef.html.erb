@@ -82,9 +82,11 @@
           </div>
         </div>
         <div class="dash-buttons">
-          <%= link_to 'Accept', request_path(request), method: :delete, class: "dash-50-button" %>
-          <%= link_to 'Decline', request_path(request), method: :patch, class: "dash-50-cancel" %>
-          <%= link_to "Message #{request.restaurant.name.capitalize}", conversation_path(Conversation.between(current_chef, request.restaurant)), class: "dash-50-chat" %>
+          <%= link_to "Message #{request.restaurant.name.capitalize}", conversation_path(Conversation.between(current_chef, request.restaurant)), class: "dash-50-button" %>
+          <%= link_to "Decline", request_path(request), method: :patch, class: "dash-50-cancel" %>
+        </div>
+        <div class="dash-buttons">
+          <%= link_to 'Accept', request_path(request), method: :delete, class: "dash-accept" %>
         </div>
       </div>
   <% end %>
@@ -172,7 +174,7 @@
           </div>
         </div>
         <div class="dash-buttons">
-          <%= link_to "Message #{booking.restaurant.name.capitalize}", conversation_path(Conversation.between(booking.chef, booking.restaurant)), class: "dash-50-chat" %>
+          <%= link_to "Message #{booking.restaurant.name.capitalize}", conversation_path(Conversation.between(booking.chef, booking.restaurant)), class: "dash-chat" %>
         </div>
       </div>
 

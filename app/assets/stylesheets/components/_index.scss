@@ -176,3 +176,54 @@ a
     color:#606019;
     border-radius: 3px;
 }
+
+.existing-experience {
+  position:relative;
+  font-size: 15px;
+  width: 100%;
+  margin: 0 0 15px 0;
+  padding: 15px 18px;
+  border-radius: 3px;
+  background-color:#ddd;
+  line-height: 20px;
+  color: #3E3E3E;
+}
+
+.remove-experience {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.close-btn-ex
+{
+    position: absolute;
+    z-index: 2;
+    top: 21px;
+    right: 10px;
+
+    width: 30px;
+    height: 30px;
+    .diag-ex {
+      position:absolute;
+      top:2px;
+      right:8px;
+      width: 22px;
+      height: 4px;
+      background-color: #3E3E3E;
+      display:block;
+      border-radius: 2px;
+      -webkit-transform: rotate(45deg);
+    }
+    .diag-ex:last-child {
+      position:absolute;
+      top:2px;
+      right:8px;
+      width: 22px;
+      height: 4px;
+      background-color: #3E3E3E;
+      display:block;
+      border-radius: 2px;
+      -webkit-transform: rotate(-45deg);
+    }
+}

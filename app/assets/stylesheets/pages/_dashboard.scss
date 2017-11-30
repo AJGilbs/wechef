@@ -101,7 +101,7 @@ display:flex;
   border-color:#ddd;
   border-radius: 3px;
   color: #707070;
-  line-height:44px;
+  line-height:42px;
   font-size: 14px;
   display: block;
   text-align: center;
@@ -119,4 +119,28 @@ display:flex;
   width: 100%;
   padding: 0 15px;
   margin: 0 0 40px 0;
+}
+
+.dash-accept {
+  width:100%;
+  height: 44px;
+  background-color: $primary-action;
+  border-radius: 3px;
+  color: $primary-text !important;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  margin: 0 0 0 0;
+}
+
+.dash-chat {
+  width:100%;
+  height: 44px;
+  background-color: #ddd;
+  border-radius: 3px;
+  color: #424242;
+  line-height:44px;
+  font-size: 14px;
+  display: block;
+  margin: 0;
 }

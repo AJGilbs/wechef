@@ -3,7 +3,7 @@
     <div class="card-banner"  style="background-image: url(<%= chef.background_photo %>)"></div>
     <%= link_to "", chef_path(chef.id), class: "card-link" %>
     <div class="card-inner">
-      <%= cl_image_tag(chef.photo, :class => "card-avatar") %>
+      <%= cl_image_tag(chef.photo, :class => "card-avatar", height: 100, width: 100, crop: :fill, :gravity => :face) %>
       <div class="card-name"><%= chef.name %></div>
       <div class="card-rating">
         <div class="star">
