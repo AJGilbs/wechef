@@ -95,23 +95,24 @@ booking.save!
 puts 'Bookings are created'
 
 # Requests
-request_sketch = Request.new(date: Date.today)
+request_sketch = Request.new(date: Date.today, number_of_chefs: 2, description: "Please bring your knives and hat", start_hours: Time.now, end_hours: Time.now + 1*60*60)
 request_sketch.restaurant = sketch
 request_sketch.chef_ids = [nathalia.id]
 request_sketch.save!
-request_hawksmoor = Request.new(date: Date.today)
+request_hawksmoor = Request.new
+request_hawksmoor = Request.new(date: Date.today, number_of_chefs: 1, description: "Use backdoor to enter the restaurant", start_hours: Time.now, end_hours: Time.now + 1*60*60)
 request_hawksmoor.restaurant = hawksmoor
 request_hawksmoor.chef_ids = [cris.id]
 request_hawksmoor.save!
-request_bao = Request.new(date: Date.today)
+request_bao = Request.new(date: Date.today, number_of_chefs: 3, description: "Bring chefs white and hat ", start_hours: Time.now, end_hours: Time.now + 1*60*60)
 request_bao.restaurant = bao
 request_bao.chef_ids = [david.id]
 request_bao.save!
-request_ceviche = Request.new(date: Date.today)
+request_ceviche = Request.new(date: Date.today, number_of_chefs: 1, description: "no need knives or uniform", start_hours: Time.now, end_hours: Time.now + 1*60*60)
 request_ceviche.restaurant = ceviche
 request_ceviche.chef_ids = [khaled.id]
 request_ceviche.save!
-request_hoppers = Request.new(date: Date.today)
+request_hoppers = Request.new(date: Date.today, number_of_chefs: 2, description: "Please bring your knives", start_hours: Time.now, end_hours: Time.now + 1*60*60)
 request_hoppers.restaurant = hoppers
 request_hoppers.chef_ids = [joe.id]
 request_hoppers.save!

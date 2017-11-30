@@ -40,7 +40,9 @@ class RequestsController < ApplicationController
       end
       redirect_to myrestaurant_path
     else
-      redirect_back(fallback_location: new_request_path)
+      # redirect_back(fallback_location: new_request_path)
+      @request = new_request
+      render :new
     end
   end
 
