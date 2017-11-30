@@ -1,6 +1,8 @@
   <% @chefs.each do |chef| %>
   <div class="card">
+    <div class="card-banner"  style="background-image: url(<%= chef.background_photo %>)"></div>
     <%= link_to "", chef_path(chef.id), class: "card-link" %>
+
 
     <%= cl_image_tag(chef.photo, :class => "card-avatar") %>
     <div class="card-name"><%= chef.name %></div>
@@ -20,8 +22,8 @@
       <div class="right" id="price<%= chef.id %>">£<%= chef.price %></div>
     </div>
 
-
       <div class="btn-select disabled" id="<%= chef.id %>">Add to Shortlist</div>
+      </div>
   </div>
   <% end %>
 

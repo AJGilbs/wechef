@@ -26,17 +26,20 @@ nav
 .avatar
 {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 18px;
+    right: 18px;
 
     overflow: hidden;
 
-    width: 30px;
-    height: 30px;
+    width: 33px;
+    height: 33px;
 
     border-radius: 50%;
     background-color: #000;
     background-color: #fff;
+    border-width:2px;
+    border-color: #fff;
+    border-style: solid;
 }
 
 .user-menu
@@ -110,6 +113,7 @@ nav
 
 .restaurant-menu-container, .chef-menu-container {
   width: 100%;
+  margin: 15px 0 0 0;
   h2 {
    font-size:12px;
    text-align:center;
@@ -151,9 +155,9 @@ nav
   height: 60px;
   line-height: 58px;
   font-size: 18px;
-  color: #606019;
+  color: $primary-text !important;
   border-width: 0;
-  background-color: $brand-primary;
+  background-color: $primary-action;
   margin:15px 15px 15px 0;
   border-radius: 3px;
   outline:none;
