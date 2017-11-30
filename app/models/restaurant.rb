@@ -17,4 +17,9 @@ class Restaurant < ApplicationRecord
     end
   end
 
+  def average_rating
+    return 0 if reviews_restaurant.empty?
+
+    (reviews_restaurant.reduce(0) { |a, e| a + e.rating } / reviews_restaurant.length).ceil
+  end
 end
