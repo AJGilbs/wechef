@@ -69,10 +69,6 @@
   z-index:1;
 }
 
-.flip {
-  -webkit-transform: scaleX(-1);
-}
-
 .message-container {
   margin: 85px 0 85px 0;
 }
@@ -80,7 +76,7 @@
 
 .message-row {
   display: flex;
-  margin: 0 0 15px 15px;
+  margin: 15px;
   .left {
     width: 44px;
     height: 44px;
@@ -90,10 +86,11 @@
     max-width:44px;
     overflow:hidden;
     border-radius: 50%;
-    margin: 0 15px;
+    margin: 0px;
     background-color: #ddd;
   }
   .right {
+    margin: 0 15px;
     .top {
       background-color: #fff;
       padding: 15px;
