@@ -31,4 +31,13 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: "You need to sign in for that!"
     end
   end
+
+  protected
+    def after_sign_in_path_for(resource)
+      if current_restaurant
+        request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+      else
+        request.env['omniauth.origin'] || stored_location_for(resource) || dashboard_path
+      end
+    end
 end
