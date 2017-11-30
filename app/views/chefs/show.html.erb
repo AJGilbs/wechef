@@ -98,14 +98,11 @@
   <h2>Previously held positions</h2>
   <div class="h2_underline"></div>
   <div class="positions-container">
-    <div class="row">
-      Headchef at Sketch
-    </div>
-    <div class="row">
-      Headchef at Sketch
-    </div>
-    <div class="row">
-      Headchef at Sketch
+    <% @chef.positions.each do |position| %>
+      <div class="row">
+        <%= position.title %> at <%= position.restaurant_name %>
+      </div>
+    <% end %>
   </div>
 
   <h2>Reviews</h2>
