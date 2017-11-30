@@ -114,11 +114,9 @@
   <% else %>
 
     <% if @chef.been_booked_by_restautant?(current_restaurant) %>
-
       <div class="reviews-none">
         <%= link_to "Leave a review for #{@chef.name}", new_chef_reviews_chef_path(@chef) %>
       </div>
-
     <% end %>
 
      <div class="reviews-container">
@@ -130,8 +128,8 @@
               <img src="http://res.cloudinary.com/dbaqcyzvv/image/upload/v1511801389/ob8ecwji0sxjo9pzeait.jpg" class="review-avatar">
             </div>
             <div class="right">
-              Username<br>
-              <%= rev.rating %>
+              <%= rev.booking.restaurant.name %><br>
+              <%= rev.rating %> / 5
             </div>
           </div>
           <div class="review-content">
