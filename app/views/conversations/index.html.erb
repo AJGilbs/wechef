@@ -18,7 +18,7 @@
           <div class="name"><%= conversation.chef.name %></div>
           <div class="last-message"><%= truncate(conversation.messages.order(created_at: :desc).first.body, :length => 100, :omission => '...') %></div>
         </div>
-        <%= link_to "", conversation_path(conversation), class: "conversation-link" %>
+        <%= link_to "", conversation_path(conversation, :anchor => "bottom"), class: "conversation-link" %>
       </div>
       <div class="conversation-break"></div>
 

@@ -27,7 +27,7 @@
 </div>
 
 <div class="reply-container">
-  <%= simple_form_for [@conversation, @message] do |f| %>
+  <%= simple_form_for [@conversation, @message], :anchor => "bottom" do |f| %>
     <%= f.input :body, id: "chatbox", class: "chatbox", placeholder: "Say something!" %>
     <%= f.submit "Send", id: "sendButton" %>
   <% end %>
@@ -58,3 +58,5 @@
       }
   })
 </script>
+
+<div id="bottom"></div>
