@@ -19,17 +19,7 @@
 a {
   color: inherit !important;
 }
-
-html {
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
 body {
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
   color: $content-color;
   background-color: $gray-base;
 }
