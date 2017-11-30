@@ -125,7 +125,7 @@
         <div class="review-row">
           <div class="review-top">
             <div class="left">
-              <img src="http://res.cloudinary.com/dbaqcyzvv/image/upload/v1511801389/ob8ecwji0sxjo9pzeait.jpg" class="review-avatar">
+              <%= cl_image_tag rev.booking.restaurant.photo, height: 120, width: 120, crop: :fill, class: "review-avatar"  %>
             </div>
             <div class="right">
               <%= rev.booking.restaurant.name %><br>
