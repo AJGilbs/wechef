@@ -1,9 +1,8 @@
 <div class="results-container">
 
   <div class="search-bar">
-    Filter by last position:
     <form action="search">
-        <select class="form-control" name="position" required="false">
+        <select class="form-control" name="position" required="false" onchange="this.form.submit()">
           <option value="" selected="selected">-- Last Position --</option>
           <option value="Executive Chef">Executive Chef</option>
           <option value="Head Chef">Head Chef</option>
@@ -12,7 +11,6 @@
           <option value="Commis Chef">Commis Chef</option>
         </select>
         <input type="hidden" name="date" value="<%= params[:date] %>">
-        <button type="submit">Filter</button>
     </form>
   <%= render 'shared/card' %>
 

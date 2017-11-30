@@ -60,9 +60,10 @@
   background-color:#ededed;
   overflow:hidden;
   .highlight {
-    width: 75%;
     background-color: $primary-action;
     height: 20px;
+    animation-name: exgrow;
+    animation-duration: 1.7s;
   }
 }
 
