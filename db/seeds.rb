@@ -51,24 +51,24 @@ puts 'Chefs are created'
 
 
 # ["Executive Chef", "Head Chef", "Sous Chef", "Chef de Partie", "Commis Chef"]
-nathalia.positions.create!(restaurant_name: 'Sketch', title: "Executive Chef")
-nathalia.positions.create!(restaurant_name: 'Bao', title: "Head Chef")
-nathalia.positions.create!(restaurant_name: 'Ceviche', title: "Sous Chef")
+nathalia.positions.create!(restaurant_name: 'Sketch', title: "Executive Chef", start_date: Date.today - 10.years, end_date: Date.today - 8.years)
+nathalia.positions.create!(restaurant_name: 'Bao', title: "Head Chef", start_date: Date.today - 8.years, end_date: Date.today - 5.years)
+nathalia.positions.create!(restaurant_name: 'Ceviche', title: "Sous Chef", start_date: Date.today - 5.years, end_date: Date.today)
 
-cris.positions.create!(restaurant_name: 'Ceviche', title: "Sous Chef")
-cris.positions.create!(restaurant_name: 'Sketch', title: "Head Chef")
+cris.positions.create!(restaurant_name: 'Ceviche', title: "Sous Chef", start_date: Date.today - 5.years, end_date: Date.today - 3.years)
+cris.positions.create!(restaurant_name: 'Sketch', title: "Head Chef", start_date: Date.today - 3.years, end_date: Date.today)
 
-david.positions.create!(restaurant_name: 'Hoppers', title: "Executive Chef")
-david.positions.create!(restaurant_name: 'Bao', title: "Chef de Partie")
+david.positions.create!(restaurant_name: 'Hoppers', title: "Executive Chef", start_date: Date.today - 6.years, end_date: Date.today - 3.years)
+david.positions.create!(restaurant_name: 'Bao', title: "Chef de Partie", start_date: Date.today - 3.years, end_date: Date.today)
 
-khaled.positions.create!(restaurant_name: 'Bao', title: "Head Chef")
-khaled.positions.create!(restaurant_name: 'Hoppers', title: "Commis Chef")
-khaled.positions.create!(restaurant_name: 'Sketch', title: "Executive Chef")
+khaled.positions.create!(restaurant_name: 'Bao', title: "Head Chef", start_date: Date.today - 10.years, end_date: Date.today - 5.years)
+khaled.positions.create!(restaurant_name: 'Hoppers', title: "Commis Chef", start_date: Date.today - 5.years, end_date: Date.today - 2.years)
+khaled.positions.create!(restaurant_name: 'Sketch', title: "Executive Chef", start_date: Date.today - 2.years, end_date: Date.today)
 
-joe.positions.create!(restaurant_name: 'Ceviche', title: "Chef de Partie")
-joe.positions.create!(restaurant_name: 'Hoppers', title: "Executive Chef")
-joe.positions.create!(restaurant_name: 'Sketch', title: "Sous Chef")
-joe.positions.create!(restaurant_name: 'Kawsmoor', title: "Head Chef")
+joe.positions.create!(restaurant_name: 'Ceviche', title: "Chef de Partie", start_date: Date.today - 8.years, end_date: Date.today - 4.years)
+joe.positions.create!(restaurant_name: 'Hoppers', title: "Executive Chef", start_date: Date.today - 4.years, end_date: Date.today - 2.years)
+joe.positions.create!(restaurant_name: 'Sketch', title: "Sous Chef", start_date: Date.today - 2.years, end_date: Date.today - 1.years)
+joe.positions.create!(restaurant_name: 'Kawsmoor', title: "Head Chef", start_date: Date.today - 1.years, end_date: Date.today)
 
 puts 'Positions are created'
 
