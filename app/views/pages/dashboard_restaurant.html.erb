@@ -193,7 +193,7 @@
         </div>
       </div>
       <div class="dash-buttons">
-        <%= link_to "Pay £#{paid_booking.cost}" , new_booking_payment_path(paid_booking), class: "dash-50-dark" %>
+        <%= link_to "Pay £#{paid_booking.cost}", new_booking_payment_path(paid_booking), class: "dash-50-dark" %>
         <%= link_to "Message #{paid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-chat" %>
       </div>
     </div>
