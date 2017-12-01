@@ -3,7 +3,7 @@
 <div class="profile-container">
   <div class="profile-banner" style="background-image: url(<%= @chef.background_photo %>)">
     <div class="profile-avatar">
-      <%= cl_image_tag(@chef.photo, height: 120, width: 120, crop: :fill, :gravity => :face) %>
+      <%= cl_image_tag(@chef.photo, height: 240, width: 240, crop: :fill, :gravity => :face) %>
     </div>
   </div>
 
@@ -42,23 +42,11 @@
     <%= @chef.description %>
   </div>
 
-  <% if @chef.experience == "Less than 1 year" %>
-    <% experience = "17%" %>
-  <% elsif @chef.experience == "1 year" %>
-    <% experience = "35%" %>
-  <% elsif @chef.experience == "2 years" %>
-    <% experience = "70%" %>
-  <% elsif @chef.experience == "3 years or more" %>
-    <% experience = "100%" %>
-  <% else %>
-    <% experience = "1%" %>
-  <% end %>
-
   <style>
-  .highlight { width: <%= experience %>; }
+  .highlight { width: <%= @chef.experience_percentage %>; }
     @keyframes exgrow {
       from {width: 0%;}
-      to { width: <%= experience %>;}
+      to { width: <%= @chef.experience_percentage %>;}
     }
   </style>
 
@@ -79,7 +67,6 @@
     <% @chef.positions.each do |position| %>
       <div class="row">
         <%= position.title %> at <%= position.restaurant_name %><br>
-        <%= position.start_date %> to <%= position.end_date %>
       </div>
     <% end %>
   </div>

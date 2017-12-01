@@ -18,6 +18,10 @@ display:flex;
   height:66px;
   border-radius: 50%;
   overflow:hidden;
+  img {
+  width: 66px;
+  height: 66px;
+  }
 }
 
 .dash-card__right {

@@ -24,10 +24,12 @@ nav
 }
 
 .name {
+  font-family: "gotham" !important;
   position:absolute;
   -webkit-transform: translateX(-50%);
   left:50%;
-  font-size: 30px;
+  top: 10px;
+  font-size: 26px;
   color: $brand-primary-dark;
   line-height: 68px;
   letter-spacing:-1px;

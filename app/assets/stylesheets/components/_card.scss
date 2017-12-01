@@ -16,6 +16,7 @@
   position:relative;
   border: 1px solid #ddd;
   border-radius: 3px;
+  overflow: hidden;
 
 
   .card-avatar {
@@ -27,6 +28,7 @@
     border-width:3px;
     border-color: #fff;
     border-style: solid;
+    background-color: #fff;
   }
   .btn-select {
     width:100%;
