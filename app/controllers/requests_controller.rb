@@ -26,12 +26,16 @@ class RequestsController < ApplicationController
     new_request = Request.new(request_params)
     new_request.restaurant = current_restaurant
     new_request.chef_ids = params[:request][:chef_ids].split(',')
-    hours = new_request.end_hours - new_request.start_hours
+    # hours is in seconds
+    hours = (new_request.end_hours - new_request.start_hours)/3600
     cost = {}
     new_request.chef_ids.each do |chef_id|
-     cost[chef_id] = Chef.find(chef_id).price * hours
+      price = Chef.find(chef_id).price
+      request_cost = price * hours
+      cost[chef_id] = request_cost
     end
     new_request.cost = cost
+
     authorize new_request
     if new_request.save
       new_request.chef_ids.each do |chef_id|
@@ -87,7 +91,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:date, :shift, :cost, :number_of_chefs, :end_hours, :start_hours, :description)
+    params.require(:request).permit(:date, :shift, :cost_pennies, :number_of_chefs, :end_hours, :start_hours, :description)
   end
 
 end
