@@ -160,15 +160,16 @@ a
 .home-container
 {
     margin: 70px 0 0 0 ;
+    background-image: url("http://ak9.picdn.net/shutterstock/videos/5285249/thumb/1.jpg?i10c=img.resize(height:160)");
+    background-size:cover;
 }
 
 .home-content {
-  position:absolute;
-  top:0;
+
   width: 100%;
   height:calc(100vh - 70px);
   text-align: center;
-  padding: 30px;
+  padding: 10px 30px 30px 30px;
   h1 {
     margin: 0 0 50px 0;
     font-size:50px;
@@ -296,13 +297,17 @@ a
     }
 }
 
-.videoContainer {
-    position:absolute;
-    width: auto;
-    height: calc(100vh - 70px);
-    overflow:hidden;
+.video-container {
+  position:relative;
+
 }
-video {
+
+.video {
     width: auto;
     height: calc(100vh);
+}
+
+
+iframe {
+  position:absolute; width:100vw; height: calc(100vh - 70px);
 }
