@@ -66,13 +66,13 @@
 
     <% end %>
 
+    <div class="dash-cancel__wrapper">
+      <%= link_to 'Cancel all Chefs', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-100-cancel" %>
+    </div>
+
   <% end %>
 
-  <div class="dash-cancel__wrapper">
-    <% unless request %>
-      <%= link_to 'Cancel all Chefs', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-100-cancel" %>
-    <% end %>
-  </div>
+
 
 
 <h2>Accepted Bookings</h2>
