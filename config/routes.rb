@@ -27,8 +27,6 @@ Rails.application.routes.draw do
   resources :requests, only: [ :new, :create, :update, :destroy ] do
     member do
       patch 'cancel_chef'
-    end
-    collection do
       patch 'cancel_all'
     end
   end

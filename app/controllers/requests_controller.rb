@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :authenticate_restaurant!, only: [:new, :create, :cancel_chef, :cancel_all ]
   before_action :authenticate_chef!, only: [:update, :destroy]
 
-  before_action :set_request, only: [:cancel_chef, :update, :destroy]
+  before_action :set_request, only: [:cancel_all, :cancel_chef, :update, :destroy]
 
   def new
     @request = Request.new
