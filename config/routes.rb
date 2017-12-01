@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   get 'myrestaurant', to: 'pages#dashboard_restaurant'
   resources :requests, only: [ :new, :create, :update, :destroy ] do
     member do
-      patch 'cancel_all'
       patch 'cancel_chef'
+    end
+    collection do
+      patch 'cancel_all', as: :cancel_all_request
     end
   end
 
