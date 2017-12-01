@@ -24,6 +24,11 @@ body {
   background-color: $gray-base;
 }
 
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
 .clear { clear:both !important; }
 
 h1 {
