@@ -14,12 +14,14 @@
   <input type="hidden" id="prices" value="<%= params[:prices] %>">
   <%= f.input :number_of_chefs, collection: 1..5, selected: 1, :label => 'How many chefs do you need?' %>
   <%= f.input :description %>
+
+    <p id="costs-range"></p>
+
     <%= f.submit 'Request', class: "submit-btn-free" %>
 <% end %>
   <button id="estimate" class="cancel-btn-free">Estimate costs</button>
 
 
-  <p id="costs-range"></p>
 <script>
   const startTime = document.getElementById("start_hours");
   const endTime = document.getElementById("end_hours");
