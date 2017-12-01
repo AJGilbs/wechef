@@ -26,7 +26,7 @@ class RequestsController < ApplicationController
     new_request = Request.new(request_params)
     new_request.restaurant = current_restaurant
     new_request.chef_ids = params[:request][:chef_ids].split(',')
-    hours = new_request.end_hours - new_request.start_hours
+    hours = (new_request.end_hours - new_request.start_hours) / 3600
     cost = {}
     new_request.chef_ids.each do |chef_id|
      cost[chef_id] = Chef.find(chef_id).price * hours
