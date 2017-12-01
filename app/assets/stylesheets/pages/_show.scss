@@ -15,6 +15,8 @@
 .profile-avatar {
   width: 120px;
   height: 120px;
+  max-width: 120px;
+  max-height: 120px;
   overflow: hidden;
   position:absolute;
   bottom: -20px;
@@ -27,6 +29,7 @@
   border-color: #fff;
   img {
     width: 120px;
+    height: 120px;
   }
 }
 

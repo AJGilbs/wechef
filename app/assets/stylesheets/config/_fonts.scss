@@ -13,6 +13,13 @@
     src: font-url('circular-book.otf');
 }
 
+@font-face {
+    font-family: 'gotham';
+    font-weight: 300;
+
+    src: font-url('Gotham-Bold.ttf');
+}
+
 // Define fonts for body and headers
 $body-font: 'circular';
 $headers-font: 'circular';
