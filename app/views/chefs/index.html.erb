@@ -1,20 +1,15 @@
 <div class="home-container">
-<div id="videoContainer">
-    <video autoplay="" loop="" poster="https://dl.dropboxusercontent.com/u/23834858/videos/bck.jpg">
-        <source src="https://ak9.picdn.net/shutterstock/videos/5285249/preview/stock-footage-motion-chefs-of-a-restaurant-kitchen.mp4" type="video/mp4">
-    </video>
     <div class="home-content">
-    <div>
-      <h1>When do you need a Chef?</h1>
+      <div>
+        <h1>When do you need a Chef?</h1>
 
-      <%= link_to 'Today', search_chefs_path(date: DateTime.now.strftime("%d-%m-%Y")), class: 'today' %><%= link_to 'Tomorrow', search_chefs_path(date: (DateTime.now + 1.day).strftime("%d-%m-%Y")), class: 'tomorrow' %>
+        <%= link_to 'Today', search_chefs_path(date: DateTime.now.strftime("%d-%m-%Y")), class: 'today' %><%= link_to 'Tomorrow', search_chefs_path(date: (DateTime.now + 1.day).strftime("%d-%m-%Y")), class: 'tomorrow' %>
 
-      <form action="chefs/search">
-        <input type="date" name="date" placeholder="When?" class="index-search-bar">
-        <input type="submit" value="Search" class="index-submit">
-      </form>
+        <form action="chefs/search">
+          <input type="date" name="date" placeholder="When?" class="index-search-bar">
+          <input type="submit" value="Search" class="index-submit">
+        </form>
 
+      </div>
     </div>
-  </div>
-</div>
 </div>
