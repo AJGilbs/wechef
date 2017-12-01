@@ -14,9 +14,9 @@
   <input type="hidden" id="prices" value="<%= params[:prices] %>">
   <%= f.input :number_of_chefs, collection: 1..5, selected: 1, :label => 'How many chefs do you need?' %>
   <%= f.input :description %>
-  <%= f.submit 'Request', class: "model-submit-btn" %>
+    <%= f.submit 'Request', class: "submit-btn-free" %>
 <% end %>
-  <button id="estimate" class="model-cancel-btn">Estimate costs</button>
+  <button id="estimate" class="cancel-btn-free">Estimate costs</button>
 
 
   <p id="costs-range"></p>
