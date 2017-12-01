@@ -87,7 +87,7 @@ class RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:date, :shift, :cost_pennies, :number_of_chefs, :end_hours, :start_hours, :description)
+    params.require(:request).permit(:date, :shift, :cost, :number_of_chefs, :end_hours, :start_hours, :description)
   end
 
 end

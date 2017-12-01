@@ -31,74 +31,54 @@ hoppers.save!
 
 puts 'Restaurants are created'
 
-nathalia = Chef.new(email: "hello@nathalia.com", password: '123456', name: "Nathalia de Luccas", price: 200, address: "144, Liverpool Road", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
-nathalia.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
-nathalia.save!
-cris = Chef.new(email: "hello@cris.com", password: '123456', name: "Cris Hdo", price: 85, address: "433, London", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
-cris.remote_photo_url = "https://avatars0.githubusercontent.com/u/30732497?s=460&v=4"
-cris.save!
-david = Chef.new(email: "hello@david.com", password: '123456', name: "David Rossiter", price: 90, address: "9 Barge Walk, Greenwich", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+mary = Chef.new(email: "hello@mary.com", password: '123456', name: "Mary Parker", price: 20, address: "144, Liverpool Road", phone_number: "02080000000")
+mary.save!
+alice = Chef.new(email: "hello@cris.com", password: '123456', name: "Cris Hdo", price: 85, address: "433, London", phone_number: "02080000000")
+alice.save!
+david = Chef.new(email: "hello@david.com", password: '123456', name: "David Rossiter", price: 90, address: "9 Barge Walk, Greenwich", phone_number: "02080000000")
 david.remote_photo_url = "https://avatars2.githubusercontent.com/u/26829404?s=460&v=4"
 david.save!
-khaled = Chef.new(email: "hello@khaled.com", password: '123456', name: "Khaled McGonnell", price: 100, address: "123, McGonnell Drive", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+khaled = Chef.new(email: "hello@khaled.com", password: '123456', name: "Khaled McGonnell", price: 100, address: "123, McGonnell Drive", phone_number: "02080000000")
 khaled.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
 khaled.save!
-joe = Chef.new(email: "hello@joe.com", password: '123456', name: "Joe Running", price: 50, address: "1 Running Street", phone_number: "02080000000", photo: "https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg")
+joe = Chef.new(email: "hello@joe.com", password: '123456', name: "Joe Running", price: 50, address: "1 Running Street", phone_number: "02080000000")
 joe.remote_photo_url = "https://avatars1.githubusercontent.com/u/3418144?s=460&v=4"
 joe.save!
 
 puts 'Chefs are created'
 
 # ["Executive Chef", "Head Chef", "Sous Chef", "Chef de Partie", "Commis Chef"]
-nathalia.positions.create!(restaurant_name: 'Sketch', title: "Executive Chef", start_date: Date.today - 10.years, end_date: Date.today - 8.years)
-nathalia.positions.create!(restaurant_name: 'Bao', title: "Head Chef", start_date: Date.today - 8.years, end_date: Date.today - 5.years)
-nathalia.positions.create!(restaurant_name: 'Ceviche', title: "Sous Chef", start_date: Date.today - 5.years, end_date: Date.today)
+mary.positions.create!(restaurant_name: 'Sketch', title: "Chef de Partie", start_date: Date.today - 10.years, end_date: Date.today - 8.years)
+mary.positions.create!(restaurant_name: 'Bao', title: "Chef de Partie", start_date: Date.today - 8.years, end_date: Date.today - 5.years)
+mary.positions.create!(restaurant_name: 'Ceviche', title: "Sous Chef", start_date: Date.today - 5.years, end_date: Date.today)
 
-cris.positions.create!(restaurant_name: 'Ceviche', title: "Sous Chef", start_date: Date.today - 5.years, end_date: Date.today - 3.years)
-cris.positions.create!(restaurant_name: 'Sketch', title: "Head Chef", start_date: Date.today - 3.years, end_date: Date.today)
+alice.positions.create!(restaurant_name: 'Ceviche', title: "Commis Chef", start_date: Date.today - 5.years, end_date: Date.today - 3.years)
+alice.positions.create!(restaurant_name: 'Sketch', title: "Chef de Partie", start_date: Date.today - 3.years, end_date: Date.today)
 
-david.positions.create!(restaurant_name: 'Hoppers', title: "Executive Chef", start_date: Date.today - 6.years, end_date: Date.today - 3.years)
+david.positions.create!(restaurant_name: 'Hoppers', title: "Chef", start_date: Date.today - 6.years, end_date: Date.today - 3.years)
 david.positions.create!(restaurant_name: 'Bao', title: "Chef de Partie", start_date: Date.today - 3.years, end_date: Date.today)
 
-khaled.positions.create!(restaurant_name: 'Bao', title: "Head Chef", start_date: Date.today - 10.years, end_date: Date.today - 5.years)
+khaled.positions.create!(restaurant_name: 'Bao', title: "Chef de Partie", start_date: Date.today - 10.years, end_date: Date.today - 5.years)
 khaled.positions.create!(restaurant_name: 'Hoppers', title: "Commis Chef", start_date: Date.today - 5.years, end_date: Date.today - 2.years)
-khaled.positions.create!(restaurant_name: 'Sketch', title: "Executive Chef", start_date: Date.today - 2.years, end_date: Date.today)
+khaled.positions.create!(restaurant_name: 'Sketch', title: "Commis Chef", start_date: Date.today - 2.years, end_date: Date.today)
 
 joe.positions.create!(restaurant_name: 'Ceviche', title: "Chef de Partie", start_date: Date.today - 8.years, end_date: Date.today - 4.years)
-joe.positions.create!(restaurant_name: 'Hoppers', title: "Executive Chef", start_date: Date.today - 4.years, end_date: Date.today - 2.years)
-joe.positions.create!(restaurant_name: 'Sketch', title: "Sous Chef", start_date: Date.today - 2.years, end_date: Date.today - 1.years)
-joe.positions.create!(restaurant_name: 'Kawsmoor', title: "Head Chef", start_date: Date.today - 1.years, end_date: Date.today)
+joe.positions.create!(restaurant_name: 'Hoppers', title: "Commis Chef", start_date: Date.today - 4.years, end_date: Date.today - 2.years)
+
+
+joe.positions.create!(restaurant_name: 'Sketch', title: "Commis Chef", start_date: Date.today - 2.years, end_date: Date.today - 1.years)
+joe.positions.create!(restaurant_name: 'Kawsmoor', title: "Commis Chef", start_date: Date.today - 1.years, end_date: Date.today)
 
 puts 'Positions are created'
 
-position = Position.new(title: "Executive Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
-position.chef = nathalia
-position.save!
-position = Position.new(title: "Head Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
-position.chef = nathalia
-position.save!
-
-position = Position.new(title: "Head Chef", restaurant_name: "Mishoom", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
-position.chef = cris
-position.save!
-
-position = Position.new(title: "Sous Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
-position.chef = david
-position.save!
-
-position = Position.new(title: "Sous Chef", restaurant_name: "The Pig and the Bucher", description: "Best days of my life", start_date: Date.today, end_date: Date.today)
-position.chef = khaled
-position.save!
-
-puts 'Positions are created'
 
 booking = Booking.new(date: Date.today, start_hours: 13, end_hours: 20)
 booking.restaurant = sketch
-booking.chef = nathalia
+booking.chef = mary
 booking.save!
 booking = Booking.new(date: Date.today, start_hours: 6, end_hours: 14)
 booking.restaurant = hawksmoor
-booking.chef = cris
+booking.chef = alice
 booking.save!
 booking = Booking.new(date: Date.today, start_hours: 14, end_hours: 22)
 booking.restaurant = bao
@@ -118,7 +98,7 @@ puts 'Bookings are created'
 # Requests
 request_sketch = Request.new(date: Date.today, number_of_chefs: 2, description: "Please bring your knives and hat", start_hours: Time.now, end_hours: Time.now + 1*60*60)
 request_sketch.restaurant = sketch
-request_sketch.chef_ids = [nathalia.id]
+request_sketch.chef_ids = [mary.id]
 request_sketch.save!
 request_hawksmoor = Request.new
 request_hawksmoor = Request.new(date: Date.today, number_of_chefs: 1, description: "Use backdoor to enter the restaurant", start_hours: Time.now, end_hours: Time.now + 1*60*60)
@@ -140,7 +120,7 @@ request_hoppers.save!
 
 puts 'Requests are created'
 
-conversation1 = Conversation.create!(request: request_sketch, restaurant: sketch, chef: nathalia)
+conversation1 = Conversation.create!(request: request_sketch, restaurant: sketch, chef: mary)
 conversation2 = Conversation.create!(request: request_bao, restaurant: bao, chef: david)
 conversation3 = Conversation.create!(request: request_hoppers, restaurant: hoppers, chef: joe)
 conversation4 = Conversation.create!(request: request_ceviche, restaurant: ceviche, chef: khaled)
