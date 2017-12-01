@@ -135,10 +135,12 @@
   //Open search menu
   var searchMenuButton = document.getElementById("searchMenuButton");
   var searchMenu = document.getElementById("searchMenu")
-  searchMenuButton.addEventListener("click", function(){
-    searchMenu.style.right = 0;
-    document.getElementsByTagName('body')[0].style = 'overflow: hidden';
-  });
+  if (searchMenuButton != null) {
+    searchMenuButton.addEventListener("click", function(){
+      searchMenu.style.right = 0;
+      document.getElementsByTagName('body')[0].style = 'overflow: hidden';
+    });
+  }
 
   //Close search menu
   var closeSearchMenu = document.getElementById("closeSearchMenu");

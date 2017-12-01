@@ -10,7 +10,7 @@
     <% is_author = message.author == sender ? 'flex-reverse' : '' %>
     <div class="message-row <%= is_author %>">
       <div class="left">
-        <%= cl_image_tag message.author.photo, height: 44, width: 44, crop: :fill %>
+        <%= cl_image_tag message.author.photo, height: 44, width: 44, crop: :fill, :gravity => :face %>
         <% message.author.name %>
       </div>
       <div class="right">
@@ -27,20 +27,31 @@
 </div>
 
 <div class="reply-container">
-  <%= simple_form_for [@conversation, @message], :anchor => "bottom" do |f| %>
-    <%= f.input :body, id: "chatbox", class: "chatbox", placeholder: "Say something!" %>
+  <%= simple_form_for [@conversation, @message] do |f| %>
+    <%= f.input :body, class: "chatbox", placeholder: "Say something!", input_html: { id: "chatbox" } %>
     <%= f.submit "Send", id: "sendButton" %>
   <% end %>
 </div>
 
 <script>
   var chatbox = document.getElementById("chatbox");
-  var heightLimit = 200; /* Maximum height: 200px */
-
+  var sendBtn = document.getElementById('sendButton');
+  var chatboxContainer = document.querySelector('.reply-container')
+  var heightLimit = 74; /* Maximum height: 200px */
+  var maxHeightLimit = window.innerHeight / 3;
   chatbox.oninput = function() {
-    chatbox.style.height = ""; /* Reset the height*/
-    chatbox.style.height = Math.min(chatbox.scrollHeight, heightLimit) + "px";
+    chatboxContainer.style.height = null; /* Reset the height*/
+    chatboxContainer.style.height = Math.min(Math.max(chatbox.scrollHeight + 30, heightLimit), maxHeightLimit) + "px";
+    sendBtn.style.height = Math.min(Math.max(chatbox.scrollHeight + 30, heightLimit) - 30, maxHeightLimit - 30) + "px";
   };
+
+  chatbox.addEventListener('keydown', function(event) {
+    console.log(event.keyCode)
+    if (event.keyCode == '13') {
+      event.preventDefault();
+      sendBtn.click();
+    }
+  })
 </script>
 
 <script>

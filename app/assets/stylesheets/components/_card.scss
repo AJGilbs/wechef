@@ -8,7 +8,7 @@
 
 .card  {
   width: calc(100% - 30px);
-  height: 320px;
+  height: 327px;
   margin: 15px;
   display: block;
   padding:18px;
@@ -143,4 +143,14 @@
       fill: $primary-action;
     }
   }
+}
+
+.pay-card-top-right {
+  position: absolute;
+  right: 20px;
+  top: 2px;
+}
+
+.pay-card-top {
+  position: relative;
 }

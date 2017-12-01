@@ -21,14 +21,24 @@
     <%= f.button :submit, "Save", class: "submit-btn" %>
   </div>
 <% end %>
-<p>Your last experiences:</p>
+<h2>Your last experiences</h2>
+<div class="h2_underline"></div>
+
 <% @chef.positions.each do |position| %>
-  <div></div>
-  <p><%= position.title  %> at: <%= position.restaurant_name %></p>
-  <%= link_to "remove", chef_position_path(@chef, position), method: :delete, class:"btn btn-primary" %>
+  <div class="existing-experience">
+    <%= position.title  %> at <%= position.restaurant_name %>
+    <div class="remove-experience"><%= link_to chef_position_path(@chef, position), method: :delete do %>
+      <div class="close-btn-ex">
+        <div class="diag-ex"></div>
+        <div class="diag-ex"></div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
 <% end %>
 
- <div class="btn btn-primary" id="open-create">Add last experiences</div>
+<div class="add-experience-btn" id="open-create">Add previous position</div>
 <div class="model-cover" id="model-cover">
   <div class="create-model">
     <%= render "shared/form_chef_position" %>
@@ -39,17 +49,19 @@
 </div>
 
 
-<% content_for :model do%>
+<% content_for :model do %>
   <script>
     $("#open-create").click(function(){
     var scrollTop = window.scrollY;
     $('#model-cover').css('top', scrollTop + "px");
     $('#model-cover').fadeToggle();
+    $('.submit-holder').slideToggle();
     $('body').css('overflow', 'hidden');
   });
 
   $("#model-close").click(function(){
     $('#model-cover').fadeToggle();
+    $('.submit-holder').slideToggle();
     $('body').css('overflow', 'scroll');
   });
   </script>

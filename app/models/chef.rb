@@ -23,6 +23,7 @@ class Chef < ApplicationRecord
     self.joins(:positions).where("positions.title" => position)
   end
 
+
   def experience_percentage
     if experience == "Less than 1 year"
       return "17%"
@@ -35,6 +36,12 @@ class Chef < ApplicationRecord
     else
       return "1%"
     end
+  end
+
+  def average_rating
+    return 0 if reviews_chef.empty?
+
+    (reviews_chef.reduce(0) { |a, e| a + e.rating } / reviews_chef.length).ceil
   end
 
 end

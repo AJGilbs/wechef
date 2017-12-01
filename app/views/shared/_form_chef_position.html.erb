@@ -5,7 +5,8 @@
     <%= p.input :description %>
     <%= p.input :start_date, as: :date, order: [:month, :year] %>
     <%= p.input :end_date, as: :date, order: [:month, :year] %>
-    <%= p.button :submit, "Save", class: "submit-btn" %>
+    <%= p.button :submit, "Save", class: "model-submit-btn" %>
+    <div class="model-cancel-btn" id="model-close">Cancel</div>
   <% end %>
 
 

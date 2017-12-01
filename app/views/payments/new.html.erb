@@ -1,17 +1,47 @@
-<h1>Pay booking <%= @booking.id %></h1>
-<%= form_tag booking_payments_path(@booking) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@booking.cost_pennies) %></span>
-    </label>
-  </article>
+<div class="results-container">
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="Booking"
-    data-email="<%= current_restaurant.email %>"
-    data-description="Paying booking"
-    data-amount="<%= @booking.cost_pennies %>"
-    data-currency="<%= @booking.cost.currency %>"></script>
+<h2>Pay booking number <%= @booking.id %></h2>
+<div class="h2_underline"></div>
 
-<% end %>
+  <%= form_tag booking_payments_path(@booking) do %>
+
+      <div class="dash-card">
+        <div class="dash-card__top pay-card-top">
+          <div class="dash-card__right">
+            <div class="top">
+              <div class="left">
+                 <%= @booking.date&.strftime("%d-%m-%Y") %>
+              </div>
+              <div class="right pay-card-top-right">
+                <%= humanized_money_with_symbol(@booking.cost) %>
+              </div>
+            </div>
+            <div class="middle">
+              <div class="left">
+
+              </div>
+              <div class="right">
+
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="left">
+                From <%= @booking.start_hours&.strftime("%H:%M") %> until <%= @booking.end_hours&.strftime("%H:%M") %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-buttons">
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="Booking"
+            data-email="<%= current_restaurant.email %>"
+            data-description="Paying booking"
+            data-amount="<%= @booking.cost %>"
+            data-currency="<%= @booking.cost.currency %>">
+          </script>
+
+        </div>
+      </div>
+  <% end %>
+
