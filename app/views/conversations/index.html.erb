@@ -13,7 +13,7 @@
                                   <!-- if thes no messages.last don't tried the next method -->
         <div class="last-date"><%= conversation.messages.last&.created_at&.strftime("%d/%m/%Y") || Date.today.strftime("%d/%m/%Y") %></div>
         <div class="left">
-          <%= cl_image_tag conversation.chef.photo, height: 66, width: 66, crop: :fill, :gravity => :face %>
+          <%= cl_image_tag conversation.chef.photo, height: 132, width: 132, crop: :fill, :gravity => :face %>
         </div>
         <div class="right">
           <div class="username"><%= conversation.chef.name %></div>

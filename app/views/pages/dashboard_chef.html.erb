@@ -8,7 +8,7 @@
       <div class="dash-card">
         <div class="dash-card__top">
           <div class="dash-avatar">
-            <%= cl_image_tag request.restaurant.photo, height: 66, width: 66, crop: :fill %>
+            <%= cl_image_tag request.restaurant.photo, height: 132, width: 132, crop: :fill, gravity: :face %>
           </div>
           <div class="dash-card__right">
             <div class="top">
@@ -76,7 +76,7 @@
       <div class="dash-card">
         <div class="dash-card__top">
           <div class="dash-avatar">
-            <%= cl_image_tag booking.restaurant.photo, height: 66, width: 66, crop: :fill %>
+            <%= cl_image_tag booking.restaurant.photo, height: 132, width: 132, crop: :fill, gravity: :face %>
           </div>
           <div class="dash-card__right">
             <div class="top">
