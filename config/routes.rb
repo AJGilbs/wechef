@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       patch 'cancel_chef'
     end
     collection do
-      patch 'cancel_all', as: :cancel_all_request
+      patch 'cancel_all'
     end
   end
 
