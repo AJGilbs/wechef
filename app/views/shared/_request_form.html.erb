@@ -1,21 +1,27 @@
-<h1>Request Form</h1>
+<h2>Request</h2>
+<div class="h2_underline"></div>
 <%= simple_form_for @request do |f| %>
   <% if @request.errors.any? %>
     <% @request.errors.full_messages.each do |msg| %>
       <%= msg %>
     <% end %>
   <% end %>
-  <%= f.input :date %>
-  <%= f.input :start_hours, :as => :time, :minute_step => 15, :label => "Start time", :input_html => {id: :start_hours }%>
-  <%= f.input :end_hours, :as => :time, :minute_step => 15, :label => "End Time", :input_html => { id: :end_hours }%>
-  <%= f.input :chef_ids, :as => :hidden, :input_html => { :value => params[:selected]} %>
+
+  <%= f.input :date, input_html: { class: "three_row" } %>
+  <%= f.input :start_hours, :as => :time, :minute_step => 15, :label => "Start time", :input_html => {id: :start_hours, class: "two_row" }%>
+  <%= f.input :end_hours, :as => :time, :minute_step => 15, :label => "End Time", :input_html => { id: :end_hours, class: "two_row" }%>
+  <%= f.input :chef_ids, :as => :hidden, :input_html => { :value => params[:selected]}, class: "two_row" %>
   <input type="hidden" id="prices" value="<%= params[:prices] %>">
   <%= f.input :number_of_chefs, collection: 1..5, selected: 1, :label => 'How many chefs do you need?' %>
   <%= f.input :description %>
-  <%= f.submit 'Request' %>
+
+    <p id="costs-range"></p>
+
+    <%= f.submit 'Request', class: "submit-btn-free" %>
 <% end %>
-  <button id="estimate">Estimate costs</button>
-  <p id="costs-range"></p>
+  <button id="estimate" class="cancel-btn-free">Estimate costs</button>
+
+
 <script>
   const startTime = document.getElementById("start_hours");
   const endTime = document.getElementById("end_hours");

@@ -9,7 +9,7 @@
       <div class="dash-card">
         <div class="dash-card__top">
           <div class="dash-avatar">
-            <%= cl_image_tag chef.photo, height: 66, width: 66, crop: :fill %>
+            <%= cl_image_tag chef.photo, height: 132, width: 132, crop: :fill, gravity: :face %>
           </div>
           <div class="dash-card__right">
             <div class="top">
@@ -64,12 +64,15 @@
         </div>
       </div>
 
-      <div class="dash-cancel__wrapper">
-        <%= link_to 'Cancel all Chefs', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-100-cancel" %>
-      </div>
-
     <% end %>
+
+    <div class="dash-cancel__wrapper">
+      <%= link_to 'Cancel all Chefs', cancel_all_request_path(request), method: :patch, data: {confirm: 'Are you sure?'}, class: "dash-100-cancel" %>
+    </div>
+
   <% end %>
+
+
 
 
 <h2>Accepted Bookings</h2>
@@ -80,7 +83,7 @@
       <div class="dash-card">
         <div class="dash-card__top">
           <div class="dash-avatar">
-            <%= cl_image_tag unpaid_booking.chef.photo, height: 66, width: 66, crop: :fill %>
+            <%= cl_image_tag unpaid_booking.chef.photo, height: 132, width: 132, crop: :fill, gravity: :face %>
           </div>
           <div class="dash-card__right">
             <div class="top">
@@ -142,7 +145,7 @@
     <div class="dash-card">
       <div class="dash-card__top">
         <div class="dash-avatar">
-          <%= cl_image_tag paid_booking.chef.photo, height: 66, width: 66, crop: :fill %>
+          <%= cl_image_tag paid_booking.chef.photo, height: 132, width: 132, crop: :fill, gravity: :face  %>
         </div>
         <div class="dash-card__right">
           <div class="top">
@@ -192,7 +195,7 @@
         </div>
       </div>
       <div class="dash-buttons">
-        <%= link_to "Pay £#{paid_booking.cost}" , new_booking_payment_path(paid_booking), class: "dash-50-dark" %>
+        <%= link_to "Pay £#{paid_booking.cost}", new_booking_payment_path(paid_booking), class: "dash-50-dark" %>
         <%= link_to "Message #{paid_booking.chef.name.partition(" ").first.capitalize}", conversations_path, class: "dash-50-chat" %>
       </div>
     </div>

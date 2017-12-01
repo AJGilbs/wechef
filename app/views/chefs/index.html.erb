@@ -1,16 +1,15 @@
-<div class="container">
-  <div class="home-content">
-    <div>
-      <h1>When do you need a Chef?</h1>
+<div class="home-container">
+    <div class="home-content">
+      <div>
+        <h1>When do you need a Chef?</h1>
 
-      <%= link_to 'Today', search_chefs_path(date: DateTime.now.strftime("%d-%m-%Y")), class: 'when-links' %>
-      <%= link_to 'Tomorrow', search_chefs_path(date: (DateTime.now + 1.day).strftime("%d-%m-%Y")), class: 'when-links' %>
+        <%= link_to 'Today', search_chefs_path(date: DateTime.now.strftime("%d-%m-%Y")), class: 'today' %><%= link_to 'Tomorrow', search_chefs_path(date: (DateTime.now + 1.day).strftime("%d-%m-%Y")), class: 'tomorrow' %>
 
-      <form action="chefs/search">
-        <input type="date" name="date" placeholder="when you need a chef?" class="index-search-bar">
-        <input type="submit" value="Search">
-      </form>
+        <form action="chefs/search">
+          <input type="date" name="date" placeholder="When?" class="index-search-bar">
+          <input type="submit" value="Search" class="index-submit">
+        </form>
 
+      </div>
     </div>
-  </div>
 </div>
