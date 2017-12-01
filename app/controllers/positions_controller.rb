@@ -5,11 +5,8 @@ class PositionsController < ApplicationController
     @position = Position.new(position_params)
     @position.chef = current_chef
     authorize(@position)
-    if @position.save
-      render "/chefs/edit"
-    else
-      render "new"
-    end
+    @position.save
+    render "/chefs/edit" #need to implement action when not save ????
   end
 
   def destroy
