@@ -138,6 +138,34 @@
   }
 }
 
+.social-container {
+  width: 100%;
+  padding: 0 15px 15px 30px;
+  display:flex;
+  a:link,a:visited,a:active {
+    width: calc(33% - 15px);
+    height: 44px;
+    border-radius: 3px;
+    color: rgba(255,255,255,0.8) !important;
+    line-height: 44px;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  a:nth-child(1) {
+    margin: 0 15px 0 0;
+    background-color: #3B5998;
+  }
+  a:nth-child(2) {
+    margin: 0 15px 0 0;
+    background-color: #00aced;
+  }
+  a:nth-child(3) {
+    margin: 0;
+    background-color: #0077b5;
+  }
+}
+
 .reviews-none {
   width: 100%;
   text-align:center;

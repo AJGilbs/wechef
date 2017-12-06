@@ -71,6 +71,15 @@
     <% end %>
   </div>
 
+  <h2>Sharing</h2>
+  <div class="h2_underline"></div>
+
+  <div class="social-container">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" target="_blank">Facebook</a>
+    <a href="https://twitter.com/home?status=I'd%20recommend%20<%= @chef.name %>%20if%20anyone%20is%20looking%20for%20a%20chef%20<%= request.original_url %>" target="_blank">Twitter</a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%= request.original_url %>&title=<%= "#{@chef.name} is on #{DEFAULT_META["meta_product_name"]}" %>&summary=<%= @chef.description %>&source=" target="_blank">LinkedIn</a>
+  </div>
+
   <h2>Reviews</h2>
   <div class="h2_underline"></div>
 
